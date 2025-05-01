@@ -1,10 +1,16 @@
 module.exports = function(eleventyConfig) {
-  // Collect blog posts from folders (e.g., blog/blog1/index.md)
+  // Debug: log all markdown files Eleventy sees
   eleventyConfig.addCollection("blog", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("./blog/**/index.md");
+    const allFiles = collectionApi.getAll();
+    console.log("All input files:", allFiles.map(f => f.inputPath));
+
+    const posts = collectionApi.getFilteredByGlob("./blog/**/index.md");
+    console.log("Blog collection matches:", posts.map(f => f.inputPath));
+
+    return posts;
   });
 
-  // Allow passthrough of images inside blog folders (optional)
+  // Allow images to be passed through from blog folders (optional)
   eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
 
   return {
