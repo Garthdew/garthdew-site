@@ -10,14 +10,15 @@ module.exports = function(eleventyConfig) {
     return posts;
   });
 
-  // Allow images to be passed through from blog folders (optional)
+  // Allow passthrough of images inside blog folders (optional)
   eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
 
   return {
     dir: {
-  input: ".",
-  layouts: "_layouts",
-  output: "_site"
-  }
+      input: ".",
+      layouts: "_layouts",
+      includes: "_includes", // ✅ This line was missing
+      output: "_site"
+    }
   };
 };
