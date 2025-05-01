@@ -1,10 +1,10 @@
 module.exports = function(eleventyConfig) {
-  // Collect all blog posts (folders with index.md)
+  // Collect blog posts from folders (e.g., blog/blog1/index.md)
   eleventyConfig.addCollection("blog", function (collectionApi) {
     return collectionApi.getFilteredByGlob("./blog/**/index.md");
   });
 
-  // Copy images in blog post folders to _site
+  // Allow passthrough of images inside blog folders (optional)
   eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
 
   return {
