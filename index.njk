@@ -7,6 +7,8 @@ Welcome to my site.
 
 <h2>Recent Posts</h2>
 
+<p>Total blog posts found: {{ collections.blog | length }}</p>
+
 <ul>
   {% for post in collections.blog | reverse %}
     <li>
