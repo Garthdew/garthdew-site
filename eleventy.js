@@ -1,5 +1,5 @@
 module.exports = function(eleventyConfig) {
-  // Debug: log all markdown files Eleventy sees
+  // Blog collection: any blog/**/index.md file
   eleventyConfig.addCollection("blog", function (collectionApi) {
     const allFiles = collectionApi.getAll();
     console.log("All input files:", allFiles.map(f => f.inputPath));
@@ -10,16 +10,17 @@ module.exports = function(eleventyConfig) {
     return posts;
   });
 
-  // Allow passthrough of images inside blog folders (optional)
+  // Passthrough for images inside blog folders (optional)
   eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
 
+  // ✅ Passthrough for profile image
   eleventyConfig.addPassthroughCopy("profile.jpg");
 
   return {
     dir: {
       input: ".",
+      includes: "_includes",
       layouts: "_layouts",
-      includes: "_includes", // ✅ This line was missing
       output: "_site"
     }
   };
