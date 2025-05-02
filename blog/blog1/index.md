@@ -6,7 +6,7 @@ layout: post.njk
 
 <p>
   <a href="/" style="font-size: 1rem; color: lightgray; text-decoration: underline; text-decoration-color: lightgray;">
-    back to all essays.
+    Back to all essays
   </a>
 </p>
 
