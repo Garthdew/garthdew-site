@@ -4,7 +4,7 @@ date: 2025-05-01
 layout: post.njk
 ---
 
-<p><a href="/">Back to all essays</a></p>
+<p><span style="color: #808080;"><a style="color: #808080;" href="/">&larr; Back to all essays</a></span></p>
 
 Welcome to my first post on this site.
 
