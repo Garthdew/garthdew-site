@@ -50,8 +50,11 @@
 </head>
 <body>
   <main>
-    <h1>{{ title }}</h1>
-    {{ content | safe }}
+  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+  <img src="/profile.jpg" alt="Garth Dew" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;" />
+  <h1 style="margin: 0;">{{ title }}</h1>
+  </div>
+  {{ content | safe }}
   </main>
 </body>
 </html>
