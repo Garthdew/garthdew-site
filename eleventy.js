@@ -25,3 +25,7 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
+
+git add .
+git commit -m "Trigger rebuild for profile.jpg"
+git push
