@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+
 body {
   font-family: 'EB Garamond', serif;
   color: #161717;
@@ -27,8 +29,8 @@ a {
 }
 
 a:hover {
-  background-color: #fff9c4;
-  text-decoration-color: #bc4132;
+  background-color: #fff9c4;        /* light yellow */
+  text-decoration-color: #bc4132;   /* dark orange */
 }
 
 h1 {
