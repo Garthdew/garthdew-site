@@ -13,8 +13,7 @@ module.exports = function(eleventyConfig) {
   // Passthrough for all common blog images
   eleventyConfig.addPassthroughCopy("blog/**/*.{jpg,jpeg,png,webp,gif}");
 
-  // Passthrough for all site-wide images
-  eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy({ "static": "/" });
 
   return {
     dir: {
