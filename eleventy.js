@@ -10,9 +10,10 @@ module.exports = function(eleventyConfig) {
     return posts;
   });
 
-  // Passthrough for images inside blog folders (optional)
-  eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
+  // Passthrough for all common blog images
+  eleventyConfig.addPassthroughCopy("blog/**/*.{jpg,jpeg,png,webp,gif}");
 
+  // Passthrough for all site-wide images
   eleventyConfig.addPassthroughCopy("images");
 
   return {
@@ -24,7 +25,3 @@ module.exports = function(eleventyConfig) {
     }
   };
 };
-
-git add .
-git commit -m "Trigger rebuild for profile.jpg"
-git push
