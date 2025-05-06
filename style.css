@@ -29,8 +29,8 @@ a {
 }
 
 a:hover {
-  background-color: #fff9c4;        /* light yellow */
-  text-decoration-color: #bc4132;   /* dark orange */
+  background-color: #fff9c4;        /* very light yellow */
+  text-decoration-color: #f0c800;   /* medium yellow */
 }
 
 h1 {
