@@ -13,8 +13,7 @@ module.exports = function(eleventyConfig) {
   // Passthrough for images inside blog folders (optional)
   eleventyConfig.addPassthroughCopy("blog/**/image.jpg");
 
-  // ✅ Passthrough for profile image
-  eleventyConfig.addPassthroughCopy("profile.jpg");
+  eleventyConfig.addPassthroughCopy("images");
 
   return {
     dir: {
