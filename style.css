@@ -55,3 +55,10 @@ main img {
   border-radius: 4px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #808080;
+  color: #808080;
+}
