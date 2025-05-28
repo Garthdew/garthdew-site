@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gallery – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <h1>Gallery</h1>
+  
+  <p>Text above the carousel can go here. You can describe the collection, provide context, or add any introductory information.</p>
+
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="/images/photo1.jpg" alt="Photo 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/photo2.jpg" alt="Photo 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/photo3.jpg" alt="Photo 3">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/photo4.jpg" alt="Photo 4">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/photo5.jpg" alt="Photo 5">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/photo6.jpg" alt="Photo 6">
+      </div>
+    </div>
+    
+    <button class="carousel-nav carousel-prev" onclick="moveSlide(-1)">‹</button>
+    <button class="carousel-nav carousel-next" onclick="moveSlide(1)">›</button>
+  </div>
+
+  <p>Text below the carousel can include additional details, captions, or any concluding thoughts about the images.</p>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function showSlide(n) {
+      if (n >= totalSlides) currentSlide = 0;
+      if (n < 0) currentSlide = totalSlides - 1;
+      
+      const track = document.querySelector('.carousel-track');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+      currentSlide += direction;
+      showSlide(currentSlide);
+    }
+
+    // Initialize
+    showSlide(currentSlide);
+  </script>
+</body>
+</html>
