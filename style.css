@@ -70,6 +70,7 @@ hr {
   height: 400px;
   overflow: hidden;
   margin: 1.5rem 0;
+  user-select: none;
 }
 
 .carousel-track {
@@ -95,6 +96,7 @@ hr {
   margin: 0;
   box-shadow: none;
   border-radius: 0;
+  pointer-events: none;
 }
 
 .carousel-clickable {
