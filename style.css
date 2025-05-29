@@ -83,6 +83,55 @@ hr {
   }
 }
 
+/* Fullscreen styles */
+.carousel:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000;
+}
+
+.carousel:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000;
+}
+
+.carousel:fullscreen .carousel-slide {
+  background-color: #000;
+}
+
+.carousel:-webkit-full-screen .carousel-slide {
+  background-color: #000;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #161717;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: background-color 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
 .carousel-track {
   display: flex;
   height: 100%;
