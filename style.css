@@ -23,14 +23,13 @@ body {
 a {
   color: #161717;
   text-decoration: underline;
-  text-decoration-color: lightgray;
+  text-decoration-color: #f0c800;   
   background-color: transparent;
   transition: background-color 0.2s ease, text-decoration-color 0.2s ease;
 }
-
 a:hover {
-  background-color: #fff9c4;        /* very light yellow */
-  text-decoration-color: #f0c800;   /* medium yellow */
+  background-color: #fff9c4;        
+  text-decoration-color: #f0c800;   
 }
 
 h1 {
