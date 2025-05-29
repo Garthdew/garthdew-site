@@ -35,6 +35,7 @@
     
     <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
     <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
   </div>
 
   <p>Text below the carousel can include additional details, captions, or any concluding thoughts about the images.</p>
@@ -107,6 +108,31 @@
         }
       }
     }
+
+    // Fullscreen functionality
+    function toggleFullscreen() {
+      const carousel = document.querySelector('.carousel');
+      
+      if (!document.fullscreenElement) {
+        carousel.requestFullscreen().catch(err => {
+          console.log('Fullscreen not supported:', err);
+        });
+      } else {
+        document.exitFullscreen();
+      }
+    }
+
+    // Listen for fullscreen changes
+    document.addEventListener('fullscreenchange', () => {
+      const btn = document.querySelector('.fullscreen-btn');
+      if (document.fullscreenElement) {
+        btn.innerHTML = '⤓'; // Exit fullscreen icon
+        btn.title = 'Exit Fullscreen';
+      } else {
+        btn.innerHTML = '⛶'; // Enter fullscreen icon  
+        btn.title = 'Fullscreen';
+      }
+    });
 
     // Initialize
     handleImageLoad();
