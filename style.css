@@ -227,3 +227,37 @@ hr {
     gap: 1.5rem;
   }
 }
+
+/* Music Project Styles */
+.music-image {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.music-image img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bandcamp-embed {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.bandcamp-embed iframe {
+  max-width: 100%;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 400px) {
+  .bandcamp-embed iframe {
+    width: 300px !important;
+    height: 400px !important;
+  }
+}
