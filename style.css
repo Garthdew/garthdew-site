@@ -280,3 +280,38 @@ hr {
   color: #808080;
   margin: 3rem 0;
 }
+
+/* Mobile-only vertical stream */
+@media (max-width: 768px) {
+  .carousel {
+    display: block;
+    height: auto;
+    overflow: visible;
+  }
+  
+  .carousel-track {
+    display: block;
+    transform: none !important;
+    width: 100%;
+    height: auto;
+  }
+  
+  .carousel-slide {
+    width: 100%;
+    flex-shrink: unset;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Hide carousel controls on mobile */
+  .carousel-clickable,
+  .fullscreen-btn {
+    display: none;
+  }
+}
