@@ -65,15 +65,12 @@ hr {
 /* Carousel Styles */
 .carousel {
   position: relative;
-  width: 100vw;
-  max-width: 1200px;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
   height: 400px;
   min-height: 400px;
   max-height: 400px;
   overflow: hidden;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
   user-select: none;
 }
 
@@ -82,9 +79,6 @@ hr {
     height: calc(100vw * 0.615); /* Maintains 1.625:1 ratio on smaller screens */
     min-height: calc(100vw * 0.615);
     max-height: calc(100vw * 0.615);
-    margin-left: 0;
-    width: 100%;
-    max-width: 100%;
   }
 }
 
