@@ -126,6 +126,7 @@ hr {
   justify-content: center;
   z-index: 20;
   transition: background-color 0.2s ease;
+  pointer-events: auto;
 }
 
 .fullscreen-btn:hover {
