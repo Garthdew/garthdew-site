@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600;700&display=swap');
 
 body {
-  font-family: 'EB Garamond', serif;
-  color: #161717;
-  background-color: #fff;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #ffffff;
+  background-color: #1a1a1a;
   max-width: 650px;
   margin: 2rem auto;
   line-height: 1.6;
   padding: 0 1rem;
   font-size: 1.2rem;
+  font-weight: 300;
 }
 
 .profile {
@@ -21,25 +22,29 @@ body {
 }
 
 a {
-  color: #161717;
+  color: #ffffff;
   text-decoration: underline;
-  text-decoration-color: #f0c800;   
+  text-decoration-color: #666666;   
   background-color: transparent;
   transition: background-color 0.2s ease, text-decoration-color 0.2s ease;
 }
 a:hover {
-  background-color: #fff9c4;        
-  text-decoration-color: #f0c800;   
+  background-color: #333333;        
+  text-decoration-color: #ffffff;   
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   margin-top: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 ul {
@@ -52,14 +57,15 @@ main img {
   display: block;
   margin: 1.5rem 0;
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 hr {
   border: 0;
   height: 1px;
-  background-color: #808080;
-  color: #808080;
+  background-color: #333333;
+  color: #333333;
+  margin: 3rem 0;
 }
 
 /* Carousel Styles */
@@ -144,7 +150,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8f8f8;
+  background-color: #2d2d2d;
 }
 
 .carousel-slide img {
@@ -209,14 +215,14 @@ hr {
   display: block;
   margin: 0 0 0.5rem 0;
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .project-title {
   font-size: 1.1rem;
   line-height: 1.4;
   margin: 0;
-  color: #161717;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -241,7 +247,7 @@ hr {
   display: block;
   margin: 0;
   border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .bandcamp-embed {
@@ -270,15 +276,6 @@ hr {
 
 .vimeo-embed iframe {
   width: 100%;
-}
-
-/* Horizontal divider styling */
-hr {
-  border: 0;
-  height: 1px;
-  background-color: #808080;
-  color: #808080;
-  margin: 3rem 0;
 }
 
 /* Mobile-only vertical stream */
