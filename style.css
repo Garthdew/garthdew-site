@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
 body {
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Crimson Text', Georgia, serif;
   color: #161717;
   background-color: #ffffff;
   max-width: 900px;
   margin: 2rem auto;
-  line-height: 1.6;
+  line-height: 1.7;
   padding: 0 1rem;
   font-size: 1.2rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .profile {
@@ -24,27 +24,33 @@ body {
 a {
   color: #161717;
   text-decoration: underline;
-  text-decoration-color: #cccccc;   
+  text-decoration-color: #999999;   
   background-color: transparent;
-  transition: background-color 0.2s ease, text-decoration-color 0.2s ease;
+  transition: background-color 0.3s ease, text-decoration-color 0.3s ease;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 a:hover {
-  background-color: #f5f5f5;        
+  background-color: #f8f8f8;        
   text-decoration-color: #161717;   
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
 }
 
 h2 {
   margin-top: 2rem;
-  font-size: 1.8rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 ul {
@@ -55,9 +61,9 @@ main img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 1.5rem 0;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 hr {
@@ -213,17 +219,21 @@ hr {
   aspect-ratio: 3/2;
   object-fit: cover;
   display: block;
-  margin: 0 0 0.5rem 0;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin: 0 0 0.8rem 0;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .project-title {
-  font-size: 1.1rem;
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.5;
   margin: 0;
   color: #161717;
   text-align: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Mobile responsiveness */
@@ -246,8 +256,8 @@ hr {
   object-fit: cover;
   display: block;
   margin: 0;
-  border-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .bandcamp-embed {
