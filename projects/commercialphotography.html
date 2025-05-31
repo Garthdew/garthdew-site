@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Commercial Photography – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
 
+  <h1 style="text-align: center;">Commercial Photography</h1>
+  
+  <div class="carousel">
+    <div class="carousel-track">
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial1.jpg" alt="Commercial photography 1">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial2.jpg" alt="Commercial photography 2">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial3.jpg" alt="Commercial photography 3">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial4.jpg" alt="Commercial photography 4">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial5.jpg" alt="Commercial photography 5">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial6.jpg" alt="Commercial photography 6">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial7.jpg" alt="Commercial photography 7">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial8.jpg" alt="Commercial photography 8">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial9.jpg" alt="Commercial photography 9">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial10.jpg" alt="Commercial photography 10">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial11.jpg" alt="Commercial photography 11">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial12.jpg" alt="Commercial photography 12">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial13.jpg" alt="Commercial photography 13">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial14.jpg" alt="Commercial photography 14">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial15.jpg" alt="Commercial photography 15">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial16.jpg" alt="Commercial photography 16">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial17.jpg" alt="Commercial photography 17">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial18.jpg" alt="Commercial photography 18">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial19.jpg" alt="Commercial photography 19">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial20.jpg" alt="Commercial photography 20">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial21.jpg" alt="Commercial photography 21">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial22.jpg" alt="Commercial photography 22">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial23.jpg" alt="Commercial photography 23">
+      </div>
+      <div class="carousel-slide">
+        <img src="/images/commercial/commercial24.jpg" alt="Commercial photography 24">
+      </div>
+    </div>
+    
+    <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
+    <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    let startX = 0;
+    let endX = 0;
+
+    // Detect image orientation and apply appropriate class
+    function handleImageLoad() {
+      const images = document.querySelectorAll('.carousel-slide img');
+      images.forEach(img => {
+        img.onload = function() {
+          if (this.naturalHeight > this.naturalWidth) {
+            this.classList.add('portrait');
+          }
+        };
+        // If image is already loaded
+        if (img.complete && img.naturalHeight > 0) {
+          if (img.naturalHeight > img.naturalWidth) {
+            img.classList.add('portrait');
+          }
+        }
+      });
+    }
+
+    function showSlide(n) {
+      if (n >= totalSlides) currentSlide = 0;
+      if (n < 0) currentSlide = totalSlides - 1;
+      
+      const track = document.querySelector('.carousel-track');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+      currentSlide += direction;
+      showSlide(currentSlide);
+    }
+
+    // Touch/swipe support
+    const carousel = document.querySelector('.carousel');
+    
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+      e.preventDefault(); // Prevent scrolling
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum distance for a swipe
+      const diff = startX - endX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left - next slide
+          moveSlide(1);
+        } else {
+          // Swipe right - previous slide
+          moveSlide(-1);
+        }
+      }
+    }
+
+    // Fullscreen functionality
+    function toggleFullscreen() {
+      const carousel = document.querySelector('.carousel');
+      
+      if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+        // Try the standard method first
+        if (carousel.requestFullscreen) {
+          carousel.requestFullscreen().catch(err => {
+            console.log('Fullscreen not supported:', err);
+          });
+        }
+        // Safari fallback
+        else if (carousel.webkitRequestFullscreen) {
+          carousel.webkitRequestFullscreen();
+        }
+      } else {
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      }
+    }
+
+    // Listen for fullscreen changes (both standard and webkit)
+    document.addEventListener('fullscreenchange', updateFullscreenButton);
+    document.addEventListener('webkitfullscreenchange', updateFullscreenButton);
+
+    function updateFullscreenButton() {
+      const btn = document.querySelector('.fullscreen-btn');
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        btn.innerHTML = '⤓'; // Exit fullscreen icon
+        btn.title = 'Exit Fullscreen';
+      } else {
+        btn.innerHTML = '⛶'; // Enter fullscreen icon  
+        btn.title = 'Fullscreen';
+      }
+    }
+
+    // Initialize
+    handleImageLoad();
+    showSlide(currentSlide);
+  </script>
+  <p style="text-align: center;"><a href="/commercial">&larr; Back to commercial</a></p>
+  <p>&nbsp;</p>
+</body>
+</html>
