@@ -80,7 +80,7 @@ hr {
   overflow: hidden;
   margin: 1.5rem 0;
   user-select: none;
-  border: 1px solid #161717;
+  border: none;
 }
 
 @media (max-width: 900px) {
