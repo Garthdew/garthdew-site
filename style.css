@@ -1,14 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
-
 body {
-  font-family: 'Crimson Text', Georgia, serif;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
   color: #161717;
   background-color: #ffffff;
   max-width: 900px;
   margin: 2rem auto;
-  line-height: 1.7;
+  line-height: 1.6;
   padding: 0 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
@@ -24,33 +22,30 @@ body {
 a {
   color: #161717;
   text-decoration: underline;
-  text-decoration-color: #999999;   
+  text-decoration-color: #666666;   
   background-color: transparent;
-  transition: background-color 0.3s ease, text-decoration-color 0.3s ease;
+  transition: background-color 0.2s ease, text-decoration-color 0.2s ease;
   text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
 }
 a:hover {
-  background-color: #f8f8f8;        
+  background-color: #f0f0f0;        
   text-decoration-color: #161717;   
 }
 
 h1 {
-  font-size: 2.8rem;
+  font-size: 2.2rem;
   margin-bottom: 1.5rem;
-  font-weight: 900;
+  font-weight: 700;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 h2 {
   margin-top: 2rem;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.6rem;
+  font-weight: 600;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  letter-spacing: -0.005em;
 }
 
 ul {
@@ -62,15 +57,15 @@ main img {
   height: auto;
   display: block;
   margin: 2rem 0;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 hr {
   border: 0;
-  height: 1px;
-  background-color: #cccccc;
-  color: #cccccc;
+  height: 2px;
+  background-color: #161717;
+  color: #161717;
   margin: 3rem 0;
 }
 
@@ -84,6 +79,7 @@ hr {
   overflow: hidden;
   margin: 1.5rem 0;
   user-select: none;
+  border: 1px solid #161717;
 }
 
 @media (max-width: 900px) {
@@ -102,6 +98,7 @@ hr {
   min-height: 100vh;
   margin: 0;
   background-color: #000;
+  border: none;
 }
 
 .carousel:-webkit-full-screen {
@@ -111,6 +108,7 @@ hr {
   min-height: 100vh;
   margin: 0;
   background-color: #000;
+  border: none;
 }
 
 .carousel:fullscreen .carousel-slide {
@@ -125,8 +123,8 @@ hr {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #161717;
   width: 32px;
   height: 32px;
   cursor: pointer;
@@ -141,7 +139,8 @@ hr {
 }
 
 .fullscreen-btn:hover {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #161717;
+  color: #ffffff;
 }
 
 .carousel-track {
@@ -156,7 +155,7 @@ hr {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
 }
 
 .carousel-slide img {
@@ -206,6 +205,8 @@ hr {
   color: inherit;
   display: block;
   transition: opacity 0.2s ease;
+  border: 1px solid #161717;
+  padding: 0;
 }
 
 .project-item:hover {
@@ -219,21 +220,21 @@ hr {
   aspect-ratio: 3/2;
   object-fit: cover;
   display: block;
-  margin: 0 0 0.8rem 0;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #161717;
 }
 
 .project-title {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.4;
   margin: 0;
   color: #161717;
   text-align: center;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 0.8rem;
 }
 
 /* Mobile responsiveness */
@@ -256,8 +257,9 @@ hr {
   object-fit: cover;
   display: block;
   margin: 0;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border: 1px solid #161717;
 }
 
 .bandcamp-embed {
@@ -268,6 +270,7 @@ hr {
 
 .bandcamp-embed iframe {
   max-width: 100%;
+  border: 1px solid #161717;
 }
 
 /* Mobile responsiveness */
@@ -286,6 +289,7 @@ hr {
 
 .vimeo-embed iframe {
   width: 100%;
+  border: 1px solid #161717;
 }
 
 /* Mobile-only vertical stream */
@@ -294,6 +298,7 @@ hr {
     display: block;
     height: auto;
     overflow: visible;
+    border: none;
   }
   
   .carousel-track {
@@ -308,6 +313,7 @@ hr {
     flex-shrink: unset;
     margin-bottom: 1rem;
     display: block;
+    border: 1px solid #161717;
   }
   
   .carousel-slide img {
