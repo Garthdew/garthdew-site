@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
 
 body {
-  font-family: 'Source Code Pro', 'Consolas', 'Monaco', monospace;
+  font-family: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
   color: #161717;
   background-color: #ffffff;
   max-width: 900px;
@@ -9,7 +9,7 @@ body {
   line-height: 1.6;
   padding: 0 1rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .profile {
@@ -231,8 +231,8 @@ hr {
   margin: 0;
   color: #161717;
   text-align: center;
-  font-family: 'Source Code Pro', 'Consolas', 'Monaco', monospace;
-  font-weight: 500;
+  font-family: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
+  font-weight: 400;
 }
 
 /* Mobile responsiveness */
