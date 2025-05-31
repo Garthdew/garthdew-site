@@ -1,7 +1,7 @@
 body {
   font-family: 'adobe-caslon-pro', serif;
   color: #161717;
-  background-color: #fff;
+  background-color: #8ed1fc;
   max-width: 900px;
   margin: 2rem auto;
   line-height: 1.6;
@@ -38,6 +38,7 @@ h1 {
   font-weight: 700;
   font-family: 'neue-haas-grotesk-text', sans-serif;
   letter-spacing: -0.01em;
+  line-height: 1.1;
 }
 
 h2 {
@@ -46,6 +47,7 @@ h2 {
   font-weight: 600;
   font-family: 'neue-haas-grotesk-text', sans-serif;
   letter-spacing: -0.005em;
+  line-height: 1.2;
 }
 
 ul {
