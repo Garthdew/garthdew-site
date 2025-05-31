@@ -1,7 +1,7 @@
 body {
   font-family: 'adobe-caslon-pro', serif;
   color: #161717;
-  background-color: #fff;
+  background-color: #8ed1fc;
   max-width: 900px;
   margin: 2rem auto;
   line-height: 1.6;
@@ -299,6 +299,7 @@ hr {
     height: auto;
     overflow: visible;
     border: none;
+    margin-bottom: 2rem;
   }
   
   .carousel-track {
@@ -326,5 +327,10 @@ hr {
   .carousel-clickable,
   .fullscreen-btn {
     display: none;
+  }
+  
+  /* Ensure content after carousel is visible */
+  body {
+    padding-bottom: 3rem;
   }
 }
