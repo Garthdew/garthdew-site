@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
-
 body {
-  font-family: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #161717;
   background-color: #ffffff;
   max-width: 900px;
@@ -9,7 +7,7 @@ body {
   line-height: 1.6;
   padding: 0 1rem;
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .profile {
@@ -60,7 +58,8 @@ main img {
   display: block;
   margin: 2rem 0;
   border-radius: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  border: none;
 }
 
 hr {
@@ -222,7 +221,8 @@ hr {
   display: block;
   margin: 0 0 0.8rem 0;
   border-radius: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
+  border: none;
 }
 
 .project-title {
@@ -231,7 +231,7 @@ hr {
   margin: 0;
   color: #161717;
   text-align: center;
-  font-family: 'Roboto Mono', 'Consolas', 'Monaco', monospace;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
   font-weight: 400;
 }
 
@@ -256,8 +256,8 @@ hr {
   display: block;
   margin: 0;
   border-radius: 0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
-  border: 1px solid #161717;
+  box-shadow: none;
+  border: none;
 }
 
 .bandcamp-embed {
@@ -268,7 +268,7 @@ hr {
 
 .bandcamp-embed iframe {
   max-width: 100%;
-  border: 1px solid #161717;
+  border: none;
 }
 
 /* Mobile responsiveness */
@@ -287,7 +287,7 @@ hr {
 
 .vimeo-embed iframe {
   width: 100%;
-  border: 1px solid #161717;
+  border: none;
 }
 
 /* Mobile-only vertical stream */
