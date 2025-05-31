@@ -64,9 +64,9 @@ main img {
 
 hr {
   border: 0;
-  height: 2px;
-  background-color: #161717;
-  color: #161717;
+  height: 1px;
+  background-color: #cccccc;
+  color: #cccccc;
   margin: 3rem 0;
 }
 
