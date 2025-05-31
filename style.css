@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 body {
-  font-family: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
   color: #161717;
   background-color: #ffffff;
   max-width: 900px;
   margin: 2rem auto;
   line-height: 1.6;
   padding: 0 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 400;
 }
 
@@ -205,8 +207,6 @@ hr {
   color: inherit;
   display: block;
   transition: opacity 0.2s ease;
-  border: 1px solid #161717;
-  padding: 0;
 }
 
 .project-item:hover {
@@ -220,10 +220,9 @@ hr {
   aspect-ratio: 3/2;
   object-fit: cover;
   display: block;
-  margin: 0;
+  margin: 0 0 0.8rem 0;
   border-radius: 0;
-  box-shadow: none;
-  border-bottom: 1px solid #161717;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
 .project-title {
@@ -232,9 +231,8 @@ hr {
   margin: 0;
   color: #161717;
   text-align: center;
-  font-family: 'SF Mono', 'Monaco', 'Consolas', 'Courier New', monospace;
-  font-weight: 600;
-  padding: 0.8rem;
+  font-family: 'JetBrains Mono', 'Consolas', 'Monaco', monospace;
+  font-weight: 500;
 }
 
 /* Mobile responsiveness */
