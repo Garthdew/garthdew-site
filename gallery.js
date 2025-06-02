@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Carousel (hidden initially) -->
     <div class="carousel" id="carousel">
-      <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle fullscreen">⛶</button>
       <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
       <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
       <div class="carousel-track">
@@ -33,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <!-- Photo Stream (Mobile Only) -->
-    <div class="photo-stream">
+    <div class="photo-stream" style="display: none;">
       ${images.map((src, index) => `
         <img src="${src}" alt="${altPrefix} ${index + 1}">
       `).join('')}
@@ -68,11 +67,21 @@ document.addEventListener('DOMContentLoaded', function() {
       img.onload = function() {
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
+          // Left align portrait images
+          this.parentElement.style.justifyContent = 'flex-start';
+        } else {
+          // Keep landscape images centered/as they were
+          this.parentElement.style.justifyContent = 'flex-start';
         }
       };
       if (img.complete && img.naturalHeight > 0) {
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
+          // Left align portrait images
+          img.parentElement.style.justifyContent = 'flex-start';
+        } else {
+          // Keep landscape images as they were
+          img.parentElement.style.justifyContent = 'flex-start';
         }
       }
     });
@@ -92,14 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   window.toggleFullscreen = function() {
-    const carousel = document.getElementById('carousel');
-    if (!document.fullscreenElement) {
-      carousel.requestFullscreen().catch(err => {
-        console.log(`Error attempting to enable fullscreen: ${err.message}`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
+    // Fullscreen functionality removed as requested
   };
 
   // Touch/swipe support
