@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <!-- Carousel (hidden initially) -->
     <div class="carousel" id="carousel">
-      <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
-      <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
       <div class="carousel-track">
         ${images.map((src, index) => `
           <div class="carousel-slide">
@@ -78,21 +76,33 @@ document.addEventListener('DOMContentLoaded', function() {
       img.onload = function() {
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
-          // Left align portrait images
+          // Force left alignment for portrait images
           this.parentElement.style.justifyContent = 'flex-start';
+          this.parentElement.style.alignItems = 'center';
+          this.style.marginLeft = '0';
+          this.style.marginRight = 'auto';
         } else {
-          // Keep landscape images centered/as they were
+          // Landscape images - also left align for consistency
           this.parentElement.style.justifyContent = 'flex-start';
+          this.parentElement.style.alignItems = 'center';
+          this.style.marginLeft = '0';
+          this.style.marginRight = 'auto';
         }
       };
       if (img.complete && img.naturalHeight > 0) {
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
-          // Left align portrait images
+          // Force left alignment for portrait images
           img.parentElement.style.justifyContent = 'flex-start';
+          img.parentElement.style.alignItems = 'center';
+          img.style.marginLeft = '0';
+          img.style.marginRight = 'auto';
         } else {
-          // Keep landscape images as they were
+          // Landscape images - also left align for consistency
           img.parentElement.style.justifyContent = 'flex-start';
+          img.parentElement.style.alignItems = 'center';
+          img.style.marginLeft = '0';
+          img.style.marginRight = 'auto';
         }
       }
     });
