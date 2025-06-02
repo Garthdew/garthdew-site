@@ -223,6 +223,60 @@ a:hover {
   max-height: 200px;
 }
 
+/* Improved thumbnail grid alignment */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin: 2rem 0;
+  align-items: center; /* Changed from 'end' to 'center' */
+}
+
+/* Portrait thumbnail containers */
+.thumb-portrait-container {
+  height: 200px; /* Set consistent height */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Landscape thumbnail containers */
+.thumb-landscape-container {
+  height: 200px; /* Same height as portrait */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center;
+}
+
+/* Portrait thumbnails - keep original sizing */
+.thumb-portrait {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 200px;
+}
+
+/* Landscape thumbnails - make wider for better visual balance */
+.thumb-landscape {
+  width: 150%; /* Make landscape images bigger */
+  height: auto;
+  object-fit: contain;
+  max-height: 133px; /* Proportional height limit */
+}
+
+/* Mobile thumbnail adjustments */
+@media (max-width: 768px) {
+  .thumb-landscape {
+    width: 100%; /* Reset to normal size on mobile */
+    max-height: 200px;
+  }
+  
+  .thumb-portrait-container,
+  .thumb-landscape-container {
+    height: auto; /* Let mobile thumbnails size naturally */
+  }
+}
+
 /* Carousel Styles */
 .carousel {
   position: relative;
