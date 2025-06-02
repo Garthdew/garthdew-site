@@ -83,13 +83,15 @@ body {
 
 .content-area {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
+  margin-left: 2rem;
   padding: 2rem 1rem;
 }
 
 .wide-content {
   max-width: 1000px;
-  margin: 2rem auto;
+  margin: 2rem 0;
+  margin-left: 2rem;
   padding: 0 1rem;
 }
 
@@ -127,7 +129,7 @@ a:hover {
   display: none;
   position: fixed;
   top: 1rem;
-  left: 1rem;
+  right: 1rem;
   z-index: 1000;
   background: none;
   border: none;
@@ -315,10 +317,12 @@ a:hover {
 
   .content-area {
     padding: 1rem;
+    margin-left: 0;
   }
 
   .wide-content {
     padding: 0 1rem;
+    margin-left: 0;
   }
 
   .projects-grid {
