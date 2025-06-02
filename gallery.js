@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="thumbnail-grid" id="thumbnailGrid">
       ${images.map((src, index) => `
         <div class="thumbnail" onclick="openCarousel(${index})">
-          <img src="${src}" alt="${altPrefix} ${index + 1}">
+          <img src="${src}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
         </div>
       `).join('')}
     </div>
@@ -59,6 +59,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('thumbnailGrid').style.display = 'grid';
     document.getElementById('carousel').classList.remove('show');
     document.querySelector('.gallery-nav').classList.remove('show');
+  };
+
+  // Handle thumbnail image loading and classification
+  window.handleThumbnailLoad = function(img) {
+    if (img.naturalHeight > img.naturalWidth) {
+      img.classList.add('thumb-portrait');
+      img.parentElement.classList.add('thumb-portrait-container');
+    } else {
+      img.classList.add('thumb-landscape');
+      img.parentElement.classList.add('thumb-landscape-container');
+    }
   };
 
   function handleImageLoad() {
