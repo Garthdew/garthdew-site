@@ -76,41 +76,37 @@ document.addEventListener('DOMContentLoaded', function() {
       img.onload = function() {
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
-          // Force left alignment for portrait images - more aggressive approach
-          this.parentElement.style.justifyContent = 'flex-start';
-          this.parentElement.style.alignItems = 'center';
-          this.parentElement.style.display = 'flex';
-          this.style.marginLeft = '0';
-          this.style.marginRight = 'auto';
-          this.style.alignSelf = 'flex-start';
-          this.style.justifySelf = 'flex-start';
+          // Force left alignment for portrait images - with !important to override CSS
+          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          this.parentElement.style.setProperty('align-items', 'center', 'important');
+          this.parentElement.style.setProperty('display', 'flex', 'important');
+          this.style.setProperty('margin-left', '0', 'important');
+          this.style.setProperty('margin-right', 'auto', 'important');
         } else {
           // Landscape images - also left align for consistency
-          this.parentElement.style.justifyContent = 'flex-start';
-          this.parentElement.style.alignItems = 'center';
-          this.parentElement.style.display = 'flex';
-          this.style.marginLeft = '0';
-          this.style.marginRight = 'auto';
+          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          this.parentElement.style.setProperty('align-items', 'center', 'important');
+          this.parentElement.style.setProperty('display', 'flex', 'important');
+          this.style.setProperty('margin-left', '0', 'important');
+          this.style.setProperty('margin-right', 'auto', 'important');
         }
       };
       if (img.complete && img.naturalHeight > 0) {
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
-          // Force left alignment for portrait images - more aggressive approach
-          img.parentElement.style.justifyContent = 'flex-start';
-          img.parentElement.style.alignItems = 'center';
-          img.parentElement.style.display = 'flex';
-          img.style.marginLeft = '0';
-          img.style.marginRight = 'auto';
-          img.style.alignSelf = 'flex-start';
-          img.style.justifySelf = 'flex-start';
+          // Force left alignment for portrait images - with !important to override CSS
+          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          img.parentElement.style.setProperty('align-items', 'center', 'important');
+          img.parentElement.style.setProperty('display', 'flex', 'important');
+          img.style.setProperty('margin-left', '0', 'important');
+          img.style.setProperty('margin-right', 'auto', 'important');
         } else {
           // Landscape images - also left align for consistency
-          img.parentElement.style.justifyContent = 'flex-start';
-          img.parentElement.style.alignItems = 'center';
-          img.parentElement.style.display = 'flex';
-          img.style.marginLeft = '0';
-          img.style.marginRight = 'auto';
+          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          img.parentElement.style.setProperty('align-items', 'center', 'important');
+          img.parentElement.style.setProperty('display', 'flex', 'important');
+          img.style.setProperty('margin-left', '0', 'important');
+          img.style.setProperty('margin-right', 'auto', 'important');
         }
       }
     });
