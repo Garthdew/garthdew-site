@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Moments: Preston – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <!-- Your page content goes here - menu gets injected automatically -->
+  <div class="content-area">
+    <h1>Moments: Preston</h1>
+  </div>
+  
+  <div class="wide-content">
+    <div class="carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="/images/preston/preston1.jpg" alt="Preston moment 1">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston2.jpg" alt="Preston moment 2">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston3.jpg" alt="Preston moment 3">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston4.jpg" alt="Preston moment 4">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston5.jpg" alt="Preston moment 5">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston6.jpg" alt="Preston moment 6">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston7.jpg" alt="Preston moment 7">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston8.jpg" alt="Preston moment 8">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston9.jpg" alt="Preston moment 9">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston10.jpg" alt="Preston moment 10">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston11.jpg" alt="Preston moment 11">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston12.jpg" alt="Preston moment 12">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston13.jpg" alt="Preston moment 13">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston14.jpg" alt="Preston moment 14">
+        </div>
+        <div class="carousel-slide">
+          <img src="/images/preston/preston15.jpg" alt="Preston moment 15">
+        </div>
+      </div>
+      
+      <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
+      <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
+      <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+    </div>
+  </div>
+
+  <!-- Include the shared menu system -->
+  <script src="/menu.js"></script>
+  
+  <!-- Page-specific carousel JavaScript -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+
+    function handleImageLoad() {
+      const images = document.querySelectorAll('.carousel-slide img');
+      images.forEach(img => {
+        img.onload = function() {
+          if (this.naturalHeight > this.naturalWidth) {
+            this.classList.add('portrait');
+          }
+        };
+        if (img.complete && img.naturalHeight > 0) {
+          if (img.naturalHeight > img.naturalWidth) {
+            img.classList.add('portrait');
+          }
+        }
+      });
+    }
+
+    function showSlide(n) {
+      if (n >= totalSlides) currentSlide = 0;
+      if (n < 0) currentSlide = totalSlides - 1;
+      
+      const track = document.querySelector('.carousel-track');
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function moveSlide(direction) {
+      currentSlide += direction;
+      showSlide(currentSlide);
+    }
+
+    function toggleFullscreen() {
+      const carousel = document.querySelector('.carousel');
+      
+      if (!document.fullscreenElement) {
+        if (carousel.requestFullscreen) {
+          carousel.requestFullscreen().catch(err => {
+            console.log('Fullscreen not supported:', err);
+          });
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        }
+      }
+    }
+
+    // Touch/swipe support
+    const carousel = document.querySelector('.carousel');
+    let startX = 0;
+    let endX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+    });
+
+    carousel.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = startX - endX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          moveSlide(1);
+        } else {
+          moveSlide(-1);
+        }
+      }
+    }
+
+    // Initialize carousel
+    document.addEventListener('DOMContentLoaded', function() {
+      handleImageLoad();
+      showSlide(currentSlide);
+    });
+  </script>
+</body>
+</html>
