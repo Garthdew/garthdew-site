@@ -477,50 +477,9 @@
   </div>
 
   <!-- Include the shared menu system -->
-  <script>
-    // Simplified menu for this demo - replace with your menu.js
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuHTML = `
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
-        <div class="overlay" onclick="closeMenu()"></div>
-        <nav class="sidebar" id="sidebar">
-          <div class="sidebar-header">Garth Dew</div>
-          <div class="sidebar-section">
-            <h3>Photography</h3>
-            <ul class="sidebar-nav">
-              <li><a href="/moments-preston.html">Moments: Preston</a></li>
-              <li><a href="/moments-kalkan.html">Moments: Kalkan</a></li>
-            </ul>
-          </div>
-        </nav>
-      `;
-      
-      document.body.insertAdjacentHTML('afterbegin', menuHTML);
-      const existingContent = document.body.innerHTML.replace(menuHTML, '');
-      document.body.innerHTML = `
-        <div class="layout-wrapper">
-          ${menuHTML}
-          <main class="main-content">
-            ${existingContent}
-          </main>
-        </div>
-      `;
-    });
+  
+   <script src="/menu.js"></script>
 
-    function toggleMenu() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.querySelector('.overlay');
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('active');
-    }
-
-    function closeMenu() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.querySelector('.overlay');
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
-    }
-  </script>
   
   <!-- Gallery JavaScript -->
   <script>
