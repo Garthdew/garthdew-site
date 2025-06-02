@@ -76,15 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
       img.onload = function() {
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
-          // Force left alignment for portrait images
+          // Force left alignment for portrait images - more aggressive approach
           this.parentElement.style.justifyContent = 'flex-start';
           this.parentElement.style.alignItems = 'center';
+          this.parentElement.style.display = 'flex';
           this.style.marginLeft = '0';
           this.style.marginRight = 'auto';
+          this.style.alignSelf = 'flex-start';
+          this.style.justifySelf = 'flex-start';
         } else {
           // Landscape images - also left align for consistency
           this.parentElement.style.justifyContent = 'flex-start';
           this.parentElement.style.alignItems = 'center';
+          this.parentElement.style.display = 'flex';
           this.style.marginLeft = '0';
           this.style.marginRight = 'auto';
         }
@@ -92,15 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
       if (img.complete && img.naturalHeight > 0) {
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
-          // Force left alignment for portrait images
+          // Force left alignment for portrait images - more aggressive approach
           img.parentElement.style.justifyContent = 'flex-start';
           img.parentElement.style.alignItems = 'center';
+          img.parentElement.style.display = 'flex';
           img.style.marginLeft = '0';
           img.style.marginRight = 'auto';
+          img.style.alignSelf = 'flex-start';
+          img.style.justifySelf = 'flex-start';
         } else {
           // Landscape images - also left align for consistency
           img.parentElement.style.justifyContent = 'flex-start';
           img.parentElement.style.alignItems = 'center';
+          img.parentElement.style.display = 'flex';
           img.style.marginLeft = '0';
           img.style.marginRight = 'auto';
         }
