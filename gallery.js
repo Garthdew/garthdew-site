@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Generate the gallery HTML
   const galleryHTML = `
     <!-- Thumbnail Grid (shown initially) -->
-    <div class="thumbnail-grid" id="thumbnailGrid">
+    <div class="thumbnail-grid" id="thumbnailGrid" style="grid-template-columns: repeat(${Math.min(images.length, 6)}, 1fr);">
       ${images.map((src, index) => `
         <div class="thumbnail" onclick="openCarousel(${index})">
           <img src="${src}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
