@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   window.openCarousel = function(slideIndex) {
     currentSlide = slideIndex;
+    // Hide thumbnails and heading/text when entering carousel
     document.getElementById('thumbnailGrid').style.display = 'none';
+    document.querySelector('.content-area').style.display = 'none';
     document.getElementById('carousel').classList.add('show');
     document.querySelector('.gallery-nav').classList.add('show');
     showSlide(currentSlide);
@@ -54,7 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
   };
 
   window.showThumbnails = function() {
+    // Show thumbnails and heading/text when exiting carousel
     document.getElementById('thumbnailGrid').style.display = 'grid';
+    document.querySelector('.content-area').style.display = 'block';
     document.getElementById('carousel').classList.remove('show');
     document.querySelector('.gallery-nav').classList.remove('show');
   };
