@@ -99,13 +99,6 @@ class FilmStripGallery {
           max-width: none;
         }
 
-        .film-frame.video-frame iframe {
-          height: ${this.options.height}px;
-          width: ${Math.floor(this.options.height * 1.78)}px;
-          border: none;
-          border-radius: 0;
-        }
-
         @media (max-width: 1200px) {
           .film-frame.landscape img,
           .film-frame.portrait img,
@@ -233,41 +226,23 @@ class FilmStripGallery {
   createImageFrame(image, index) {
     const frame = document.createElement('div');
     
-    // Check if this is a video embed
-    if (image.type === 'video' && image.embedUrl) {
-      frame.className = 'film-frame video-frame';
-      
-      const iframe = document.createElement('iframe');
-      iframe.src = image.embedUrl;
-      iframe.width = Math.floor(this.options.height * 1.78); // 16:9 aspect ratio
-      iframe.height = this.options.height;
-      iframe.frameBorder = '0';
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'lazy';
-      iframe.title = image.alt || `Video ${index + 1}`;
-      
-      frame.appendChild(iframe);
-    } else {
-      // Regular image handling
-      const aspect = image.aspect || this.detectAspectRatio(image.src);
-      frame.className = `film-frame ${aspect}`;
+    // Determine aspect ratio if not provided
+    const aspect = image.aspect || this.detectAspectRatio(image.src);
+    frame.className = `film-frame ${aspect}`;
 
-      const img = document.createElement('img');
-      img.src = image.src;
-      img.alt = image.alt || `Image ${index + 1}`;
-      img.loading = 'lazy';
+    const img = document.createElement('img');
+    img.src = image.src;
+    img.alt = image.alt || `Image ${index + 1}`;
+    img.loading = 'lazy';
 
-      frame.appendChild(img);
-    }
-
-    // Add click handler if enabled (for both images and videos)
+    // Add click handler if enabled
     if (this.options.clickToView) {
       frame.addEventListener('click', () => {
         this.onImageClick(image, index);
       });
     }
 
+    frame.appendChild(img);
     return frame;
   }
 
@@ -333,6 +308,7 @@ window.createFilmStrip = function(containerId, images, options = {}) {
 
 // Auto-initialize film strips with data attributes
 document.addEventListener('DOMContentLoaded', () => {
+  // Only initialize if there are actual filmstrip containers
   const autoFilmStrips = document.querySelectorAll('[data-filmstrip]');
   
   autoFilmStrips.forEach(container => {
@@ -345,4 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     new FilmStripGallery(container.id, images, options);
   });
+  
+  // Don't interfere with existing gallery functionality
 });
