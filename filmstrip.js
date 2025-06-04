@@ -84,6 +84,9 @@ class FilmStripGallery {
           position: relative;
           display: flex;
           align-items: flex-end;
+          margin: 0;
+          padding: 0;
+          height: ${this.options.height}px;
         }
 
         .filmstrip-component .fs-image-frame img {
@@ -94,6 +97,8 @@ class FilmStripGallery {
           border: none;
           border-radius: 0;
           max-width: none;
+          margin: 0;
+          padding: 0;
         }
 
         .filmstrip-component .fs-video-frame iframe {
@@ -103,6 +108,8 @@ class FilmStripGallery {
           border-radius: 0;
           display: block;
           vertical-align: bottom;
+          margin: 0;
+          padding: 0;
         }
 
         @media (max-width: 1200px) {
