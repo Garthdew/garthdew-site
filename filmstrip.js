@@ -38,20 +38,32 @@ class FilmStripGallery {
       const style = document.createElement('style');
       style.id = 'filmstrip-styles';
       style.textContent = `
-        /* Make the page horizontally scrollable */
-        html, body {
-          overflow-x: auto !important;
-          overflow-y: hidden !important;
-        }
-        
         .film-strip {
-          width: max-content;
-          overflow-x: visible;
+          width: 100%;
+          overflow-x: auto;
           overflow-y: hidden;
           margin-top: 2rem;
           margin-bottom: 2rem;
           padding: 1rem 0;
-          position: relative;
+          scrollbar-width: thin;
+          scrollbar-color: #ccc transparent;
+        }
+
+        .film-strip::-webkit-scrollbar {
+          height: 8px;
+        }
+
+        .film-strip::-webkit-scrollbar-track {
+          background: transparent;
+        }
+
+        .film-strip::-webkit-scrollbar-thumb {
+          background-color: #ccc;
+          border-radius: 4px;
+        }
+
+        .film-strip::-webkit-scrollbar-thumb:hover {
+          background-color: #999;
         }
 
         .film-strip-container {
@@ -59,9 +71,8 @@ class FilmStripGallery {
           gap: ${this.options.gap};
           width: max-content;
           align-items: flex-end;
-          padding-left: 250px;
-          padding-right: 100px;
-          min-width: 100vw;
+          padding-left: 2rem;
+          padding-right: 2rem;
         }
 
         .film-frame {
@@ -256,8 +267,18 @@ class FilmStripGallery {
   }
 
   addKeyboardNavigation() {
-    // Remove keyboard navigation since we're using browser scroll
-    // Users will scroll naturally with trackpad, mouse wheel, or arrow keys
+    document.addEventListener('keydown', (e) => {
+      const filmStrip = this.container.querySelector('.film-strip');
+      if (!filmStrip) return;
+
+      if (e.key === 'ArrowLeft') {
+        filmStrip.scrollLeft -= 200;
+        e.preventDefault();
+      } else if (e.key === 'ArrowRight') {
+        filmStrip.scrollLeft += 200;
+        e.preventDefault();
+      }
+    });
   }
 
   // Public methods
