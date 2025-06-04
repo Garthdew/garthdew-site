@@ -38,9 +38,14 @@ class FilmStripGallery {
       const style = document.createElement('style');
       style.id = 'filmstrip-styles';
       style.textContent = `
+        /* Make the page horizontally scrollable */
+        html, body {
+          overflow-x: auto !important;
+          overflow-y: hidden !important;
+        }
+        
         .film-strip {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
+          width: max-content;
           overflow-x: visible;
           overflow-y: hidden;
           margin-top: 2rem;
@@ -55,17 +60,8 @@ class FilmStripGallery {
           width: max-content;
           align-items: flex-end;
           padding-left: 250px;
-          padding-right: 50px;
-        }
-
-        /* Hide all scrollbars on the film strip container */
-        .film-strip::-webkit-scrollbar {
-          display: none;
-        }
-        
-        .film-strip {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+          padding-right: 100px;
+          min-width: 100vw;
         }
 
         .film-frame {
