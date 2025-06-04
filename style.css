@@ -11,7 +11,7 @@ body {
   font-family: 'DM Sans', sans-serif;
   color: #000000;
   background-color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -38,7 +38,7 @@ body {
 
 .sidebar-header {
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 2rem;
   color: #000000;
@@ -50,7 +50,7 @@ body {
 
 .sidebar-section h3 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 0.5rem;
   color: #000000;
@@ -58,7 +58,7 @@ body {
 
 .sidebar-nav {
   list-style: none;
-  padding-left: 1rem;
+  padding-left: 0;
 }
 
 .sidebar-nav li {
@@ -67,13 +67,18 @@ body {
 
 .sidebar-nav a {
   font-family: 'DM Sans', sans-serif;
-  color: #000000;
+  color: #0645ad;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   display: block;
   padding: 0.25rem 0;
-  transition: text-decoration 0.2s ease;
+  transition: color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: #0b0080;
+  text-decoration: underline;
 }
 
 .sidebar-nav a:hover {
@@ -105,7 +110,7 @@ body {
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   margin-bottom: 1rem;
   line-height: 1.6;
@@ -115,12 +120,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   margin-bottom: 2rem;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 h2 {
   margin-top: 2rem;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.6;
@@ -135,14 +140,19 @@ ul {
 }
 
 a {
-  color: #000000;
+  color: #0645ad;
   text-decoration: none;
   background-color: transparent;
-  transition: text-decoration 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover {
+  color: #0b0080;
   text-decoration: underline;
+}
+
+a:visited {
+  color: #0b0080;
 }
 
 /* Hamburger Menu (Mobile) */
@@ -184,17 +194,18 @@ a:hover {
 .nav-button {
   background: none;
   border: none;
-  color: #000000;
-  font-size: 20px;
+  color: #0645ad;
+  font-size: 16px;
   font-family: 'DM Sans', sans-serif;
   font-weight: 400;
   cursor: pointer;
   margin-right: 1rem;
   text-decoration: none;
-  transition: text-decoration 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .nav-button:hover {
+  color: #0b0080;
   text-decoration: underline;
 }
 
@@ -446,7 +457,7 @@ a:hover {
 
 .project-title {
   font-family: 'DM Sans', sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.6;
   margin: 0;
   color: #000000;
