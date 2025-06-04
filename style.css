@@ -1,3 +1,6 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -5,7 +8,7 @@
 }
 
 body {
-  font-family: 'neue-haas-grotesk-text', sans-serif;
+  font-family: 'Source Serif Pro', serif;
   color: #161717;
   background-color: #fff;
   font-size: 16px;
@@ -34,8 +37,9 @@ body {
 }
 
 .sidebar-header {
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 2rem;
   color: #161717;
 }
@@ -45,8 +49,9 @@ body {
 }
 
 .sidebar-section h3 {
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   margin-bottom: 0.5rem;
   color: #161717;
 }
@@ -61,6 +66,7 @@ body {
 }
 
 .sidebar-nav a {
+  font-family: 'Source Serif Pro', serif;
   color: #666666;
   text-decoration: none;
   font-size: 16px;
@@ -97,8 +103,9 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-size: 16px;
-  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
   margin-bottom: 1rem;
   line-height: 1.2;
   text-align: left;
@@ -107,13 +114,13 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   margin-bottom: 2rem;
+  font-size: 20px;
 }
 
 h2 {
   margin-top: 2rem;
-  font-size: 1.6rem;
+  font-size: 18px;
   font-weight: 600;
-  font-family: 'neue-haas-grotesk-text', sans-serif;
   letter-spacing: -0.005em;
   line-height: 1.2;
 }
@@ -181,7 +188,7 @@ a:hover {
   border: none;
   color: #161717;
   font-size: 16px;
-  font-family: inherit;
+  font-family: 'Source Serif Pro', serif;
   cursor: pointer;
   margin-right: 1rem;
   text-decoration: underline;
@@ -440,13 +447,13 @@ a:hover {
 }
 
 .project-title {
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1rem;
   line-height: 1.4;
   margin: 0;
   color: #161717;
   text-align: center;
-  font-family: 'neue-haas-grotesk-text', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* Photo Stream */
