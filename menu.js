@@ -16,25 +16,22 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="sidebar-section">
         <h3>Photography</h3>
         <ul class="sidebar-nav">
-          <li><a href="/moments-preston.html">Moments: Preston</a></li>
-          <li><a href="/moments-kalkan.html">Moments: Kalkan</a></li>
-          <li><a href="/photo-stream.html">Photo Stream</a></li>
+          <li><a href="/projects/withwhatihave.html">With What I Have</a></li>
+        
         </ul>
       </div>
 
       <div class="sidebar-section">
         <h3>Music</h3>
         <ul class="sidebar-nav">
-          <li><a href="/music-recent.html">Recent Work</a></li>
-          <li><a href="/music-archive.html">Archive</a></li>
+          <li><a href="/projectss/flow.html">Flow</a></li>
         </ul>
       </div>
 
       <div class="sidebar-section">
         <h3>Commercial</h3>
         <ul class="sidebar-nav">
-          <li><a href="/commercial-film.html">Film</a></li>
-          <li><a href="/commercial-photo.html">Photography</a></li>
+          <li><a href="/projects/.html">Film</a></li>
         </ul>
       </div>
 
