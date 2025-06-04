@@ -1,317 +1,662 @@
-.filmstrip-component .fs-video-frame {
-          height: ${this.options.height}px;
-          line-height: 0;
-          font-size: 0;
-        }// filmstrip.js - Film Strip Gallery Component (Isolated Version)
-// Usage: <script src="/filmstrip.js"></script>
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Source+Serif+Pro:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&display=swap');
 
-class FilmStripGallery {
-  constructor(containerId, images, options = {}) {
-    this.container = document.getElementById(containerId);
-    this.images = images;
-    this.options = {
-      height: 500,
-      gap: '1rem',
-      enableKeyboard: true,
-      clickToView: false,
-      ...options
-    };
-    
-    this.init();
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Serif Pro', serif;
+  color: #000000;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Layout Structure */
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #cccccc;
+  padding: 2rem 1.5rem;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #000000;
+}
+
+.sidebar-section {
+  margin-bottom: 1.5rem;
+}
+
+.sidebar-section h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.sidebar-nav li {
+  margin-bottom: 0.3rem;
+}
+
+.sidebar-nav a {
+  font-family: 'Source Serif Pro', serif;
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  display: block;
+  padding: 0.25rem 0;
+  transition: text-decoration 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: #000000;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  min-height: 100vh;
+}
+
+.content-area {
+  max-width: 600px;
+  margin: 0;
+  margin-left: 2rem;
+  padding: 2rem 1rem;
+}
+
+.wide-content {
+  max-width: 1000px;
+  margin: 2rem 0;
+  margin-left: 2rem;
+  padding: 0 1rem;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-align: left;
+  color: #000000;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  font-size: 20px;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+a {
+  color: #000000;
+  text-decoration: underline;
+  text-decoration-color: #000000;   
+  background-color: transparent;
+  transition: text-decoration-color 0.2s ease;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-color: #000000;   
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 24px;
+  color: #000000;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 99;
+}
+
+/* Gallery Navigation */
+.gallery-nav {
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.gallery-nav.show {
+  display: block;
+}
+
+.nav-button {
+  background: none;
+  border: none;
+  color: #000000;
+  font-size: 16px;
+  font-family: 'Source Serif Pro', serif;
+  cursor: pointer;
+  margin-right: 1rem;
+  text-decoration: underline;
+  text-decoration-color: #000000;
+  transition: text-decoration-color 0.2s ease;
+}
+
+.nav-button:hover {
+  text-decoration-color: #000000;
+}
+
+/* Thumbnail Grid */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin: 2rem 0;
+  align-items: end;
+}
+
+.thumbnail {
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 120px;
+}
+
+.thumbnail:hover {
+  opacity: 0.8;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 200px;
+}
+
+/* Improved thumbnail grid alignment */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+  margin: 2rem 0;
+  align-items: center; /* Changed from 'end' to 'center' */
+}
+
+/* Portrait thumbnail containers */
+.thumb-portrait-container {
+  height: 200px; /* Set consistent height */
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Landscape thumbnail containers */
+.thumb-landscape-container {
+  height: 200px; /* Same height as portrait */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center;
+}
+
+/* Portrait thumbnails - keep original sizing */
+.thumb-portrait {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  max-height: 200px;
+}
+
+/* Landscape thumbnails - make wider for better visual balance */
+.thumb-landscape {
+  width: 150%; /* Make landscape images bigger */
+  height: auto;
+  object-fit: contain;
+  max-height: 133px; /* Proportional height limit */
+}
+
+/* Mobile thumbnail adjustments */
+@media (max-width: 768px) {
+  .thumb-landscape {
+    width: 100%; /* Reset to normal size on mobile */
+    max-height: 200px;
   }
-
-  init() {
-    if (!this.container) {
-      console.error(`FilmStrip: Container with id "${this.containerId}" not found`);
-      return;
-    }
-
-    this.createStyles();
-    this.createFilmStrip();
-    
-    if (this.options.enableKeyboard) {
-      this.addKeyboardNavigation();
-    }
-  }
-
-  createStyles() {
-    // Only add styles if not already present
-    if (!document.getElementById('filmstrip-styles-isolated')) {
-      const style = document.createElement('style');
-      style.id = 'filmstrip-styles-isolated';
-      style.textContent = `
-        /* Isolated Film Strip Styles - Won't interfere with gallery.js */
-        .filmstrip-component {
-          width: 100%;
-          margin: 2rem 0;
-        }
-
-        .filmstrip-component .fs-horizontal-scroll {
-          width: 100%;
-          overflow-x: auto;
-          overflow-y: hidden;
-          padding: 1rem 0;
-          scrollbar-width: thin;
-          scrollbar-color: #ccc transparent;
-        }
-
-        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar {
-          height: 8px;
-        }
-
-        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-thumb {
-          background-color: #ccc;
-          border-radius: 4px;
-        }
-
-        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-thumb:hover {
-          background-color: #999;
-        }
-
-        .filmstrip-component .fs-image-container {
-          display: flex;
-          gap: ${this.options.gap};
-          width: max-content;
-          align-items: flex-end;
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-
-        .filmstrip-component .fs-image-frame,
-        .filmstrip-component .fs-video-frame {
-          flex-shrink: 0;
-          cursor: ${this.options.clickToView ? 'pointer' : 'default'};
-          position: relative;
-          display: flex;
-          align-items: flex-end;
-          margin: 0;
-          padding: 0;
-          height: ${this.options.height}px;
-        }
-
-        .filmstrip-component .fs-image-frame img {
-          display: block;
-          height: ${this.options.height}px;
-          width: auto;
-          object-fit: cover;
-          border: none;
-          border-radius: 0;
-          max-width: none;
-          margin: 0;
-          padding: 0;
-        }
-
-        .filmstrip-component .fs-video-frame iframe {
-          height: ${this.options.height}px;
-          width: ${Math.floor(this.options.height * 1.78)}px;
-          border: none;
-          border-radius: 0;
-          display: block;
-          vertical-align: bottom;
-          margin: 0;
-          padding: 0;
-          line-height: 0;
-          font-size: 0;
-        }
-
-        @media (max-width: 1200px) {
-          .filmstrip-component .fs-image-frame img {
-            height: ${Math.floor(this.options.height * 0.8)}px;
-          }
-          .filmstrip-component .fs-video-frame iframe {
-            height: ${Math.floor(this.options.height * 0.8)}px;
-            width: ${Math.floor(this.options.height * 0.8 * 1.78)}px;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .filmstrip-component .fs-image-frame img {
-            height: ${Math.floor(this.options.height * 0.6)}px;
-          }
-          .filmstrip-component .fs-video-frame iframe {
-            height: ${Math.floor(this.options.height * 0.6)}px;
-            width: ${Math.floor(this.options.height * 0.6 * 1.78)}px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .filmstrip-component .fs-horizontal-scroll {
-            display: none !important;
-          }
-          
-          .filmstrip-component .fs-mobile-vertical {
-            display: block !important;
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-          }
-          
-          .filmstrip-component .fs-mobile-vertical img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 2rem;
-            display: block;
-          }
-        }
-        
-        .filmstrip-component .fs-mobile-vertical {
-          display: none;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-
-  createFilmStrip() {
-    // Clear and setup container
-    this.container.innerHTML = '';
-    this.container.className = 'filmstrip-component';
-
-    // Create desktop horizontal scroll
-    const horizontalScroll = document.createElement('div');
-    horizontalScroll.className = 'fs-horizontal-scroll';
-
-    const imageContainer = document.createElement('div');
-    imageContainer.className = 'fs-image-container';
-
-    // Create mobile vertical feed
-    const mobileVertical = document.createElement('div');
-    mobileVertical.className = 'fs-mobile-vertical';
-
-    // Add images
-    this.images.forEach((image, index) => {
-      // Desktop version
-      const frame = this.createImageFrame(image, index);
-      imageContainer.appendChild(frame);
-      
-      // Mobile version
-      if (image.type === 'video' && image.embedUrl) {
-        // For mobile, create a simple iframe
-        const mobileFrame = document.createElement('div');
-        mobileFrame.style.marginBottom = '2rem';
-        
-        const mobileIframe = document.createElement('iframe');
-        mobileIframe.src = image.embedUrl;
-        mobileIframe.style.width = '100%';
-        mobileIframe.style.height = '56.25vw'; // 16:9 aspect ratio
-        mobileIframe.style.maxHeight = '300px';
-        mobileIframe.frameBorder = '0';
-        mobileIframe.allow = 'autoplay; fullscreen; picture-in-picture';
-        mobileIframe.allowFullscreen = true;
-        mobileIframe.title = image.alt || `Video ${index + 1}`;
-        
-        mobileFrame.appendChild(mobileIframe);
-        mobileVertical.appendChild(mobileFrame);
-      } else {
-        // Regular image for mobile
-        const mobileImg = document.createElement('img');
-        mobileImg.src = image.src;
-        mobileImg.alt = image.alt || `Image ${index + 1}`;
-        mobileImg.loading = 'lazy';
-        mobileImg.style.width = '100%';
-        mobileImg.style.height = 'auto';
-        mobileImg.style.marginBottom = '2rem';
-        mobileImg.style.display = 'block';
-        
-        if (this.options.clickToView) {
-          mobileImg.addEventListener('click', () => {
-            this.onImageClick(image, index);
-          });
-          mobileImg.style.cursor = 'pointer';
-        }
-        
-        mobileVertical.appendChild(mobileImg);
-      }
-    });
-
-    horizontalScroll.appendChild(imageContainer);
-    this.container.appendChild(horizontalScroll);
-    this.container.appendChild(mobileVertical);
-  }
-
-  createImageFrame(image, index) {
-    const frame = document.createElement('div');
-
-    // Check if this is a video
-    if (image.type === 'video' && image.embedUrl) {
-      frame.className = 'fs-video-frame';
-      
-      const iframe = document.createElement('iframe');
-      iframe.src = image.embedUrl;
-      iframe.width = Math.floor(this.options.height * 1.78);
-      iframe.height = this.options.height;
-      iframe.frameBorder = '0';
-      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
-      iframe.allowFullscreen = true;
-      iframe.loading = 'lazy';
-      iframe.title = image.alt || `Video ${index + 1}`;
-      
-      frame.appendChild(iframe);
-    } else {
-      // Regular image
-      frame.className = 'fs-image-frame';
-
-      const img = document.createElement('img');
-      img.src = image.src;
-      img.alt = image.alt || `Image ${index + 1}`;
-      img.loading = 'lazy';
-
-      frame.appendChild(img);
-    }
-
-    if (this.options.clickToView) {
-      frame.addEventListener('click', () => {
-        this.onImageClick(image, index);
-      });
-    }
-
-    return frame;
-  }
-
-  onImageClick(image, index) {
-    if (this.options.onImageClick) {
-      this.options.onImageClick(image, index);
-    } else {
-      console.log(`Clicked image ${index + 1}:`, image);
-    }
-  }
-
-  addKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-      const scrollContainer = this.container.querySelector('.fs-horizontal-scroll');
-      if (!scrollContainer) return;
-
-      if (e.key === 'ArrowLeft') {
-        scrollContainer.scrollLeft -= 200;
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight') {
-        scrollContainer.scrollLeft += 200;
-        e.preventDefault();
-      }
-    });
+  
+  .thumb-portrait-container,
+  .thumb-landscape-container {
+    height: auto; /* Let mobile thumbnails size naturally */
   }
 }
 
-// Simple function for quick usage
-window.createFilmStrip = function(containerId, images, options = {}) {
-  return new FilmStripGallery(containerId, images, options);
-};
+/* Carousel Styles */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  min-height: 600px;
+  max-height: 600px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  user-select: none;
+  border: none;
+  display: none;
+}
 
-// Auto-initialize only film strips with specific data attribute
-document.addEventListener('DOMContentLoaded', () => {
-  const filmStripContainers = document.querySelectorAll('[data-filmstrip-auto]');
+.carousel.show {
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .carousel {
+    height: calc(100vw * 0.667);
+    min-height: calc(100vw * 0.667);
+    max-height: calc(100vw * 0.667);
+  }
+}
+
+/* Fullscreen styles */
+.carousel:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000;
+  border: none;
+}
+
+.carousel:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100vh;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #000;
+  border: none;
+}
+
+.carousel:fullscreen .carousel-slide {
+  background-color: #000;
+}
+
+.carousel:-webkit-full-screen .carousel-slide {
+  background-color: #000;
+}
+
+.fullscreen-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #000000;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: background-color 0.2s ease;
+  pointer-events: auto;
+}
+
+.fullscreen-btn:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.carousel-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #ffffff;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.carousel-slide img.portrait {
+  object-fit: contain;
+  margin-left: 0;
+  justify-self: flex-start;
+}
+
+.carousel-clickable {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-clickable.left {
+  left: 0;
+  cursor: w-resize;
+}
+
+.carousel-clickable.right {
+  right: 0;
+  cursor: e-resize;
+}
+
+/* Projects Grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.project-item {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.project-item:hover {
+  opacity: 0.8;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.project-thumbnail {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+  margin: 0 0 0.8rem 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.project-title {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+}{
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Photo Stream */
+.photo-stream {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.photo-stream img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+/* Profile Image */
+.profile {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Main Images */
+main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2rem 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+/* HR Styles */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #cccccc;
+  color: #cccccc;
+  margin: 3rem 0;
+}
+
+/* Music Project Styles */
+.music-image {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.music-image img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+}
+
+.bandcamp-embed {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.bandcamp-embed iframe {
+  max-width: 100%;
+  border: none;
+}
+
+/* Documentary Page Styles */
+.vimeo-embed {
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.vimeo-embed iframe {
+  width: 100%;
+  border: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    width: 100vw;
+    padding: 2rem;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .overlay.active {
+    display: block;
+  }
+
+  .content-area {
+    padding: 1rem;
+    margin-left: 0;
+  }
+
+  .wide-content {
+    padding: 0 1rem;
+    margin-left: 0;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .thumbnail-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  /* Hide thumbnail grid and carousel nav on mobile, show vertical stream */
+  .thumbnail-grid,
+  .gallery-nav,
+  .carousel {
+    display: none !important;
+  }
+
+  .photo-stream {
+    display: block !important;
+  }
+
+  /* Mobile-only vertical stream for existing carousels */
+  .carousel {
+    display: block;
+    height: auto;
+    overflow: visible;
+    border: none;
+    margin-bottom: 2rem;
+  }
   
-  filmStripContainers.forEach(container => {
-    const images = JSON.parse(container.dataset.filmstripAuto || '[]');
-    const options = {
-      clickToView: container.hasAttribute('data-clickable'),
-      height: parseInt(container.dataset.height) || 500
-    };
-    
-    new FilmStripGallery(container.id, images, options);
-  });
-});
+  .carousel-track {
+    display: block;
+    transform: none !important;
+    width: 100%;
+    height: auto;
+  }
+  
+  .carousel-slide {
+    width: 100%;
+    flex-shrink: unset;
+    margin-bottom: 1rem;
+    display: block;
+    border: none;
+  }
+  
+  .carousel-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Hide carousel controls on mobile */
+  .carousel-clickable,
+  .fullscreen-btn {
+    display: none;
+  }
+  
+  /* Ensure content after carousel is visible */
+  body {
+    padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .bandcamp-embed iframe {
+    width: 300px !important;
+    height: 400px !important;
+  }
+}
