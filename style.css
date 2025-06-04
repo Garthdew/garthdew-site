@@ -6,9 +6,9 @@
   box-sizing: border-box;
 }
 
-/* Wikipedia System Fonts */
+/* Pure Arial Brutalism */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   color: #000000;
   background-color: #fff;
   font-size: 16px;
@@ -37,7 +37,7 @@ body {
 }
 
 .sidebar-header {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 2rem;
@@ -49,7 +49,7 @@ body {
 }
 
 .sidebar-section h3 {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 0.5rem;
@@ -66,7 +66,7 @@ body {
 }
 
 .sidebar-nav a {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   color: #0645ad;
   text-decoration: none;
   font-size: 16px;
@@ -109,7 +109,7 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 1rem;
@@ -196,7 +196,7 @@ a:visited {
   border: none;
   color: #0645ad;
   font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-weight: 400;
   cursor: pointer;
   margin-right: 1rem;
@@ -456,7 +456,7 @@ a:visited {
 }
 
 .project-title {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Lato, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
