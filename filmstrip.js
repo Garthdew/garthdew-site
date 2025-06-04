@@ -1,4 +1,4 @@
-// filmstrip.js - Film Strip Gallery Component
+// filmstrip.js - Film Strip Gallery Component (Isolated Version)
 // Usage: <script src="/filmstrip.js"></script>
 
 class FilmStripGallery {
@@ -6,10 +6,8 @@ class FilmStripGallery {
     this.container = document.getElementById(containerId);
     this.images = images;
     this.options = {
-      height: 200,
-      mobileHeight: 150,
+      height: 500,
       gap: '1rem',
-      showPerforations: false,
       enableKeyboard: true,
       clickToView: false,
       ...options
@@ -33,41 +31,44 @@ class FilmStripGallery {
   }
 
   createStyles() {
-    // Add styles dynamically if not already present
-    if (!document.getElementById('filmstrip-styles')) {
+    // Only add styles if not already present
+    if (!document.getElementById('filmstrip-styles-isolated')) {
       const style = document.createElement('style');
-      style.id = 'filmstrip-styles';
+      style.id = 'filmstrip-styles-isolated';
       style.textContent = `
-        /* Film strip specific styles - scoped to avoid conflicts */
-        .film-strip-gallery .film-strip {
+        /* Isolated Film Strip Styles - Won't interfere with gallery.js */
+        .filmstrip-component {
+          width: 100%;
+          margin: 2rem 0;
+        }
+
+        .filmstrip-component .fs-horizontal-scroll {
           width: 100%;
           overflow-x: auto;
           overflow-y: hidden;
-          margin-top: 2rem;
-          margin-bottom: 2rem;
           padding: 1rem 0;
           scrollbar-width: thin;
           scrollbar-color: #ccc transparent;
         }
 
-        .film-strip-gallery .film-strip::-webkit-scrollbar {
+        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar {
           height: 8px;
         }
 
-        .film-strip-gallery .film-strip::-webkit-scrollbar-track {
+        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-track {
           background: transparent;
         }
 
-        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb {
+        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-thumb {
           background-color: #ccc;
           border-radius: 4px;
         }
 
-        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb:hover {
+        .filmstrip-component .fs-horizontal-scroll::-webkit-scrollbar-thumb:hover {
           background-color: #999;
         }
 
-        .film-strip-gallery .film-strip-container {
+        .filmstrip-component .fs-image-container {
           display: flex;
           gap: ${this.options.gap};
           width: max-content;
@@ -76,64 +77,62 @@ class FilmStripGallery {
           padding-right: 2rem;
         }
 
-        .film-strip-gallery .film-frame {
+        .filmstrip-component .fs-image-frame {
           flex-shrink: 0;
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
           position: relative;
         }
 
-        .film-strip-gallery .film-frame img {
+        .filmstrip-component .fs-image-frame img {
           display: block;
           height: ${this.options.height}px;
           width: auto;
           object-fit: cover;
           border: none;
           border-radius: 0;
-        }
-
-        .film-strip-gallery .film-frame.landscape img,
-        .film-strip-gallery .film-frame.portrait img,
-        .film-strip-gallery .film-frame.square img {
-          height: ${this.options.height}px;
-          width: auto;
-          object-fit: cover;
           max-width: none;
         }
 
+        .filmstrip-component .fs-video-frame iframe {
+          height: ${this.options.height}px;
+          width: ${Math.floor(this.options.height * 1.78)}px;
+          border: none;
+          border-radius: 0;
+        }
+
         @media (max-width: 1200px) {
-          .film-strip-gallery .film-frame.landscape img,
-          .film-strip-gallery .film-frame.portrait img,
-          .film-strip-gallery .film-frame.square img {
+          .filmstrip-component .fs-image-frame img {
             height: ${Math.floor(this.options.height * 0.8)}px;
+          }
+          .filmstrip-component .fs-video-frame iframe {
+            height: ${Math.floor(this.options.height * 0.8)}px;
+            width: ${Math.floor(this.options.height * 0.8 * 1.78)}px;
           }
         }
 
         @media (max-width: 900px) {
-          .film-strip-gallery .film-strip {
-            width: 100%;
-            padding: 1rem 0;
-          }
-          
-          .film-strip-gallery .film-frame.landscape img,
-          .film-strip-gallery .film-frame.portrait img,
-          .film-strip-gallery .film-frame.square img {
+          .filmstrip-component .fs-image-frame img {
             height: ${Math.floor(this.options.height * 0.6)}px;
+          }
+          .filmstrip-component .fs-video-frame iframe {
+            height: ${Math.floor(this.options.height * 0.6)}px;
+            width: ${Math.floor(this.options.height * 0.6 * 1.78)}px;
           }
         }
 
         @media (max-width: 768px) {
-          .film-strip-gallery .film-strip {
+          .filmstrip-component .fs-horizontal-scroll {
             display: none !important;
           }
           
-          .film-strip-gallery .film-strip-mobile {
+          .filmstrip-component .fs-mobile-vertical {
             display: block !important;
             max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
           }
           
-          .film-strip-gallery .film-strip-mobile img {
+          .filmstrip-component .fs-mobile-vertical img {
             width: 100%;
             height: auto;
             margin-bottom: 2rem;
@@ -141,40 +140,8 @@ class FilmStripGallery {
           }
         }
         
-        .film-strip-gallery .film-strip-mobile {
+        .filmstrip-component .fs-mobile-vertical {
           display: none;
-        }
-
-        /* Perforations effect */
-        .film-strip-gallery .film-strip.perforated::before,
-        .film-strip-gallery .film-strip.perforated::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 8px;
-          background: repeating-linear-gradient(
-            to right,
-            #333 0px,
-            #333 8px,
-            transparent 8px,
-            transparent 16px
-          );
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        .film-strip-gallery .film-strip.perforated::before {
-          top: 0;
-        }
-
-        .film-strip-gallery .film-strip.perforated::after {
-          bottom: 0;
-        }
-
-        .film-strip-gallery .film-strip.perforated {
-          background-color: #f5f5f5;
-          padding: 12px 0;
         }
       `;
       document.head.appendChild(style);
@@ -182,87 +149,112 @@ class FilmStripGallery {
   }
 
   createFilmStrip() {
-    // Clear existing content
+    // Clear and setup container
     this.container.innerHTML = '';
+    this.container.className = 'filmstrip-component';
 
-    // Add the scoping class to the container
-    this.container.className = 'film-strip-gallery';
+    // Create desktop horizontal scroll
+    const horizontalScroll = document.createElement('div');
+    horizontalScroll.className = 'fs-horizontal-scroll';
 
-    // Create film strip wrapper for desktop
-    const filmStrip = document.createElement('div');
-    filmStrip.className = 'film-strip';
-
-    // Create container for images
-    const filmContainer = document.createElement('div');
-    filmContainer.className = 'film-strip-container';
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'fs-image-container';
 
     // Create mobile vertical feed
-    const mobileStrip = document.createElement('div');
-    mobileStrip.className = 'film-strip-mobile';
+    const mobileVertical = document.createElement('div');
+    mobileVertical.className = 'fs-mobile-vertical';
 
-    // Add images to both desktop and mobile versions
+    // Add images
     this.images.forEach((image, index) => {
       // Desktop version
       const frame = this.createImageFrame(image, index);
-      filmContainer.appendChild(frame);
+      imageContainer.appendChild(frame);
       
       // Mobile version
-      const mobileImg = document.createElement('img');
-      mobileImg.src = image.src;
-      mobileImg.alt = image.alt || `Image ${index + 1}`;
-      mobileImg.loading = 'lazy';
-      
-      if (this.options.clickToView) {
-        mobileImg.addEventListener('click', () => {
-          this.onImageClick(image, index);
-        });
-        mobileImg.style.cursor = 'pointer';
+      if (image.type === 'video' && image.embedUrl) {
+        // For mobile, create a simple iframe
+        const mobileFrame = document.createElement('div');
+        mobileFrame.style.marginBottom = '2rem';
+        
+        const mobileIframe = document.createElement('iframe');
+        mobileIframe.src = image.embedUrl;
+        mobileIframe.style.width = '100%';
+        mobileIframe.style.height = '56.25vw'; // 16:9 aspect ratio
+        mobileIframe.style.maxHeight = '300px';
+        mobileIframe.frameBorder = '0';
+        mobileIframe.allow = 'autoplay; fullscreen; picture-in-picture';
+        mobileIframe.allowFullscreen = true;
+        mobileIframe.title = image.alt || `Video ${index + 1}`;
+        
+        mobileFrame.appendChild(mobileIframe);
+        mobileVertical.appendChild(mobileFrame);
+      } else {
+        // Regular image for mobile
+        const mobileImg = document.createElement('img');
+        mobileImg.src = image.src;
+        mobileImg.alt = image.alt || `Image ${index + 1}`;
+        mobileImg.loading = 'lazy';
+        mobileImg.style.width = '100%';
+        mobileImg.style.height = 'auto';
+        mobileImg.style.marginBottom = '2rem';
+        mobileImg.style.display = 'block';
+        
+        if (this.options.clickToView) {
+          mobileImg.addEventListener('click', () => {
+            this.onImageClick(image, index);
+          });
+          mobileImg.style.cursor = 'pointer';
+        }
+        
+        mobileVertical.appendChild(mobileImg);
       }
-      
-      mobileStrip.appendChild(mobileImg);
     });
 
-    filmStrip.appendChild(filmContainer);
-    this.container.appendChild(filmStrip);
-    this.container.appendChild(mobileStrip);
+    horizontalScroll.appendChild(imageContainer);
+    this.container.appendChild(horizontalScroll);
+    this.container.appendChild(mobileVertical);
   }
 
   createImageFrame(image, index) {
     const frame = document.createElement('div');
-    
-    // Determine aspect ratio if not provided
-    const aspect = image.aspect || this.detectAspectRatio(image.src);
-    frame.className = `film-frame ${aspect}`;
 
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.alt || `Image ${index + 1}`;
-    img.loading = 'lazy';
+    // Check if this is a video
+    if (image.type === 'video' && image.embedUrl) {
+      frame.className = 'fs-video-frame';
+      
+      const iframe = document.createElement('iframe');
+      iframe.src = image.embedUrl;
+      iframe.width = Math.floor(this.options.height * 1.78);
+      iframe.height = this.options.height;
+      iframe.frameBorder = '0';
+      iframe.allow = 'autoplay; fullscreen; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'lazy';
+      iframe.title = image.alt || `Video ${index + 1}`;
+      
+      frame.appendChild(iframe);
+    } else {
+      // Regular image
+      frame.className = 'fs-image-frame';
 
-    // Add click handler if enabled
+      const img = document.createElement('img');
+      img.src = image.src;
+      img.alt = image.alt || `Image ${index + 1}`;
+      img.loading = 'lazy';
+
+      frame.appendChild(img);
+    }
+
     if (this.options.clickToView) {
       frame.addEventListener('click', () => {
         this.onImageClick(image, index);
       });
     }
 
-    frame.appendChild(img);
     return frame;
   }
 
-  detectAspectRatio(src) {
-    // Simple heuristic based on common naming patterns
-    const filename = src.toLowerCase();
-    if (filename.includes('portrait') || filename.includes('vert')) {
-      return 'portrait';
-    } else if (filename.includes('square') || filename.includes('sq')) {
-      return 'square';
-    }
-    return 'landscape'; // default
-  }
-
   onImageClick(image, index) {
-    // Override this method or pass a callback in options
     if (this.options.onImageClick) {
       this.options.onImageClick(image, index);
     } else {
@@ -272,59 +264,36 @@ class FilmStripGallery {
 
   addKeyboardNavigation() {
     document.addEventListener('keydown', (e) => {
-      const filmStrip = this.container.querySelector('.film-strip');
-      if (!filmStrip) return;
+      const scrollContainer = this.container.querySelector('.fs-horizontal-scroll');
+      if (!scrollContainer) return;
 
       if (e.key === 'ArrowLeft') {
-        filmStrip.scrollLeft -= 200;
+        scrollContainer.scrollLeft -= 200;
         e.preventDefault();
       } else if (e.key === 'ArrowRight') {
-        filmStrip.scrollLeft += 200;
+        scrollContainer.scrollLeft += 200;
         e.preventDefault();
       }
     });
   }
-
-  // Public methods
-  scrollTo(direction) {
-    const filmStrip = this.container.querySelector('.film-strip');
-    if (filmStrip) {
-      const scrollAmount = direction === 'left' ? -200 : 200;
-      filmStrip.scrollLeft += scrollAmount;
-    }
-  }
-
-  addImage(image) {
-    this.images.push(image);
-    this.createFilmStrip(); // Rebuild
-  }
-
-  removeImage(index) {
-    this.images.splice(index, 1);
-    this.createFilmStrip(); // Rebuild
-  }
 }
 
-// Simple function for quick usage (like your gallery.js)
+// Simple function for quick usage
 window.createFilmStrip = function(containerId, images, options = {}) {
   return new FilmStripGallery(containerId, images, options);
 };
 
-// Auto-initialize film strips with data attributes
+// Auto-initialize only film strips with specific data attribute
 document.addEventListener('DOMContentLoaded', () => {
-  // Only initialize if there are actual filmstrip containers
-  const autoFilmStrips = document.querySelectorAll('[data-filmstrip]');
+  const filmStripContainers = document.querySelectorAll('[data-filmstrip-auto]');
   
-  autoFilmStrips.forEach(container => {
-    const images = JSON.parse(container.dataset.filmstrip || '[]');
+  filmStripContainers.forEach(container => {
+    const images = JSON.parse(container.dataset.filmstripAuto || '[]');
     const options = {
-      showPerforations: container.hasAttribute('data-perforations'),
       clickToView: container.hasAttribute('data-clickable'),
-      height: parseInt(container.dataset.height) || 200
+      height: parseInt(container.dataset.height) || 500
     };
     
     new FilmStripGallery(container.id, images, options);
   });
-  
-  // Don't interfere with existing gallery functionality
 });
