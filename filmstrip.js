@@ -38,7 +38,8 @@ class FilmStripGallery {
       const style = document.createElement('style');
       style.id = 'filmstrip-styles';
       style.textContent = `
-        .film-strip {
+        /* Film strip specific styles - scoped to avoid conflicts */
+        .film-strip-gallery .film-strip {
           width: 100%;
           overflow-x: auto;
           overflow-y: hidden;
@@ -49,24 +50,24 @@ class FilmStripGallery {
           scrollbar-color: #ccc transparent;
         }
 
-        .film-strip::-webkit-scrollbar {
+        .film-strip-gallery .film-strip::-webkit-scrollbar {
           height: 8px;
         }
 
-        .film-strip::-webkit-scrollbar-track {
+        .film-strip-gallery .film-strip::-webkit-scrollbar-track {
           background: transparent;
         }
 
-        .film-strip::-webkit-scrollbar-thumb {
+        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb {
           background-color: #ccc;
           border-radius: 4px;
         }
 
-        .film-strip::-webkit-scrollbar-thumb:hover {
+        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb:hover {
           background-color: #999;
         }
 
-        .film-strip-container {
+        .film-strip-gallery .film-strip-container {
           display: flex;
           gap: ${this.options.gap};
           width: max-content;
@@ -75,13 +76,13 @@ class FilmStripGallery {
           padding-right: 2rem;
         }
 
-        .film-frame {
+        .film-strip-gallery .film-frame {
           flex-shrink: 0;
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
           position: relative;
         }
 
-        .film-frame img {
+        .film-strip-gallery .film-frame img {
           display: block;
           height: ${this.options.height}px;
           width: auto;
@@ -90,9 +91,9 @@ class FilmStripGallery {
           border-radius: 0;
         }
 
-        .film-frame.landscape img,
-        .film-frame.portrait img,
-        .film-frame.square img {
+        .film-strip-gallery .film-frame.landscape img,
+        .film-strip-gallery .film-frame.portrait img,
+        .film-strip-gallery .film-frame.square img {
           height: ${this.options.height}px;
           width: auto;
           object-fit: cover;
@@ -100,39 +101,39 @@ class FilmStripGallery {
         }
 
         @media (max-width: 1200px) {
-          .film-frame.landscape img,
-          .film-frame.portrait img,
-          .film-frame.square img {
+          .film-strip-gallery .film-frame.landscape img,
+          .film-strip-gallery .film-frame.portrait img,
+          .film-strip-gallery .film-frame.square img {
             height: ${Math.floor(this.options.height * 0.8)}px;
           }
         }
 
         @media (max-width: 900px) {
-          .film-strip {
+          .film-strip-gallery .film-strip {
             width: 100%;
             padding: 1rem 0;
           }
           
-          .film-frame.landscape img,
-          .film-frame.portrait img,
-          .film-frame.square img {
+          .film-strip-gallery .film-frame.landscape img,
+          .film-strip-gallery .film-frame.portrait img,
+          .film-strip-gallery .film-frame.square img {
             height: ${Math.floor(this.options.height * 0.6)}px;
           }
         }
 
         @media (max-width: 768px) {
-          .film-strip {
+          .film-strip-gallery .film-strip {
             display: none !important;
           }
           
-          .film-strip-mobile {
+          .film-strip-gallery .film-strip-mobile {
             display: block !important;
             max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1rem;
           }
           
-          .film-strip-mobile img {
+          .film-strip-gallery .film-strip-mobile img {
             width: 100%;
             height: auto;
             margin-bottom: 2rem;
@@ -140,13 +141,13 @@ class FilmStripGallery {
           }
         }
         
-        .film-strip-mobile {
+        .film-strip-gallery .film-strip-mobile {
           display: none;
         }
 
         /* Perforations effect */
-        .film-strip.perforated::before,
-        .film-strip.perforated::after {
+        .film-strip-gallery .film-strip.perforated::before,
+        .film-strip-gallery .film-strip.perforated::after {
           content: '';
           position: absolute;
           left: 0;
@@ -163,15 +164,15 @@ class FilmStripGallery {
           pointer-events: none;
         }
 
-        .film-strip.perforated::before {
+        .film-strip-gallery .film-strip.perforated::before {
           top: 0;
         }
 
-        .film-strip.perforated::after {
+        .film-strip-gallery .film-strip.perforated::after {
           bottom: 0;
         }
 
-        .film-strip.perforated {
+        .film-strip-gallery .film-strip.perforated {
           background-color: #f5f5f5;
           padding: 12px 0;
         }
@@ -183,6 +184,9 @@ class FilmStripGallery {
   createFilmStrip() {
     // Clear existing content
     this.container.innerHTML = '';
+
+    // Add the scoping class to the container
+    this.container.className = 'film-strip-gallery';
 
     // Create film strip wrapper for desktop
     const filmStrip = document.createElement('div');
