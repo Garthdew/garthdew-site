@@ -39,40 +39,14 @@ class FilmStripGallery {
       style.id = 'filmstrip-styles';
       style.textContent = `
         .film-strip {
-          width: calc(100vw - 280px);
-          margin-left: 0;
-          overflow-x: auto;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          overflow-x: visible;
           overflow-y: hidden;
           margin-top: 2rem;
           margin-bottom: 2rem;
-          padding: 1rem 2rem 1rem 2rem;
-          scrollbar-width: thin;
-          scrollbar-color: #ccc #f9f9f9;
+          padding: 1rem 0;
           position: relative;
-        }
-
-        .film-strip::-webkit-scrollbar {
-          height: 8px;
-          -webkit-appearance: none;
-        }
-
-        .film-strip::-webkit-scrollbar-track {
-          background: #f9f9f9;
-          border-radius: 4px;
-        }
-
-        .film-strip::-webkit-scrollbar-thumb {
-          background-color: #ccc;
-          border-radius: 4px;
-          border: 1px solid #f9f9f9;
-        }
-
-        .film-strip::-webkit-scrollbar-thumb:hover {
-          background-color: #999;
-        }
-
-        .film-strip::-webkit-scrollbar-corner {
-          background: #f9f9f9;
         }
 
         .film-strip-container {
@@ -80,6 +54,18 @@ class FilmStripGallery {
           gap: ${this.options.gap};
           width: max-content;
           align-items: flex-end;
+          padding-left: 250px;
+          padding-right: 50px;
+        }
+
+        /* Hide all scrollbars on the film strip container */
+        .film-strip::-webkit-scrollbar {
+          display: none;
+        }
+        
+        .film-strip {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
 
         .film-frame {
@@ -274,18 +260,8 @@ class FilmStripGallery {
   }
 
   addKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-      const filmStrip = this.container.querySelector('.film-strip');
-      if (!filmStrip) return;
-
-      if (e.key === 'ArrowLeft') {
-        filmStrip.scrollLeft -= 200;
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight') {
-        filmStrip.scrollLeft += 200;
-        e.preventDefault();
-      }
-    });
+    // Remove keyboard navigation since we're using browser scroll
+    // Users will scroll naturally with trackpad, mouse wheel, or arrow keys
   }
 
   // Public methods
