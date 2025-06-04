@@ -77,10 +77,13 @@ class FilmStripGallery {
           padding-right: 2rem;
         }
 
-        .filmstrip-component .fs-image-frame {
+        .filmstrip-component .fs-image-frame,
+        .filmstrip-component .fs-video-frame {
           flex-shrink: 0;
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
           position: relative;
+          display: flex;
+          align-items: flex-end;
         }
 
         .filmstrip-component .fs-image-frame img {
@@ -98,6 +101,8 @@ class FilmStripGallery {
           width: ${Math.floor(this.options.height * 1.78)}px;
           border: none;
           border-radius: 0;
+          display: block;
+          vertical-align: bottom;
         }
 
         @media (max-width: 1200px) {
