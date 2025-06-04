@@ -1,4 +1,8 @@
-// filmstrip.js - Film Strip Gallery Component (Isolated Version)
+.filmstrip-component .fs-video-frame {
+          height: ${this.options.height}px;
+          line-height: 0;
+          font-size: 0;
+        }// filmstrip.js - Film Strip Gallery Component (Isolated Version)
 // Usage: <script src="/filmstrip.js"></script>
 
 class FilmStripGallery {
@@ -110,6 +114,8 @@ class FilmStripGallery {
           vertical-align: bottom;
           margin: 0;
           padding: 0;
+          line-height: 0;
+          font-size: 0;
         }
 
         @media (max-width: 1200px) {
