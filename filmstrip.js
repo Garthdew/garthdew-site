@@ -46,26 +46,33 @@ class FilmStripGallery {
           margin-top: 2rem;
           margin-bottom: 2rem;
           padding: 1rem 0;
-          scrollbar-width: thin;
-          scrollbar-color: #cccccc transparent;
+          scrollbar-width: auto;
+          scrollbar-color: #888 #f1f1f1;
           position: relative;
         }
 
         .film-strip::-webkit-scrollbar {
-          height: 8px;
+          height: 16px;
+          -webkit-appearance: none;
         }
 
         .film-strip::-webkit-scrollbar-track {
-          background: transparent;
+          background: #f1f1f1;
+          border-radius: 8px;
         }
 
         .film-strip::-webkit-scrollbar-thumb {
-          background-color: #cccccc;
-          border-radius: 4px;
+          background-color: #888;
+          border-radius: 8px;
+          border: 2px solid #f1f1f1;
         }
 
         .film-strip::-webkit-scrollbar-thumb:hover {
-          background-color: #161717;
+          background-color: #555;
+        }
+
+        .film-strip::-webkit-scrollbar-corner {
+          background: #f1f1f1;
         }
 
         .film-strip-container {
@@ -78,13 +85,7 @@ class FilmStripGallery {
         .film-frame {
           flex-shrink: 0;
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
-          transition: transform 0.2s ease, opacity 0.2s ease;
           position: relative;
-        }
-
-        .film-frame:hover {
-          transform: translateY(-4px);
-          opacity: 0.9;
         }
 
         .film-frame img {
@@ -106,11 +107,14 @@ class FilmStripGallery {
 
         @media (max-width: 768px) {
           .film-strip {
-            display: none;
+            display: none !important;
           }
           
           .film-strip-mobile {
-            display: block;
+            display: block !important;
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
           }
           
           .film-strip-mobile img {
