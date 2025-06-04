@@ -39,13 +39,13 @@ class FilmStripGallery {
       style.id = 'filmstrip-styles';
       style.textContent = `
         .film-strip {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
+          width: calc(100vw - 250px);
+          margin-left: 0;
           overflow-x: auto;
           overflow-y: hidden;
           margin-top: 2rem;
           margin-bottom: 2rem;
-          padding: 1rem 0;
+          padding: 1rem 0 1rem 2rem;
           scrollbar-width: auto;
           scrollbar-color: #888 #f1f1f1;
           position: relative;
@@ -103,6 +103,28 @@ class FilmStripGallery {
           height: ${this.options.height}px;
           width: auto;
           object-fit: cover;
+          max-width: none;
+        }
+
+        @media (max-width: 1200px) {
+          .film-frame.landscape img,
+          .film-frame.portrait img,
+          .film-frame.square img {
+            height: ${Math.floor(this.options.height * 0.8)}px;
+          }
+        }
+
+        @media (max-width: 900px) {
+          .film-strip {
+            width: 100%;
+            padding: 1rem 0;
+          }
+          
+          .film-frame.landscape img,
+          .film-frame.portrait img,
+          .film-frame.square img {
+            height: ${Math.floor(this.options.height * 0.6)}px;
+          }
         }
 
         @media (max-width: 768px) {
