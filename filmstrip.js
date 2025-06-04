@@ -39,10 +39,12 @@ class FilmStripGallery {
       style.id = 'filmstrip-styles';
       style.textContent = `
         .film-strip {
-          width: 100%;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
           overflow-x: auto;
           overflow-y: hidden;
-          margin: 2rem 0;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
           padding: 1rem 0;
           scrollbar-width: thin;
           scrollbar-color: #cccccc transparent;
@@ -94,35 +96,33 @@ class FilmStripGallery {
           border-radius: 0;
         }
 
-        .film-frame.landscape img {
-          width: ${Math.floor(this.options.height * 1.5)}px;
-          object-fit: cover;
-        }
-
+        .film-frame.landscape img,
+        .film-frame.portrait img,
         .film-frame.square img {
-          width: ${this.options.height}px;
+          height: ${this.options.height}px;
+          width: auto;
           object-fit: cover;
         }
 
         @media (max-width: 768px) {
           .film-strip {
-            margin: 1rem -1rem;
-            padding: 1rem;
+            display: none;
           }
-
-          .film-frame img {
-            height: ${this.options.mobileHeight}px;
+          
+          .film-strip-mobile {
+            display: block;
           }
-
-          .film-frame.landscape img {
-            height: ${this.options.mobileHeight}px;
-            width: ${Math.floor(this.options.mobileHeight * 1.5)}px;
+          
+          .film-strip-mobile img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            display: block;
           }
-
-          .film-frame.square img {
-            height: ${this.options.mobileHeight}px;
-            width: ${this.options.mobileHeight}px;
-          }
+        }
+        
+        .film-strip-mobile {
+          display: none;
         }
 
         /* Perforations effect */
@@ -165,22 +165,43 @@ class FilmStripGallery {
     // Clear existing content
     this.container.innerHTML = '';
 
-    // Create film strip wrapper
+    // Create film strip wrapper for desktop
     const filmStrip = document.createElement('div');
-    filmStrip.className = `film-strip${this.options.showPerforations ? ' perforated' : ''}`;
+    filmStrip.className = 'film-strip';
 
     // Create container for images
     const filmContainer = document.createElement('div');
     filmContainer.className = 'film-strip-container';
 
-    // Add images
+    // Create mobile vertical feed
+    const mobileStrip = document.createElement('div');
+    mobileStrip.className = 'film-strip-mobile';
+
+    // Add images to both desktop and mobile versions
     this.images.forEach((image, index) => {
+      // Desktop version
       const frame = this.createImageFrame(image, index);
       filmContainer.appendChild(frame);
+      
+      // Mobile version
+      const mobileImg = document.createElement('img');
+      mobileImg.src = image.src;
+      mobileImg.alt = image.alt || `Image ${index + 1}`;
+      mobileImg.loading = 'lazy';
+      
+      if (this.options.clickToView) {
+        mobileImg.addEventListener('click', () => {
+          this.onImageClick(image, index);
+        });
+        mobileImg.style.cursor = 'pointer';
+      }
+      
+      mobileStrip.appendChild(mobileImg);
     });
 
     filmStrip.appendChild(filmContainer);
     this.container.appendChild(filmStrip);
+    this.container.appendChild(mobileStrip);
   }
 
   createImageFrame(image, index) {
