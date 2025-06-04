@@ -1,330 +1,182 @@
-// filmstrip.js - Film Strip Gallery Component
-// Usage: <script src="/filmstrip.js"></script>
+// gallery.js - Reusable gallery system
+// Save this file as /gallery.js in your root directory
+document.addEventListener('DOMContentLoaded', function() {
+  const galleryContainer = document.getElementById('gallery-container');
+  if (!galleryContainer) return;
+  
+  const images = JSON.parse(galleryContainer.dataset.images);
+  const altPrefix = galleryContainer.dataset.altPrefix || 'Image';
+  
+  // Generate the gallery HTML
+  const galleryHTML = `
+    <!-- Thumbnail Grid (shown initially) -->
+    <div class="thumbnail-grid" id="thumbnailGrid" style="grid-template-columns: repeat(${Math.min(images.length, 6)}, 1fr);">
+      ${images.map((src, index) => `
+        <div class="thumbnail" onclick="openCarousel(${index})">
+          <img src="${src}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
+        </div>
+      `).join('')}
+    </div>
 
-class FilmStripGallery {
-  constructor(containerId, images, options = {}) {
-    this.container = document.getElementById(containerId);
-    this.images = images;
-    this.options = {
-      height: 200,
-      mobileHeight: 150,
-      gap: '1rem',
-      showPerforations: false,
-      enableKeyboard: true,
-      clickToView: false,
-      ...options
-    };
-    
-    this.init();
-  }
+    <!-- Carousel (hidden initially) -->
+    <div class="carousel" id="carousel">
+      <div class="carousel-track">
+        ${images.map((src, index) => `
+          <div class="carousel-slide">
+            <img src="${src}" alt="${altPrefix} moment ${index + 1}">
+          </div>
+        `).join('')}
+      </div>
+    </div>
 
-  init() {
-    if (!this.container) {
-      console.error(`FilmStrip: Container with id "${this.containerId}" not found`);
-      return;
-    }
+    <!-- Photo Stream (Mobile Only) -->
+    <div class="photo-stream" style="display: none;">
+      ${images.map((src, index) => `
+        <img src="${src}" alt="${altPrefix} ${index + 1}">
+      `).join('')}
+    </div>
+  `;
+  
+  galleryContainer.innerHTML = galleryHTML;
+  
+  // Gallery functionality
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
 
-    this.createStyles();
-    this.createFilmStrip();
-    
-    if (this.options.enableKeyboard) {
-      this.addKeyboardNavigation();
-    }
-  }
+  window.openCarousel = function(slideIndex) {
+    currentSlide = slideIndex;
+    // Hide thumbnails and heading/text when entering carousel
+    document.getElementById('thumbnailGrid').style.display = 'none';
+    document.querySelector('.content-area').style.display = 'none';
+    document.getElementById('carousel').classList.add('show');
+    document.querySelector('.gallery-nav').classList.add('show');
+    showSlide(currentSlide);
+    handleImageLoad();
+  };
 
-  createStyles() {
-    // Add styles dynamically if not already present
-    if (!document.getElementById('filmstrip-styles')) {
-      const style = document.createElement('style');
-      style.id = 'filmstrip-styles';
-      style.textContent = `
-        /* Film strip specific styles - scoped to avoid conflicts */
-        .film-strip-gallery .film-strip {
-          width: 100%;
-          overflow-x: auto;
-          overflow-y: hidden;
-          margin-top: 2rem;
-          margin-bottom: 2rem;
-          padding: 1rem 0;
-          scrollbar-width: thin;
-          scrollbar-color: #ccc transparent;
-        }
+  window.showThumbnails = function() {
+    // Show thumbnails and heading/text when exiting carousel
+    document.getElementById('thumbnailGrid').style.display = 'grid';
+    document.querySelector('.content-area').style.display = 'block';
+    document.getElementById('carousel').classList.remove('show');
+    document.querySelector('.gallery-nav').classList.remove('show');
+  };
 
-        .film-strip-gallery .film-strip::-webkit-scrollbar {
-          height: 8px;
-        }
-
-        .film-strip-gallery .film-strip::-webkit-scrollbar-track {
-          background: transparent;
-        }
-
-        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb {
-          background-color: #ccc;
-          border-radius: 4px;
-        }
-
-        .film-strip-gallery .film-strip::-webkit-scrollbar-thumb:hover {
-          background-color: #999;
-        }
-
-        .film-strip-gallery .film-strip-container {
-          display: flex;
-          gap: ${this.options.gap};
-          width: max-content;
-          align-items: flex-end;
-          padding-left: 2rem;
-          padding-right: 2rem;
-        }
-
-        .film-strip-gallery .film-frame {
-          flex-shrink: 0;
-          cursor: ${this.options.clickToView ? 'pointer' : 'default'};
-          position: relative;
-        }
-
-        .film-strip-gallery .film-frame img {
-          display: block;
-          height: ${this.options.height}px;
-          width: auto;
-          object-fit: cover;
-          border: none;
-          border-radius: 0;
-        }
-
-        .film-strip-gallery .film-frame.landscape img,
-        .film-strip-gallery .film-frame.portrait img,
-        .film-strip-gallery .film-frame.square img {
-          height: ${this.options.height}px;
-          width: auto;
-          object-fit: cover;
-          max-width: none;
-        }
-
-        @media (max-width: 1200px) {
-          .film-strip-gallery .film-frame.landscape img,
-          .film-strip-gallery .film-frame.portrait img,
-          .film-strip-gallery .film-frame.square img {
-            height: ${Math.floor(this.options.height * 0.8)}px;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .film-strip-gallery .film-strip {
-            width: 100%;
-            padding: 1rem 0;
-          }
-          
-          .film-strip-gallery .film-frame.landscape img,
-          .film-strip-gallery .film-frame.portrait img,
-          .film-strip-gallery .film-frame.square img {
-            height: ${Math.floor(this.options.height * 0.6)}px;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .film-strip-gallery .film-strip {
-            display: none !important;
-          }
-          
-          .film-strip-gallery .film-strip-mobile {
-            display: block !important;
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-          }
-          
-          .film-strip-gallery .film-strip-mobile img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 2rem;
-            display: block;
-          }
-        }
-        
-        .film-strip-gallery .film-strip-mobile {
-          display: none;
-        }
-
-        /* Perforations effect */
-        .film-strip-gallery .film-strip.perforated::before,
-        .film-strip-gallery .film-strip.perforated::after {
-          content: '';
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 8px;
-          background: repeating-linear-gradient(
-            to right,
-            #333 0px,
-            #333 8px,
-            transparent 8px,
-            transparent 16px
-          );
-          z-index: 1;
-          pointer-events: none;
-        }
-
-        .film-strip-gallery .film-strip.perforated::before {
-          top: 0;
-        }
-
-        .film-strip-gallery .film-strip.perforated::after {
-          bottom: 0;
-        }
-
-        .film-strip-gallery .film-strip.perforated {
-          background-color: #f5f5f5;
-          padding: 12px 0;
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }
-
-  createFilmStrip() {
-    // Clear existing content
-    this.container.innerHTML = '';
-
-    // Add the scoping class to the container
-    this.container.className = 'film-strip-gallery';
-
-    // Create film strip wrapper for desktop
-    const filmStrip = document.createElement('div');
-    filmStrip.className = 'film-strip';
-
-    // Create container for images
-    const filmContainer = document.createElement('div');
-    filmContainer.className = 'film-strip-container';
-
-    // Create mobile vertical feed
-    const mobileStrip = document.createElement('div');
-    mobileStrip.className = 'film-strip-mobile';
-
-    // Add images to both desktop and mobile versions
-    this.images.forEach((image, index) => {
-      // Desktop version
-      const frame = this.createImageFrame(image, index);
-      filmContainer.appendChild(frame);
-      
-      // Mobile version
-      const mobileImg = document.createElement('img');
-      mobileImg.src = image.src;
-      mobileImg.alt = image.alt || `Image ${index + 1}`;
-      mobileImg.loading = 'lazy';
-      
-      if (this.options.clickToView) {
-        mobileImg.addEventListener('click', () => {
-          this.onImageClick(image, index);
-        });
-        mobileImg.style.cursor = 'pointer';
-      }
-      
-      mobileStrip.appendChild(mobileImg);
-    });
-
-    filmStrip.appendChild(filmContainer);
-    this.container.appendChild(filmStrip);
-    this.container.appendChild(mobileStrip);
-  }
-
-  createImageFrame(image, index) {
-    const frame = document.createElement('div');
-    
-    // Determine aspect ratio if not provided
-    const aspect = image.aspect || this.detectAspectRatio(image.src);
-    frame.className = `film-frame ${aspect}`;
-
-    const img = document.createElement('img');
-    img.src = image.src;
-    img.alt = image.alt || `Image ${index + 1}`;
-    img.loading = 'lazy';
-
-    // Add click handler if enabled
-    if (this.options.clickToView) {
-      frame.addEventListener('click', () => {
-        this.onImageClick(image, index);
-      });
-    }
-
-    frame.appendChild(img);
-    return frame;
-  }
-
-  detectAspectRatio(src) {
-    // Simple heuristic based on common naming patterns
-    const filename = src.toLowerCase();
-    if (filename.includes('portrait') || filename.includes('vert')) {
-      return 'portrait';
-    } else if (filename.includes('square') || filename.includes('sq')) {
-      return 'square';
-    }
-    return 'landscape'; // default
-  }
-
-  onImageClick(image, index) {
-    // Override this method or pass a callback in options
-    if (this.options.onImageClick) {
-      this.options.onImageClick(image, index);
+  // Handle thumbnail image loading and classification
+  window.handleThumbnailLoad = function(img) {
+    if (img.naturalHeight > img.naturalWidth) {
+      img.classList.add('thumb-portrait');
+      img.parentElement.classList.add('thumb-portrait-container');
     } else {
-      console.log(`Clicked image ${index + 1}:`, image);
+      img.classList.add('thumb-landscape');
+      img.parentElement.classList.add('thumb-landscape-container');
     }
-  }
+  };
 
-  addKeyboardNavigation() {
-    document.addEventListener('keydown', (e) => {
-      const filmStrip = this.container.querySelector('.film-strip');
-      if (!filmStrip) return;
-
-      if (e.key === 'ArrowLeft') {
-        filmStrip.scrollLeft -= 200;
-        e.preventDefault();
-      } else if (e.key === 'ArrowRight') {
-        filmStrip.scrollLeft += 200;
-        e.preventDefault();
+  function handleImageLoad() {
+    const images = document.querySelectorAll('.carousel-slide img');
+    images.forEach(img => {
+      img.onload = function() {
+        if (this.naturalHeight > this.naturalWidth) {
+          this.classList.add('portrait');
+          // Force left alignment for portrait images - with !important to override CSS
+          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          this.parentElement.style.setProperty('align-items', 'center', 'important');
+          this.parentElement.style.setProperty('display', 'flex', 'important');
+          this.style.setProperty('margin-left', '0', 'important');
+          this.style.setProperty('margin-right', 'auto', 'important');
+        } else {
+          // Landscape images - also left align for consistency
+          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          this.parentElement.style.setProperty('align-items', 'center', 'important');
+          this.parentElement.style.setProperty('display', 'flex', 'important');
+          this.style.setProperty('margin-left', '0', 'important');
+          this.style.setProperty('margin-right', 'auto', 'important');
+        }
+      };
+      if (img.complete && img.naturalHeight > 0) {
+        if (img.naturalHeight > img.naturalWidth) {
+          img.classList.add('portrait');
+          // Force left alignment for portrait images - with !important to override CSS
+          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          img.parentElement.style.setProperty('align-items', 'center', 'important');
+          img.parentElement.style.setProperty('display', 'flex', 'important');
+          img.style.setProperty('margin-left', '0', 'important');
+          img.style.setProperty('margin-right', 'auto', 'important');
+        } else {
+          // Landscape images - also left align for consistency
+          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+          img.parentElement.style.setProperty('align-items', 'center', 'important');
+          img.parentElement.style.setProperty('display', 'flex', 'important');
+          img.style.setProperty('margin-left', '0', 'important');
+          img.style.setProperty('margin-right', 'auto', 'important');
+        }
       }
     });
   }
 
-  // Public methods
-  scrollTo(direction) {
-    const filmStrip = this.container.querySelector('.film-strip');
-    if (filmStrip) {
-      const scrollAmount = direction === 'left' ? -200 : 200;
-      filmStrip.scrollLeft += scrollAmount;
+  function showSlide(n) {
+    if (n >= totalSlides) currentSlide = 0;
+    if (n < 0) currentSlide = totalSlides - 1;
+    
+    const track = document.querySelector('.carousel-track');
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+
+  window.moveSlide = function(direction) {
+    currentSlide += direction;
+    showSlide(currentSlide);
+  };
+
+  window.toggleFullscreen = function() {
+    // Fullscreen functionality removed as requested
+  };
+
+  // Touch/swipe support
+  const carousel = document.querySelector('.carousel');
+  let startX = 0;
+  let endX = 0;
+  
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+  });
+
+  carousel.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = startX - endX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        moveSlide(1);
+      } else {
+        moveSlide(-1);
+      }
     }
   }
 
-  addImage(image) {
-    this.images.push(image);
-    this.createFilmStrip(); // Rebuild
-  }
-
-  removeImage(index) {
-    this.images.splice(index, 1);
-    this.createFilmStrip(); // Rebuild
-  }
-}
-
-// Simple function for quick usage (like your gallery.js)
-window.createFilmStrip = function(containerId, images, options = {}) {
-  return new FilmStripGallery(containerId, images, options);
-};
-
-// Auto-initialize film strips with data attributes
-document.addEventListener('DOMContentLoaded', () => {
-  // Only initialize if there are actual filmstrip containers
-  const autoFilmStrips = document.querySelectorAll('[data-filmstrip]');
-  
-  autoFilmStrips.forEach(container => {
-    const images = JSON.parse(container.dataset.filmstrip || '[]');
-    const options = {
-      showPerforations: container.hasAttribute('data-perforations'),
-      clickToView: container.hasAttribute('data-clickable'),
-      height: parseInt(container.dataset.height) || 200
-    };
-    
-    new FilmStripGallery(container.id, images, options);
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    if (document.getElementById('carousel').classList.contains('show')) {
+      if (e.key === 'ArrowLeft') {
+        moveSlide(-1);
+      } else if (e.key === 'ArrowRight') {
+        moveSlide(1);
+      } else if (e.key === 'Escape') {
+        showThumbnails();
+      }
+    }
   });
-  
-  // Don't interfere with existing gallery functionality
+
+  // Initialize
+  handleImageLoad();
 });
