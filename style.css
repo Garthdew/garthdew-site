@@ -407,7 +407,7 @@ a:visited {
 .carousel-slide img.portrait {
   object-fit: contain;
   margin-left: 0;
-  justify-self: flex-start;
+  margin-right: auto;
 }
 
 .carousel-clickable {
