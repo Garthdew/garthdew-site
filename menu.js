@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('info')">Info</h3>
         <ul class="sidebar-nav section-content" id="info" style="display: none;">
-          <li><a href="/index.html">About</a></li>
+          <li><a href="/index.html">About/Contact</a></li>
         </ul>
       </div>
       
