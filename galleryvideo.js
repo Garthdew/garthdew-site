@@ -32,16 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (videoSrc.includes('vimeo.com')) {
-      // Extract Vimeo video ID and use multiple fallback services
+      // Extract Vimeo video ID and use vumbnail service
       let videoId;
       if (videoSrc.includes('player.vimeo.com/video/')) {
         videoId = videoSrc.split('player.vimeo.com/video/')[1].split('?')[0];
       } else if (videoSrc.includes('vimeo.com/')) {
         videoId = videoSrc.split('vimeo.com/')[1].split('?')[0];
       }
-      
-      // Try multiple thumbnail services as fallbacks
-      return `https://i.vimeocdn.com/video/${videoId}_640x360.jpg`;
+      return `https://vumbnail.com/${videoId}.jpg`;
     }
     
     return '/images/video-placeholder.jpg';
