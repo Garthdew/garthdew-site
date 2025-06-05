@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       
       <div class="sidebar-section">
-        <h3 class="section-toggle" onclick="toggleSection('brand')">Brand Collaborations</h3>
+        <h3 class="section-toggle" onclick="toggleSection('brand')">Brand Collabs</h3>
         <ul class="sidebar-nav section-content" id="brand" style="display: none;">
           <li><a href="/projects/neve">Neve</a></li>
           <li><a href="/projects/skiddle">Skiddle</a></li>
