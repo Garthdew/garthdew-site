@@ -8,14 +8,14 @@
   <style>
     /* Hero image styles */
     .hero-container {
-      margin-left: 250px; /* Flush against sidebar */
+      position: absolute;
+      left: 250px; /* Start exactly at sidebar edge */
+      top: 0;
       width: calc(100vw - 250px); /* Full viewport width minus sidebar */
       height: 100vh; /* Full viewport height */
       overflow: hidden;
-      position: relative;
+      margin: 0;
       padding: 0;
-      margin-top: 0;
-      margin-bottom: 0;
     }
     
     .hero-image {
@@ -35,10 +35,17 @@
       overflow: hidden; /* Prevent any scrollbars */
     }
     
+    /* Override any main-content styles */
+    .main-content {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: auto !important;
+    }
+    
     /* Mobile adjustments - full screen */
     @media (max-width: 768px) {
       .hero-container {
-        margin-left: 0;
+        left: 0;
         width: 100vw; /* Full viewport width */
         height: 100vh; /* Full viewport height */
       }
