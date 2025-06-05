@@ -82,8 +82,7 @@ class FilmStripVideoGallery {
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
           position: relative;
           height: ${this.options.height}px;
-          display: flex;
-          align-items: flex-end;
+          display: block;
         }
 
         .filmstrip-video-component .fsv-item-frame img {
@@ -94,6 +93,7 @@ class FilmStripVideoGallery {
           border: none;
           border-radius: 0;
           max-width: none;
+          vertical-align: bottom;
         }
 
         .filmstrip-video-component .fsv-item-frame iframe {
@@ -104,7 +104,7 @@ class FilmStripVideoGallery {
           border-radius: 0;
           margin: 0;
           padding: 0;
-          flex-shrink: 0;
+          vertical-align: bottom;
         }
 
         /* Remove fixed width classes - let width be auto-calculated */
