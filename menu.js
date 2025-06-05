@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('info')">Info</h3>
-        <ul class="sidebar-nav section-content" id="info">
+        <ul class="sidebar-nav section-content" id="info" style="display: none;">
           <li><a href="/about.html">About</a></li>
           <li><a href="/now.html">Now</a></li>
         </ul>
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('photography')">Photography</h3>
-        <ul class="sidebar-nav section-content" id="photography">
+        <ul class="sidebar-nav section-content" id="photography" style="display: none;">
           <li><a href="/projects/featured.html">Featured</a></li>
           <li><a href="/projects/withwhatihave.html">With What I Have</a></li>
           <li><a href="/projects/fullturtle.html">Full Turtle</a></li>
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('film')">Film</h3>
-        <ul class="sidebar-nav section-content" id="film">
+        <ul class="sidebar-nav section-content" id="film" style="display: none;">
           <li><a href="/projects/headabovewater.html">Head Above Water</a></li>
           <li><a href="/projects/fixedbythefells.html">Fixed by the Fells</a></li>
           <li><a href="/projects/workhardkeeppushing.html">Work Hard Keep Pushing</a></li>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('music')">Music</h3>
-        <ul class="sidebar-nav section-content" id="music">
+        <ul class="sidebar-nav section-content" id="music" style="display: none;">
           <li><a href="/projects/flow.html">And Then, It Flowed</a></li>
           <li><a href="/projects/mellowpond.html">The Mellow Pond</a></li>
           <li><a href="/projects/watermyfriend.html">Water My Friend</a></li>
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('brand')">Brand + Collaboration</h3>
-        <ul class="sidebar-nav section-content" id="brand">
+        <ul class="sidebar-nav section-content" id="brand" style="display: none;">
           <li><a href="/projects/neve.html">Neve</a></li>
           <li><a href="/projects/skiddle.html">Skiddle</a></li>
           <li><a href="/projects/volvo.html">Volvo</a></li>
