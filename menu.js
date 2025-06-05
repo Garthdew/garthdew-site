@@ -80,7 +80,37 @@ document.addEventListener('DOMContentLoaded', function() {
       </main>
     </div>
   `;
+  
+  // Auto-open the correct section based on current page
+  openCurrentSection();
 });
+
+// Function to auto-open the correct menu section based on current page
+function openCurrentSection() {
+  const currentPath = window.location.pathname;
+  
+  // Get all menu links and find which section the current page belongs to
+  const sections = ['info', 'photography', 'film', 'music', 'brand'];
+  
+  for (const sectionId of sections) {
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      const links = sectionElement.querySelectorAll('a');
+      
+      // Check if current page matches any link in this section
+      for (const link of links) {
+        const linkPath = link.getAttribute('href');
+        if (currentPath === linkPath || 
+            currentPath === linkPath + '.html' || 
+            currentPath + '.html' === linkPath ||
+            (linkPath === '/index' && (currentPath === '/' || currentPath === '/index'))) {
+          sectionElement.style.display = 'block';
+          return; // Found the section, stop looking
+        }
+      }
+    }
+  }
+}
 
 // Menu Functions
 function toggleMenu() {
