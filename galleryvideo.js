@@ -1,4 +1,4 @@
-// galleryvideo.js - Updated with consistent left alignment for all content
+// galleryvideo.js - Final version with perfect left alignment
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.carousel-slide img');
     const videos = document.querySelectorAll('.carousel-slide .video-container');
     
-    // Handle images - ensure left alignment
+    // Handle images - ensure left alignment with object-position
     images.forEach(img => {
       img.onload = function() {
         // Force left alignment for all images
@@ -233,9 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
         this.parentElement.style.setProperty('display', 'flex', 'important');
         this.style.setProperty('margin-left', '0', 'important');
         this.style.setProperty('margin-right', 'auto', 'important');
+        this.style.setProperty('object-position', 'left center', 'important');
         
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
+          this.style.setProperty('object-fit', 'contain', 'important');
         }
       };
       if (img.complete && img.naturalHeight > 0) {
@@ -245,9 +247,11 @@ document.addEventListener('DOMContentLoaded', function() {
         img.parentElement.style.setProperty('display', 'flex', 'important');
         img.style.setProperty('margin-left', '0', 'important');
         img.style.setProperty('margin-right', 'auto', 'important');
+        img.style.setProperty('object-position', 'left center', 'important');
         
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
+          img.style.setProperty('object-fit', 'contain', 'important');
         }
       }
     });
