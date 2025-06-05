@@ -103,6 +103,15 @@ function closeMenu() {
 
 // Section Toggle Function
 function toggleSection(sectionId) {
+  // Close all other sections first
+  const allSections = document.querySelectorAll('.section-content');
+  allSections.forEach(section => {
+    if (section.id !== sectionId) {
+      section.style.display = 'none';
+    }
+  });
+  
+  // Toggle the clicked section
   const section = document.getElementById(sectionId);
   const isVisible = section.style.display !== 'none';
   
