@@ -1,5 +1,4 @@
 // menu.js - Add this to every page with <script src="menu.js"></script>
-
 document.addEventListener('DOMContentLoaded', function() {
   // Create the menu HTML
   const menuHTML = `
@@ -11,43 +10,70 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">Garth Dew</div>
+      <div class="sidebar-header">
+        <img src="/images/profile.jpg" alt="Garth Dew" class="profile">
+        <div class="sidebar-header">Garth Dew</div>
+        <p>Image, film & music maker based in Lancashire, UK.</p>
+        <a href="mailto:garth@gdvideo.co.uk">garth@gdvideo.co.uk</a>
+        <div class="sidebar-section">
+          <ul class="sidebar-nav">
+            <li><a href="/now.html">Now Page</a></li>
+          </ul>
+        </div>
+      </div>
       
       <div class="sidebar-section">
         <h3>Photography</h3>
         <ul class="sidebar-nav">
+          <li><a href="/projects/featured.html">Featured</a></li>
           <li><a href="/projects/withwhatihave.html">With What I Have</a></li>
-        
+          <li><a href="/projects/fullturtle.html">Full Turtle</a></li>
+          <li><a href="/projects/300daysofsunshine.html">300 Days Of Sunshine</a></li>
+          <li><a href="/projects/portraits.html">Portraits</a></li>
         </ul>
       </div>
-
+      
+      <div class="sidebar-section">
+        <h3>Film</h3>
+        <ul class="sidebar-nav">
+          <li><a href="/projects/headabovewater.html">Head Above Water</a></li>
+          <li><a href="/projects/fixedbythefells.html">Fixed by the Fells</a></li>
+          <li><a href="/projects/workhardkeeppushing.html">Work Hard Keep Pushing</a></li>
+          <li><a href="/projects/ridefor24.html">Ride for 24</a></li>
+        </ul>
+      </div>
+      
       <div class="sidebar-section">
         <h3>Music</h3>
         <ul class="sidebar-nav">
-          <li><a href="/projectss/flow.html">Flow</a></li>
+          <li><a href="/projects/flow.html">And Then, It Flowed</a></li>
+          <li><a href="/projects/mellowpond.html">The Mellow Pond</a></li>
+          <li><a href="/projects/watermyfriend.html">Water My Friend</a></li>
+          <li><a href="/projects/graverthan.html">Graver Than</a></li>
+          <li><a href="/projects/mindlessness.html">Mindlessness</a></li>
         </ul>
       </div>
-
+      
       <div class="sidebar-section">
-        <h3>Commercial</h3>
+        <h3>Brand + Collaboration</h3>
         <ul class="sidebar-nav">
-          <li><a href="/projects/.html">Film</a></li>
-        </ul>
-      </div>
-
-      <div class="sidebar-section">
-        <h3>Info</h3>
-        <ul class="sidebar-nav">
-          <li><a href="/about.html">About</a></li>
-          <li><a href="/contact.html">Contact</a></li>
+          <li><a href="/projects/neve.html">Neve</a></li>
+          <li><a href="/projects/skiddle.html">Skiddle</a></li>
+          <li><a href="/projects/volvo.html">Volvo</a></li>
+          <li><a href="/projects/speedo.html">Speedo</a></li>
+          <li><a href="/projects/salomon.html">Salomon</a></li>
+          <li><a href="/projects/ellisbrigham.html">Ellis Brigham</a></li>
+          <li><a href="/projects/lythamfestival.html">Lytham Festival</a></li>
+          <li><a href="/projects/tweedl.html">Tweedl</a></li>
+          <li><a href="/projects/arla.html">Arla</a></li>
         </ul>
       </div>
     </nav>
   `;
-
+  
   // Insert menu at the beginning of body
   document.body.insertAdjacentHTML('afterbegin', menuHTML);
-
+  
   // Wrap existing content in layout structure
   const existingContent = document.body.innerHTML.replace(menuHTML, '');
   document.body.innerHTML = `
