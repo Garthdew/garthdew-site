@@ -82,6 +82,8 @@ class FilmStripVideoGallery {
           cursor: ${this.options.clickToView ? 'pointer' : 'default'};
           position: relative;
           height: ${this.options.height}px;
+          display: flex;
+          align-items: flex-end;
         }
 
         .filmstrip-video-component .fsv-item-frame img {
@@ -102,16 +104,10 @@ class FilmStripVideoGallery {
           border-radius: 0;
           margin: 0;
           padding: 0;
+          flex-shrink: 0;
         }
 
-        /* Calculate video width to maintain aspect ratio */
-        .filmstrip-video-component .fsv-video-16-9 {
-          width: ${Math.round(this.options.height * (16/9))}px;
-        }
-
-        .filmstrip-video-component .fsv-video-4-3 {
-          width: ${Math.round(this.options.height * (4/3))}px;
-        }
+        /* Remove fixed width classes - let width be auto-calculated */
 
         @media (max-width: 1200px) {
           .filmstrip-video-component .fsv-item-frame {
@@ -124,14 +120,6 @@ class FilmStripVideoGallery {
           
           .filmstrip-video-component .fsv-item-frame iframe {
             height: ${Math.floor(this.options.height * 0.8)}px;
-          }
-          
-          .filmstrip-video-component .fsv-video-16-9 {
-            width: ${Math.round(this.options.height * 0.8 * (16/9))}px;
-          }
-
-          .filmstrip-video-component .fsv-video-4-3 {
-            width: ${Math.round(this.options.height * 0.8 * (4/3))}px;
           }
         }
 
@@ -146,14 +134,6 @@ class FilmStripVideoGallery {
           
           .filmstrip-video-component .fsv-item-frame iframe {
             height: ${Math.floor(this.options.height * 0.6)}px;
-          }
-          
-          .filmstrip-video-component .fsv-video-16-9 {
-            width: ${Math.round(this.options.height * 0.6 * (16/9))}px;
-          }
-
-          .filmstrip-video-component .fsv-video-4-3 {
-            width: ${Math.round(this.options.height * 0.6 * (4/3))}px;
           }
         }
 
@@ -275,9 +255,8 @@ class FilmStripVideoGallery {
     iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media';
     iframe.title = item.alt || 'Video';
     
-    // Set aspect ratio class
-    const aspectRatio = item.aspectRatio || '16:9';
-    iframe.className = aspectRatio === '4:3' ? 'fsv-video-4-3' : 'fsv-video-16-9';
+    // Let the browser calculate width automatically based on height and aspect ratio
+    // No need to set width or aspect ratio classes
     
     return iframe;
   }
