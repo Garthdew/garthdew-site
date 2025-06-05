@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="thumbnail" onclick="openCarousel(${index})">
           ${item.type === 'video' ? 
             `<div class="video-thumbnail">
-              <img src="${getVideoThumbnail(item.src)}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
+              <img src="${item.thumbnail || getVideoThumbnail(item.src)}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
               <div class="play-overlay">▶</div>
             </div>` :
             `<img src="${item.src}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">`
