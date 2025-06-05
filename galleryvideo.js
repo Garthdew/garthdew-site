@@ -132,18 +132,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       .video-container iframe {
-        height: 80vh;
-        width: 142.22vh; /* 16:9 aspect ratio width */
-        max-width: 90vw;
-        max-height: 80vh;
+        height: 70vh;
+        width: 124.44vh; /* 16:9 aspect ratio width */
+        max-width: 80vw;
+        max-height: 70vh;
       }
       
       /* Support for vertical videos */
       .video-container.vertical iframe {
-        height: 80vh;
-        width: 45vh; /* 9:16 aspect ratio width for vertical videos */
-        max-width: 90vw;
-        max-height: 80vh;
+        height: 70vh;
+        width: 39.38vh; /* 9:16 aspect ratio width for vertical videos */
+        max-width: 80vw;
+        max-height: 70vh;
       }
       
       .mobile-video-container {
