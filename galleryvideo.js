@@ -1,10 +1,21 @@
 // galleryvideo.js - Reusable gallery system with video support
+// Save this file as /galleryvideo.js in your root directory
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
   
   const items = JSON.parse(galleryContainer.dataset.items);
   const altPrefix = galleryContainer.dataset.altPrefix || 'Media';
+  
+  // Function to convert Vimeo URLs to embed format
+  function convertToEmbedUrl(videoSrc) {
+    if (videoSrc.includes('vimeo.com') && !videoSrc.includes('player.vimeo.com')) {
+      // Convert regular Vimeo URL to embed URL
+      const videoId = videoSrc.split('vimeo.com/')[1].split('?')[0];
+      return `https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0`;
+    }
+    return videoSrc;
+  }
   
   // Function to get video thumbnail URL
   function getVideoThumbnail(videoSrc) {
@@ -22,9 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     if (videoSrc.includes('vimeo.com')) {
-      // For Vimeo, we'll need to use a placeholder for now
-      // Getting Vimeo thumbnails requires API calls
-      return '/images/video-placeholder.jpg';
+      // Extract Vimeo video ID and use vumbnail service
+      let videoId;
+      if (videoSrc.includes('player.vimeo.com/video/')) {
+        videoId = videoSrc.split('player.vimeo.com/video/')[1].split('?')[0];
+      } else if (videoSrc.includes('vimeo.com/')) {
+        videoId = videoSrc.split('vimeo.com/')[1].split('?')[0];
+      }
+      return `https://vumbnail.com/${videoId}.jpg`;
     }
     
     return '/images/video-placeholder.jpg';
@@ -53,8 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
         ${items.map((item, index) => `
           <div class="carousel-slide">
             ${item.type === 'video' ? 
-              `<div class="video-container">
-                <iframe src="${item.src}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen title="${item.alt || altPrefix + ' video ' + (index + 1)}"></iframe>
+              `<div class="video-container ${item.orientation === 'vertical' ? 'vertical' : ''}">
+                <iframe src="${convertToEmbedUrl(item.src)}" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen title="${item.alt || altPrefix + ' video ' + (index + 1)}"></iframe>
               </div>` :
               `<img src="${item.src}" alt="${item.alt || altPrefix + ' moment ' + (index + 1)}">`
             }
@@ -96,15 +112,15 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: translate(-50%, -50%);
         background: rgba(255, 255, 255, 0.9);
         color: rgba(0, 0, 0, 0.8);
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 20px;
+        font-size: 16px;
         pointer-events: none;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
       }
       
       .video-container {
@@ -118,6 +134,14 @@ document.addEventListener('DOMContentLoaded', function() {
       .video-container iframe {
         height: 80vh;
         width: 142.22vh; /* 16:9 aspect ratio width */
+        max-width: 90vw;
+        max-height: 80vh;
+      }
+      
+      /* Support for vertical videos */
+      .video-container.vertical iframe {
+        height: 80vh;
+        width: 45vh; /* 9:16 aspect ratio width for vertical videos */
         max-width: 90vw;
         max-height: 80vh;
       }
