@@ -667,3 +667,11 @@ hr {
     height: 400px !important;
   }
 }
+.carousel-slide img {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.carousel-slide {
+  justify-content: flex-start !important;
+}
