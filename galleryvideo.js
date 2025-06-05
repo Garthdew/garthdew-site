@@ -132,18 +132,24 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       .video-container iframe {
-        height: 70vh;
-        width: 124.44vh; /* 16:9 aspect ratio width */
-        max-width: 80vw;
-        max-height: 70vh;
+        height: 60vh;
+        width: 106.67vh; /* 16:9 aspect ratio width */
+        max-width: 70vw;
+        max-height: 60vh;
+        /* Hard maximum sizes to ensure controls are always visible */
+        max-width: min(70vw, 1200px);
+        max-height: min(60vh, 675px);
       }
       
       /* Support for vertical videos */
       .video-container.vertical iframe {
-        height: 70vh;
-        width: 39.38vh; /* 9:16 aspect ratio width for vertical videos */
-        max-width: 80vw;
-        max-height: 70vh;
+        height: 60vh;
+        width: 33.75vh; /* 9:16 aspect ratio width for vertical videos */
+        max-width: 70vw;
+        max-height: 60vh;
+        /* Hard maximum sizes */
+        max-width: min(70vw, 400px);
+        max-height: min(60vh, 675px);
       }
       
       .mobile-video-container {
@@ -217,39 +223,27 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle images
     images.forEach(img => {
       img.onload = function() {
+        // All content (portrait and landscape) should be left-aligned for consistency
+        this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+        this.parentElement.style.setProperty('align-items', 'center', 'important');
+        this.parentElement.style.setProperty('display', 'flex', 'important');
+        this.style.setProperty('margin-left', '0', 'important');
+        this.style.setProperty('margin-right', 'auto', 'important');
+        
         if (this.naturalHeight > this.naturalWidth) {
           this.classList.add('portrait');
-          // Force left alignment for portrait images - with !important to override CSS
-          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
-          this.parentElement.style.setProperty('align-items', 'center', 'important');
-          this.parentElement.style.setProperty('display', 'flex', 'important');
-          this.style.setProperty('margin-left', '0', 'important');
-          this.style.setProperty('margin-right', 'auto', 'important');
-        } else {
-          // Landscape images - also left align for consistency
-          this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
-          this.parentElement.style.setProperty('align-items', 'center', 'important');
-          this.parentElement.style.setProperty('display', 'flex', 'important');
-          this.style.setProperty('margin-left', '0', 'important');
-          this.style.setProperty('margin-right', 'auto', 'important');
         }
       };
       if (img.complete && img.naturalHeight > 0) {
+        // All content (portrait and landscape) should be left-aligned for consistency
+        img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+        img.parentElement.style.setProperty('align-items', 'center', 'important');
+        img.parentElement.style.setProperty('display', 'flex', 'important');
+        img.style.setProperty('margin-left', '0', 'important');
+        img.style.setProperty('margin-right', 'auto', 'important');
+        
         if (img.naturalHeight > img.naturalWidth) {
           img.classList.add('portrait');
-          // Force left alignment for portrait images - with !important to override CSS
-          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
-          img.parentElement.style.setProperty('align-items', 'center', 'important');
-          img.parentElement.style.setProperty('display', 'flex', 'important');
-          img.style.setProperty('margin-left', '0', 'important');
-          img.style.setProperty('margin-right', 'auto', 'important');
-        } else {
-          // Landscape images - also left align for consistency
-          img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
-          img.parentElement.style.setProperty('align-items', 'center', 'important');
-          img.parentElement.style.setProperty('display', 'flex', 'important');
-          img.style.setProperty('margin-left', '0', 'important');
-          img.style.setProperty('margin-right', 'auto', 'important');
         }
       }
     });
