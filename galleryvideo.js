@@ -258,10 +258,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle videos - ensure left alignment
     videos.forEach(videoContainer => {
+      // Force the video container to be left-aligned
       videoContainer.style.setProperty('justify-content', 'flex-start', 'important');
       videoContainer.style.setProperty('align-items', 'center', 'important');
       videoContainer.style.setProperty('margin-left', '0', 'important');
       videoContainer.style.setProperty('margin-right', 'auto', 'important');
+      videoContainer.style.setProperty('display', 'flex', 'important');
+      
+      // Also force the parent slide to be left-aligned
+      videoContainer.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
+      videoContainer.parentElement.style.setProperty('align-items', 'center', 'important');
       
       const iframe = videoContainer.querySelector('iframe');
       if (iframe) {
