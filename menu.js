@@ -15,54 +15,53 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('info')">Info</h3>
         <ul class="sidebar-nav section-content" id="info" style="display: none;">
-          <li><a href="/index.html">About/Contact</a></li>
+          <li><a href="/index">About/Contact</a></li>
         </ul>
       </div>
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('photography')">Photography</h3>
         <ul class="sidebar-nav section-content" id="photography" style="display: none;">
-          <li><a href="/projects/featured.html">Featured</a></li>
-          <li><a href="/projects/withwhatihave.html">With What I Have</a></li>
-          <li><a href="/projects/fullturtle.html">Full Turtle</a></li>
-          <li><a href="/projects/300daysofsunshine.html">300 Days Of Sunshine</a></li>
-          <li><a href="/projects/portraits.html">Portraits</a></li>
+          <li><a href="/projects/featured">Featured</a></li>
+          <li><a href="/projects/withwhatihave">With What I Have</a></li>
+          <li><a href="/projects/fullturtle">Full Turtle</a></li>
+          <li><a href="/projects/300daysofsunshine">300 Days Of Sunshine</a></li>
+          <li><a href="/projects/portraits">Portraits</a></li>
         </ul>
       </div>
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('film')">Film</h3>
         <ul class="sidebar-nav section-content" id="film" style="display: none;">
-          <li><a href="/projects/headabovewater.html">Head Above Water</a></li>
-          <li><a href="/projects/fixedbythefells.html">Fixed by the Fells</a></li>
-          <li><a href="/projects/workhardkeeppushing.html">Work Hard Keep Pushing</a></li>
-          <li><a href="/projects/ridefor24.html">Ride for 24</a></li>
+          <li><a href="/projects/headabovewater">Head Above Water</a></li>
+          <li><a href="/projects/fixedbythefells">Fixed by the Fells</a></li>
+          <li><a href="/projects/workhardkeeppushing">Work Hard Keep Pushing</a></li>
+          <li><a href="/projects/ridefor24">Ride for 24</a></li>
         </ul>
       </div>
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('music')">Music</h3>
         <ul class="sidebar-nav section-content" id="music" style="display: none;">
-          <li><a href="/projects/flow.html">And Then, It Flowed</a></li>
-          <li><a href="/projects/mellowpond.html">The Mellow Pond</a></li>
-          <li><a href="/projects/graverthan.html">Graver Than</a></li>
-          <li><a href="/projects/watermyfriend.html">Water My Friend</a></li>
-          <li><a href="/projects/mindlessness.html">Mindlessness</a></li>
+          <li><a href="/projects/flow">And Then, It Flowed</a></li>
+          <li><a href="/projects/mellowpond">The Mellow Pond</a></li>
+          <li><a href="/projects/graverthan">Graver Than</a></li>
+          <li><a href="/projects/watermyfriend">Water My Friend</a></li>
+          <li><a href="/projects/mindlessness">Mindlessness</a></li>
         </ul>
       </div>
       
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('brand')">Brand + Collaboration</h3>
         <ul class="sidebar-nav section-content" id="brand" style="display: none;">
-          <li><a href="/projects/neve.html">Neve</a></li>
-          <li><a href="/projects/skiddle.html">Skiddle</a></li>
-          <li><a href="/projects/volvo.html">Volvo</a></li>
-          <li><a href="/projects/speedo.html">Speedo</a></li>
-          <li><a href="/projects/salomon.html">Salomon</a></li>
-          <li><a href="/projects/ellisbrigham.html">Ellis Brigham</a></li>
-          <li><a href="/projects/lythamfestival.html">Lytham Festival</a></li>
-          <li><a href="/projects/tweedl.html">Tweedl</a></li>
-          <li><a href="/projects/arla.html">Arla</a></li>
+          <li><a href="/projects/neve">Neve</a></li>
+          <li><a href="/projects/skiddle">Skiddle</a></li>
+          <li><a href="/projects/volvo">Volvo</a></li>
+          <li><a href="/projects/speedo">Speedo</a></li>
+          <li><a href="/projects/salomon">Salomon</a></li>
+          <li><a href="/projects/ellisbrigham">Ellis Brigham</a></li>
+          <li><a href="/projects/lythamfestival">Lytham Festival</a></li>
+          <li><a href="/projects/arla">Arla</a></li>
         </ul>
       </div>
     </nav>
