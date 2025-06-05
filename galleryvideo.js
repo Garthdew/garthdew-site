@@ -1,11 +1,34 @@
 // galleryvideo.js - Reusable gallery system with video support
-// Save this file as /galleryvideo.js in your root directory
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
   
   const items = JSON.parse(galleryContainer.dataset.items);
   const altPrefix = galleryContainer.dataset.altPrefix || 'Media';
+  
+  // Function to get video thumbnail URL
+  function getVideoThumbnail(videoSrc) {
+    if (videoSrc.includes('youtube.com') || videoSrc.includes('youtu.be')) {
+      // Extract YouTube video ID
+      let videoId;
+      if (videoSrc.includes('/embed/')) {
+        videoId = videoSrc.split('/embed/')[1].split('?')[0];
+      } else if (videoSrc.includes('watch?v=')) {
+        videoId = videoSrc.split('watch?v=')[1].split('&')[0];
+      } else if (videoSrc.includes('youtu.be/')) {
+        videoId = videoSrc.split('youtu.be/')[1].split('?')[0];
+      }
+      return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+    
+    if (videoSrc.includes('vimeo.com')) {
+      // For Vimeo, we'll need to use a placeholder for now
+      // Getting Vimeo thumbnails requires API calls
+      return '/images/video-placeholder.jpg';
+    }
+    
+    return '/images/video-placeholder.jpg';
+  }
   
   // Generate the gallery HTML
   const galleryHTML = `
@@ -15,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="thumbnail" onclick="openCarousel(${index})">
           ${item.type === 'video' ? 
             `<div class="video-thumbnail">
-              <img src="${item.thumbnail || '/images/video-placeholder.jpg'}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
+              <img src="${getVideoThumbnail(item.src)}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">
               <div class="play-overlay">▶</div>
             </div>` :
             `<img src="${item.src}" alt="${altPrefix} ${index + 1}" onload="handleThumbnailLoad(this)">`
@@ -71,16 +94,17 @@ document.addEventListener('DOMContentLoaded', function() {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        width: 50px;
-        height: 50px;
+        background: rgba(255, 255, 255, 0.9);
+        color: rgba(0, 0, 0, 0.8);
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 16px;
+        font-size: 20px;
         pointer-events: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
       }
       
       .video-container {
@@ -93,9 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
       
       .video-container iframe {
         height: 80vh;
-        width: auto;
-        max-width: 100%;
-        aspect-ratio: 16/9;
+        width: 142.22vh; /* 16:9 aspect ratio width */
+        max-width: 90vw;
+        max-height: 80vh;
       }
       
       .mobile-video-container {
@@ -218,6 +242,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   window.moveSlide = function(direction) {
+    // Pause all videos before moving to next slide
+    const currentIframes = document.querySelectorAll('.carousel iframe');
+    currentIframes.forEach(iframe => {
+      // Stop video by reloading iframe src
+      const src = iframe.src;
+      iframe.src = '';
+      setTimeout(() => iframe.src = src, 100);
+    });
+    
     currentSlide += direction;
     showSlide(currentSlide);
   };
