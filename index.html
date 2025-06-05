@@ -5,14 +5,53 @@
   <title>Garth Dew</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/style.css?v=4">
+  <style>
+    /* Hero image styles */
+    .hero-container {
+      margin-left: 250px; /* Flush against sidebar */
+      width: calc(100vw - 250px); /* Full viewport width minus sidebar */
+      height: 100vh; /* Full viewport height */
+      overflow: hidden;
+      position: relative;
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* Ensure body has no margins/padding */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Prevent any scrollbars */
+    }
+    
+    /* Mobile adjustments - full screen */
+    @media (max-width: 768px) {
+      .hero-container {
+        margin-left: 0;
+        width: 100vw; /* Full viewport width */
+        height: 100vh; /* Full viewport height */
+      }
+      
+      body {
+        overflow: visible; /* Allow scrolling on mobile for menu */
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="content-area">
-    <p>Garth Dew</p>
-    <p>Image, film and music maker. Working on original and commercial projects. Based in Preston, Lancashire</p>
-    <p>Clients include: Neve, Skiddle, Volvo, Speedo, Salomon, Ellis Brigham, Lytham Festival, Arla</p>
-    <p>Contact:<br>garth@gdvideo.co.uk / 07890060444</p>
-    <img src="/images/profile.jpg" alt="Garth Dew" style="max-width: 400px; width: 100%; height: auto; margin: 2rem 0;">
+  <div class="hero-container">
+    <img src="/images/withwhatihave/wwih-3.jpg" alt="Garth Dew Photography" class="hero-image">
   </div>
   
   <!-- Include the shared menu system -->
