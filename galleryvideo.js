@@ -1,5 +1,4 @@
-// galleryvideo.js - Reusable gallery system with video support
-// Save this file as /galleryvideo.js in your root directory
+// galleryvideo.js - Updated with consistent left alignment for all content
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         width: 100%;
         height: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-start !important;
         align-items: center;
       }
       
@@ -142,6 +141,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       
       /* Support for vertical videos */
+      .video-container.vertical {
+        justify-content: flex-start !important;
+        align-items: center;
+      }
+      
       .video-container.vertical iframe {
         height: 60vh;
         width: 33.75vh; /* 9:16 aspect ratio width for vertical videos */
@@ -220,10 +224,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const images = document.querySelectorAll('.carousel-slide img');
     const videos = document.querySelectorAll('.carousel-slide .video-container');
     
-    // Handle images
+    // Handle images - ensure left alignment
     images.forEach(img => {
       img.onload = function() {
-        // All content (portrait and landscape) should be left-aligned for consistency
+        // Force left alignment for all images
         this.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
         this.parentElement.style.setProperty('align-items', 'center', 'important');
         this.parentElement.style.setProperty('display', 'flex', 'important');
@@ -235,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
       if (img.complete && img.naturalHeight > 0) {
-        // All content (portrait and landscape) should be left-aligned for consistency
+        // Force left alignment for already loaded images
         img.parentElement.style.setProperty('justify-content', 'flex-start', 'important');
         img.parentElement.style.setProperty('align-items', 'center', 'important');
         img.parentElement.style.setProperty('display', 'flex', 'important');
@@ -248,7 +252,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
-    // Videos are already styled to be left-aligned in CSS
+    // Handle videos - ensure left alignment
+    videos.forEach(videoContainer => {
+      videoContainer.style.setProperty('justify-content', 'flex-start', 'important');
+      videoContainer.style.setProperty('align-items', 'center', 'important');
+      videoContainer.style.setProperty('margin-left', '0', 'important');
+      videoContainer.style.setProperty('margin-right', 'auto', 'important');
+      
+      const iframe = videoContainer.querySelector('iframe');
+      if (iframe) {
+        iframe.style.setProperty('margin-left', '0', 'important');
+        iframe.style.setProperty('margin-right', 'auto', 'important');
+      }
+    });
   }
 
   function showSlide(n) {
