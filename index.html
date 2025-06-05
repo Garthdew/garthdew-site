@@ -98,23 +98,37 @@
   </div>
   
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-    
-    function nextSlide() {
-      // Remove active class from current slide
-      slides[currentSlide].classList.remove('active');
+    // Wait for DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.slide');
+      const totalSlides = slides.length;
       
-      // Move to next slide (loop back to 0 when reaching the end)
-      currentSlide = (currentSlide + 1) % totalSlides;
+      console.log('Slideshow initialized with', totalSlides, 'slides');
       
-      // Add active class to new slide
-      slides[currentSlide].classList.add('active');
-    }
-    
-    // Start the slideshow - change every 2.5 seconds
-    setInterval(nextSlide, 2500);
+      function nextSlide() {
+        console.log('Changing from slide', currentSlide, 'to', (currentSlide + 1) % totalSlides);
+        
+        // Remove active class from current slide
+        slides[currentSlide].classList.remove('active');
+        
+        // Move to next slide (loop back to 0 when reaching the end)
+        currentSlide = (currentSlide + 1) % totalSlides;
+        
+        // Add active class to new slide
+        slides[currentSlide].classList.add('active');
+      }
+      
+      // Start the slideshow - change every 2.5 seconds
+      const slideshowInterval = setInterval(nextSlide, 2500);
+      console.log('Slideshow timer started');
+      
+      // Test by manually triggering after 1 second
+      setTimeout(() => {
+        console.log('Manual test slide change');
+        nextSlide();
+      }, 1000);
+    });
   </script>
   
   <!-- Include the shared menu system -->
