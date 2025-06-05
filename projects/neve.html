@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Neve – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css?v=4">
+</head>
+<body>
+  <div class="content-area">
+    <h1 class="page-title">Neve</h1>
+  </div>
+  
+  <div class="wide-content">
+    <!-- Gallery Navigation (hidden initially) -->
+    <div class="gallery-nav">
+      <button class="nav-button" onclick="moveSlide(-1)">Previous</button>
+      <button class="nav-button" onclick="moveSlide(1)">Next</button>
+      <button class="nav-button" onclick="showThumbnails()">Thumbs</button>
+    </div>
+    <!-- Gallery Container -->
+    <div id="gallery-container" data-items='[
+      {"type": "video", "src": "https://vimeo.com/914779686/243eda6d1c", "alt": "Neve Video 1"},
+      {"type": "video", "src": "https://vimeo.com/710735940", "alt": "Neve Video 2"},
+      {"type": "video", "src": "https://vimeo.com/1082813896/82229ea5fc", "alt": "Neve Video 3"},
+      {"type": "video", "src": "https://vimeo.com/823354645/85f07273ad", "alt": "Neve Video 4"},
+      {"type": "video", "src": "https://vimeo.com/803947036/1f8a144f86", "alt": "Neve Video 5"},
+      {"src": "/images/neve/neve-1.jpg", "alt": "Neve 1"},
+      {"src": "/images/neve/neve-2.jpg", "alt": "Neve 2"},
+      {"src": "/images/neve/neve-3.jpg", "alt": "Neve 3"},
+      {"src": "/images/neve/neve-4.jpg", "alt": "Neve 4"},
+      {"src": "/images/neve/neve-5.jpg", "alt": "Neve 5"},
+      {"src": "/images/neve/neve-6.jpg", "alt": "Neve 6"},
+      {"src": "/images/neve/neve-7.jpg", "alt": "Neve 7"}
+    ]' data-alt-prefix="Neve"></div>
+  </div>
+  <!-- Include the shared menu system -->
+  <script src="/menu.js"></script>
+  <!-- Include the video-enabled gallery system -->
+  <script src="/galleryvideo.js?v=1"></script>
+</body>
+</html>
