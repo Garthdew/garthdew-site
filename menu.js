@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <ul class="sidebar-nav section-content" id="music" style="display: none;">
           <li><a href="/projects/flow.html">And Then, It Flowed</a></li>
           <li><a href="/projects/mellowpond.html">The Mellow Pond</a></li>
-          <li><a href="/projects/watermyfriend.html">Water My Friend</a></li>
           <li><a href="/projects/graverthan.html">Graver Than</a></li>
+          <li><a href="/projects/watermyfriend.html">Water My Friend</a></li>
           <li><a href="/projects/mindlessness.html">Mindlessness</a></li>
         </ul>
       </div>
