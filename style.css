@@ -693,3 +693,24 @@ hr {
     height: 400px !important;
   }
 }
+
+/* Force all carousel content (including vertical videos) to align left */
+.carousel-slide {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+}
+
+.carousel-slide .video-container,
+.carousel-slide .video-container.vertical {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+.carousel-slide .video-container iframe {
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
