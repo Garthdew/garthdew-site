@@ -22,11 +22,10 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('photography')">Photography</h3>
         <ul class="sidebar-nav section-content" id="photography" style="display: none;">
-          <li><a href="/projects/featured">Featured</a></li>
-          <li><a href="/projects/withwhatihave">With What I Have</a></li>
-          <li><a href="/projects/fullturtle">Full Turtle</a></li>
-          <li><a href="/projects/300daysofsunshine">300 Days Of Sunshine</a></li>
-          <li><a href="/projects/portraits">Portraits</a></li>
+          <li><a href="/projects/prestonians">Prestonians</a></li>
+          <li><a href="/projects/everyday">Everyday</a></li>
+          <li><a href="/projects/festival">Festival</a></li>
+          <li><a href="/projects/kalkan">Kalkan</a></li>
         </ul>
       </div>
       
@@ -52,8 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
       
       <div class="sidebar-section">
-        <h3 class="section-toggle" onclick="toggleSection('brand')">Brand Collaborations</h3>
-        <ul class="sidebar-nav section-content" id="brand" style="display: none;">
+        <h3 class="section-toggle" onclick="toggleSection('Commissions')">commissions</h3>
+        <ul class="sidebar-nav section-content" id="commissions" style="display: none;">
           <li><a href="/projects/neve">Neve</a></li>
           <li><a href="/projects/skiddle">Skiddle</a></li>
           <li><a href="/projects/volvo">Volvo</a></li>
