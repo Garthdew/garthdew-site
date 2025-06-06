@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prestonians – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css?v=4">
+</head>
+<body>
+  <div class="content-area">
+    <h1 class="page-title">Prestonians</h1>
+  </div>
+  
+  <div class="wide-content">
+    <!-- Gallery Navigation (hidden initially) -->
+    <div class="gallery-nav">
+      <button class="nav-button" onclick="moveSlide(-1)">Previous</button>
+      <button class="nav-button" onclick="moveSlide(1)">Next</button>
+      <button class="nav-button" onclick="showThumbnails()">Thumbs</button>
+    </div>
+    <!-- Gallery Container -->
+    <div id="gallery-container" data-items='[
+      {"src": "/images/prestonians/prestonians-1.jpg", "alt": "Prestonians 1"},
+      {"src": "/images/prestonians/prestonians-2.jpg", "alt": "Prestonians 2"},
+      {"src": "/images/prestonians/prestonians-3.jpg", "alt": "Prestonians 3"},
+      {"src": "/images/prestonians/prestonians-4.jpg", "alt": "Prestonians 4"},
+      {"src": "/images/prestonians/prestonians-5.jpg", "alt": "Prestonians 5"},
+      {"src": "/images/prestonians/prestonians-6.jpg", "alt": "Prestonians 6"},
+      {"src": "/images/prestonians/prestonians-7.jpg", "alt": "Prestonians 7"},
+      {"src": "/images/prestonians/prestonians-8.jpg", "alt": "Prestonians 8"},
+      {"src": "/images/prestonians/prestonians-9.jpg", "alt": "Prestonians 9"},
+      {"src": "/images/prestonians/prestonians-10.jpg", "alt": "Prestonians 10"},
+      {"src": "/images/prestonians/prestonians-11.jpg", "alt": "Prestonians 11"},
+      {"src": "/images/prestonians/prestonians-12.jpg", "alt": "Prestonians 12"},
+      {"src": "/images/prestonians/prestonians-13.jpg", "alt": "Prestonians 13"},
+      {"src": "/images/prestonians/prestonians-14.jpg", "alt": "Prestonians 14"},
+      {"src": "/images/prestonians/prestonians-15.jpg", "alt": "Prestonians 15"},
+      {"src": "/images/prestonians/prestonians-16.jpg", "alt": "Prestonians 16"},
+      {"src": "/images/prestonians/prestonians-17.jpg", "alt": "Prestonians 17"},
+      {"src": "/images/prestonians/prestonians-18.jpg", "alt": "Prestonians 18"},
+      {"src": "/images/prestonians/prestonians-19.jpg", "alt": "Prestonians 19"},
+      {"src": "/images/prestonians/prestonians-20.jpg", "alt": "Prestonians 20"},
+      {"src": "/images/prestonians/prestonians-21.jpg", "alt": "Prestonians 21"},
+      {"src": "/images/prestonians/prestonians-22.jpg", "alt": "Prestonians 22"},
+      {"src": "/images/prestonians/prestonians-23.jpg", "alt": "Prestonians 23"},
+      {"src": "/images/prestonians/prestonians-24.jpg", "alt": "Prestonians 24"},
+      {"src": "/images/prestonians/prestonians-25.jpg", "alt": "Prestonians 25"}
+    ]' data-alt-prefix="Prestonians"></div>
+  </div>
+  <!-- Include the shared menu system -->
+  <script src="/menu.js"></script>
+  <!-- Include the gallery system -->
+  <script src="/gallery.js?v=1"></script>
+</body>
+</html>
