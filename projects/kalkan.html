@@ -2,174 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Moments: Kalkan – Garth Dew</title>
+  <title>Kalkan – Garth Dew</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/style.css?v=4">
 </head>
 <body>
-  <!-- Your page content goes here - menu gets injected automatically -->
   <div class="content-area">
-    <h1>Moments: Kalkan</h1>
+    <h1 class="page-title">Kalkan</h1>
   </div>
   
   <div class="wide-content">
-    <div class="carousel">
-      <div class="carousel-track">
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan1.jpg" alt="Kalkan moment 1">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan2.jpg" alt="Kalkan moment 2">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan3.jpg" alt="Kalkan moment 3">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan4.jpg" alt="Kalkan moment 4">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan5.jpg" alt="Kalkan moment 5">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan6.jpg" alt="Kalkan moment 6">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan7.jpg" alt="Kalkan moment 7">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan8.jpg" alt="Kalkan moment 8">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan9.jpg" alt="Kalkan moment 9">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan10.jpg" alt="Kalkan moment 10">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan11.jpg" alt="Kalkan moment 11">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan12.jpg" alt="Kalkan moment 12">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan13.jpg" alt="Kalkan moment 13">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan14.jpg" alt="Kalkan moment 14">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan15.jpg" alt="Kalkan moment 15">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan16.jpg" alt="Kalkan moment 16">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan17.jpg" alt="Kalkan moment 17">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan18.jpg" alt="Kalkan moment 18">
-        </div>
-        <div class="carousel-slide">
-          <img src="/images/kalkan/kalkan19.jpg" alt="Kalkan moment 19">
-        </div>
-      </div>
-      
-      <div class="carousel-clickable left" onclick="moveSlide(-1)"></div>
-      <div class="carousel-clickable right" onclick="moveSlide(1)"></div>
-      <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">⛶</button>
+    <!-- Gallery Navigation (hidden initially) -->
+    <div class="gallery-nav">
+      <button class="nav-button" onclick="moveSlide(-1)">Previous</button>
+      <button class="nav-button" onclick="moveSlide(1)">Next</button>
+      <button class="nav-button" onclick="showThumbnails()">Thumbs</button>
     </div>
+    <!-- Gallery Container -->
+    <div id="gallery-container" data-items='[
+      {"src": "/images/kalkan/kalkan-1.jpg", "alt": "Kalkan 1"},
+      {"src": "/images/kalkan/kalkan-2.jpg", "alt": "Kalkan 2"},
+      {"src": "/images/kalkan/kalkan-3.jpg", "alt": "Kalkan 3"},
+      {"src": "/images/kalkan/kalkan-4.jpg", "alt": "Kalkan 4"},
+      {"src": "/images/kalkan/kalkan-5.jpg", "alt": "Kalkan 5"},
+      {"src": "/images/kalkan/kalkan-6.jpg", "alt": "Kalkan 6"},
+      {"src": "/images/kalkan/kalkan-7.jpg", "alt": "Kalkan 7"},
+      {"src": "/images/kalkan/kalkan-8.jpg", "alt": "Kalkan 8"},
+      {"src": "/images/kalkan/kalkan-9.jpg", "alt": "Kalkan 9"},
+      {"src": "/images/kalkan/kalkan-10.jpg", "alt": "Kalkan 10"},
+      {"src": "/images/kalkan/kalkan-11.jpg", "alt": "Kalkan 11"},
+      {"src": "/images/kalkan/kalkan-12.jpg", "alt": "Kalkan 12"},
+      {"src": "/images/kalkan/kalkan-13.jpg", "alt": "Kalkan 13"},
+      {"src": "/images/kalkan/kalkan-14.jpg", "alt": "Kalkan 14"},
+      {"src": "/images/kalkan/kalkan-15.jpg", "alt": "Kalkan 15"},
+      {"src": "/images/kalkan/kalkan-16.jpg", "alt": "Kalkan 16"},
+      {"src": "/images/kalkan/kalkan-17.jpg", "alt": "Kalkan 17"},
+      {"src": "/images/kalkan/kalkan-18.jpg", "alt": "Kalkan 18"},
+      {"src": "/images/kalkan/kalkan-19.jpg", "alt": "Kalkan 19"},
+      {"src": "/images/kalkan/kalkan-20.jpg", "alt": "Kalkan 20"},
+      {"src": "/images/kalkan/kalkan-21.jpg", "alt": "Kalkan 21"},
+      {"src": "/images/kalkan/kalkan-22.jpg", "alt": "Kalkan 22"},
+      {"src": "/images/kalkan/kalkan-23.jpg", "alt": "Kalkan 23"},
+      {"src": "/images/kalkan/kalkan-24.jpg", "alt": "Kalkan 24"},
+      {"src": "/images/kalkan/kalkan-25.jpg", "alt": "Kalkan 25"}
+    ]' data-alt-prefix="Kalkan"></div>
   </div>
-
   <!-- Include the shared menu system -->
-  <script src="menu.js"></script>
-  
-  <!-- Page-specific carousel JavaScript -->
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const totalSlides = slides.length;
-
-    function handleImageLoad() {
-      const images = document.querySelectorAll('.carousel-slide img');
-      images.forEach(img => {
-        img.onload = function() {
-          if (this.naturalHeight > this.naturalWidth) {
-            this.classList.add('portrait');
-          }
-        };
-        if (img.complete && img.naturalHeight > 0) {
-          if (img.naturalHeight > img.naturalWidth) {
-            img.classList.add('portrait');
-          }
-        }
-      });
-    }
-
-    function showSlide(n) {
-      if (n >= totalSlides) currentSlide = 0;
-      if (n < 0) currentSlide = totalSlides - 1;
-      
-      const track = document.querySelector('.carousel-track');
-      track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    function moveSlide(direction) {
-      currentSlide += direction;
-      showSlide(currentSlide);
-    }
-
-    function toggleFullscreen() {
-      const carousel = document.querySelector('.carousel');
-      
-      if (!document.fullscreenElement) {
-        if (carousel.requestFullscreen) {
-          carousel.requestFullscreen().catch(err => {
-            console.log('Fullscreen not supported:', err);
-          });
-        }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        }
-      }
-    }
-
-    // Touch/swipe support
-    const carousel = document.querySelector('.carousel');
-    let startX = 0;
-    let endX = 0;
-    
-    carousel.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-    });
-
-    carousel.addEventListener('touchend', (e) => {
-      endX = e.changedTouches[0].clientX;
-      handleSwipe();
-    });
-
-    function handleSwipe() {
-      const swipeThreshold = 50;
-      const diff = startX - endX;
-      
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-          moveSlide(1);
-        } else {
-          moveSlide(-1);
-        }
-      }
-    }
-
-    // Initialize carousel
-    document.addEventListener('DOMContentLoaded', function() {
-      handleImageLoad();
-      showSlide(currentSlide);
-    });
-  </script>
+  <script src="/menu.js"></script>
+  <!-- Include the gallery system -->
+  <script src="/gallery.js?v=1"></script>
 </body>
 </html>
