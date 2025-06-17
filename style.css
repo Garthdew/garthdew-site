@@ -1,4 +1,5 @@
-/* Remove Google Fonts import - using system fonts only */
+/* Import DM Sans */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 * {
   margin: 0;
@@ -6,9 +7,9 @@
   box-sizing: border-box;
 }
 
-/* Pure Arial Brutalism */
+/* DM Sans Typography */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   color: #000000;
   background-color: #fff;
   font-size: 16px;
@@ -37,9 +38,10 @@ body {
 }
 
 .sidebar-header {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
+  text-transform: uppercase;
   margin-bottom: 2rem;
   color: #000000;
   text-decoration: none;
@@ -50,9 +52,9 @@ body {
 }
 
 .sidebar-section h3 {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   margin-bottom: 0;
   color: #000000;
 }
@@ -67,8 +69,8 @@ body {
 }
 
 .sidebar-nav a {
-  font-family: Arial, sans-serif;
-  color: #0000ff;
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #000000;
   text-decoration: none;
   font-size: 16px;
   font-weight: 400;
@@ -78,11 +80,7 @@ body {
 }
 
 .sidebar-nav a:hover {
-  color: #0000cc;
-  text-decoration: underline;
-}
-
-.sidebar-nav a:hover {
+  color: #000000;
   text-decoration: underline;
   text-decoration-color: #000000;
 }
@@ -110,35 +108,50 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-weight: 700;
   margin-bottom: 1rem;
-  line-height: 1.6;
+  line-height: 1.2;
   text-align: left;
   color: #000000;
 }
 
 h1 {
+  font-size: 60px;
+  font-weight: 700;
   margin-bottom: 2rem;
-  font-size: 16px;
-}
-
-/* Page title underline class - add this to your HTML */
-.page-title {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 h2 {
+  font-size: 32px;
   margin-top: 2rem;
+}
+
+h3 {
+  font-size: 24px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
   font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.6;
+}
+
+/* Remove page title underline class */
+.page-title {
+  text-decoration: none;
 }
 
 p {
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 ul {
@@ -146,19 +159,20 @@ ul {
 }
 
 a {
-  color: #0000ff;
+  color: #000000;
   text-decoration: none;
   background-color: transparent;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: #0000cc;
+  color: #000000;
   text-decoration: underline;
+  text-decoration-color: #000000;
 }
 
 a:visited {
-  color: #0000cc;
+  color: #000000;
 }
 
 /* Hamburger Menu (Mobile) */
@@ -200,9 +214,9 @@ a:visited {
 .nav-button {
   background: none;
   border: none;
-  color: #0000ff;
+  color: #000000;
   font-size: 16px;
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-weight: 400;
   cursor: pointer;
   margin-right: 1rem;
@@ -211,8 +225,9 @@ a:visited {
 }
 
 .nav-button:hover {
-  color: #0000cc;
+  color: #000000;
   text-decoration: underline;
+  text-decoration-color: #000000;
 }
 
 /* Thumbnail Grid */
@@ -456,7 +471,7 @@ a:visited {
 }
 
 .project-title {
-  font-family: Arial, sans-serif;
+  font-family: 'DM Sans', Arial, sans-serif;
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
@@ -678,12 +693,29 @@ hr {
   body {
     padding-bottom: 3rem;
   }
+
+  /* Mobile typography adjustments */
+  h1 {
+    font-size: 40px;
+  }
+  
+  h2 {
+    font-size: 28px;
+  }
+  
+  h3 {
+    font-size: 22px;
+  }
 }
 
 @media (max-width: 500px) {
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 32px;
   }
 }
 
@@ -713,4 +745,3 @@ hr {
   margin-left: 0 !important;
   margin-right: auto !important;
 }
-
