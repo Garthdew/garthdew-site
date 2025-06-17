@@ -10,6 +10,7 @@
     .simple-gallery {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-auto-rows: 300px; /* Fixed row height */
       gap: 2rem;
       max-width: 1200px;
       margin: 0;
@@ -18,7 +19,8 @@
     
     .simple-gallery img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
       margin: 0;
       border-radius: 0;
@@ -26,12 +28,29 @@
       border: none;
     }
     
+    /* Portrait images span 2 rows */
+    .simple-gallery img.portrait {
+      grid-row: span 2;
+      height: calc(600px + 2rem); /* Two rows + gap */
+    }
+    
     /* Mobile: Single column */
     @media (max-width: 768px) {
       .simple-gallery {
         grid-template-columns: 1fr;
+        grid-auto-rows: auto;
         gap: 1.5rem;
         padding: 0 1rem;
+      }
+      
+      .simple-gallery img.portrait {
+        grid-row: span 1;
+        height: auto;
+      }
+      
+      .simple-gallery img {
+        height: auto;
+        object-fit: contain;
       }
       
       .wide-content {
