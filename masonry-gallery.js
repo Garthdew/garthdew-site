@@ -22,38 +22,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Insert gallery
   galleryContainer.innerHTML = galleryHTML;
   
-  // Auto-detect orientations and create uniform layout
+  // Auto-detect orientations and apply classes
   const images = galleryContainer.querySelectorAll('.masonry-item img');
   let loadedCount = 0;
   
   function checkAllLoaded() {
     loadedCount++;
     if (loadedCount === images.length) {
-      createUniformLayout();
+      applyOrientationClasses();
     }
   }
   
-  function createUniformLayout() {
+  function applyOrientationClasses() {
     const items = Array.from(galleryContainer.querySelectorAll('.masonry-item'));
     
-    // Calculate base height for landscape images (3:2 ratio)
-    const containerWidth = galleryContainer.querySelector('.masonry-gallery').offsetWidth;
-    const columnWidth = (containerWidth - 32) / 2; // Account for gap
-    const landscapeHeight = Math.round(columnWidth * (2/3)); // 3:2 ratio
-    const portraitHeight = Math.round(columnWidth * (3/2)); // 2:3 ratio
-    
-    items.forEach((item, index) => {
+    items.forEach((item) => {
       const img = item.querySelector('img');
       const aspectRatio = img.naturalWidth / img.naturalHeight;
       
       if (aspectRatio < 1) {
         // Portrait image
         item.classList.add('portrait');
-        item.style.height = `${portraitHeight}px`;
       } else {
         // Landscape image  
         item.classList.add('landscape');
-        item.style.height = `${landscapeHeight}px`;
       }
     });
   }
@@ -66,13 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
       checkAllLoaded();
     }
   });
-  
-  // Recalculate on window resize
-  let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(createUniformLayout, 250);
-  });
 });
 
 // Add CSS styles
@@ -82,25 +67,21 @@ const masonryStyles = `
 .masonry-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: auto;
   gap: 2rem;
   max-width: 1200px;
   margin: 0;
   padding: 0 1rem;
+  align-items: start;
 }
 
 .masonry-item {
-  overflow: visible;
-  background-color: transparent;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 .masonry-item img {
   width: 100%;
-  max-width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
   display: block;
@@ -110,12 +91,12 @@ const masonryStyles = `
   border: none;
 }
 
-/* Ensure consistent spacing */
-.masonry-item.landscape {
-  margin-bottom: 2rem;
+/* Create visual balance - portraits get more bottom margin to balance height difference */
+.masonry-item.portrait {
+  margin-bottom: 1rem;
 }
 
-.masonry-item.portrait {
+.masonry-item.landscape {
   margin-bottom: 2rem;
 }
 
@@ -127,18 +108,9 @@ const masonryStyles = `
     padding: 0 1rem;
   }
   
-  .masonry-item {
-    height: auto !important;
-  }
-  
-  .masonry-item img {
-    height: auto;
-    width: 100%;
-  }
-  
   .masonry-item.landscape,
   .masonry-item.portrait {
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 }
 
