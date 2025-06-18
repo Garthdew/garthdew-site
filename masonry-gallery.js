@@ -1,4 +1,4 @@
-// masonry-gallery.js - Automatic two-column masonry gallery
+// masonry-gallery.js - Automatic two-column masonry gallery with uniform spacing
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
@@ -22,23 +22,56 @@ document.addEventListener('DOMContentLoaded', function() {
   // Insert gallery
   galleryContainer.innerHTML = galleryHTML;
   
-  // Auto-detect portrait images and apply masonry
+  // Auto-detect orientations and create uniform layout
   const images = galleryContainer.querySelectorAll('.masonry-item img');
+  let loadedCount = 0;
+  
+  function checkAllLoaded() {
+    loadedCount++;
+    if (loadedCount === images.length) {
+      createUniformLayout();
+    }
+  }
+  
+  function createUniformLayout() {
+    const items = Array.from(galleryContainer.querySelectorAll('.masonry-item'));
+    
+    // Calculate base height for landscape images (3:2 ratio)
+    const containerWidth = galleryContainer.querySelector('.masonry-gallery').offsetWidth;
+    const columnWidth = (containerWidth - 32) / 2; // Account for gap
+    const landscapeHeight = Math.round(columnWidth * (2/3)); // 3:2 ratio
+    const portraitHeight = Math.round(columnWidth * (3/2)); // 2:3 ratio
+    
+    items.forEach((item, index) => {
+      const img = item.querySelector('img');
+      const aspectRatio = img.naturalWidth / img.naturalHeight;
+      
+      if (aspectRatio < 1) {
+        // Portrait image
+        item.classList.add('portrait');
+        item.style.height = `${portraitHeight}px`;
+      } else {
+        // Landscape image  
+        item.classList.add('landscape');
+        item.style.height = `${landscapeHeight}px`;
+      }
+    });
+  }
   
   images.forEach(img => {
-    img.onload = function() {
-      const aspectRatio = this.naturalWidth / this.naturalHeight;
-      
-      // If height > width (portrait), span 2 rows
-      if (aspectRatio < 1) {
-        this.closest('.masonry-item').classList.add('portrait');
-      }
-    };
+    img.onload = checkAllLoaded;
     
     // Handle already loaded images
     if (img.complete) {
-      img.onload();
+      checkAllLoaded();
     }
+  });
+  
+  // Recalculate on window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(createUniformLayout, 250);
   });
 });
 
@@ -59,11 +92,15 @@ const masonryStyles = `
 .masonry-item {
   overflow: visible;
   background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .masonry-item img {
   width: 100%;
-  height: auto;
+  max-width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   display: block;
@@ -73,11 +110,13 @@ const masonryStyles = `
   border: none;
 }
 
-/* Portrait images - maintain aspect ratio but visually balance */
-.masonry-item.portrait img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+/* Ensure consistent spacing */
+.masonry-item.landscape {
+  margin-bottom: 2rem;
+}
+
+.masonry-item.portrait {
+  margin-bottom: 2rem;
 }
 
 /* Mobile: Single column, natural heights */
@@ -86,6 +125,20 @@ const masonryStyles = `
     grid-template-columns: 1fr;
     gap: 1.5rem;
     padding: 0 1rem;
+  }
+  
+  .masonry-item {
+    height: auto !important;
+  }
+  
+  .masonry-item img {
+    height: auto;
+    width: 100%;
+  }
+  
+  .masonry-item.landscape,
+  .masonry-item.portrait {
+    margin-bottom: 0;
   }
 }
 
