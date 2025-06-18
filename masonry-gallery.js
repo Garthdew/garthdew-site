@@ -1,4 +1,4 @@
-// masonry-gallery.js - Automatic two-column masonry gallery with uniform spacing
+// masonry-gallery.js - True two-column masonry with consistent spacing
 document.addEventListener('DOMContentLoaded', function() {
   const galleryContainer = document.getElementById('gallery-container');
   if (!galleryContainer) return;
@@ -6,56 +6,33 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get gallery data
   const galleryData = JSON.parse(galleryContainer.getAttribute('data-items'));
   
-  // Create masonry gallery HTML
-  let galleryHTML = '<div class="masonry-gallery">';
+  // Create two-column structure
+  let galleryHTML = `
+    <div class="masonry-gallery">
+      <div class="masonry-column" id="column-1"></div>
+      <div class="masonry-column" id="column-2"></div>
+    </div>
+  `;
   
+  // Insert gallery structure
+  galleryContainer.innerHTML = galleryHTML;
+  
+  const column1 = document.getElementById('column-1');
+  const column2 = document.getElementById('column-2');
+  
+  // Distribute images alternately between columns
   galleryData.forEach((item, index) => {
-    galleryHTML += `
-      <div class="masonry-item" data-index="${index}">
+    const imageHTML = `
+      <div class="masonry-item">
         <img src="${item.src}" alt="${item.alt}" loading="lazy">
       </div>
     `;
-  });
-  
-  galleryHTML += '</div>';
-  
-  // Insert gallery
-  galleryContainer.innerHTML = galleryHTML;
-  
-  // Auto-detect orientations and apply classes
-  const images = galleryContainer.querySelectorAll('.masonry-item img');
-  let loadedCount = 0;
-  
-  function checkAllLoaded() {
-    loadedCount++;
-    if (loadedCount === images.length) {
-      applyOrientationClasses();
-    }
-  }
-  
-  function applyOrientationClasses() {
-    const items = Array.from(galleryContainer.querySelectorAll('.masonry-item'));
     
-    items.forEach((item) => {
-      const img = item.querySelector('img');
-      const aspectRatio = img.naturalWidth / img.naturalHeight;
-      
-      if (aspectRatio < 1) {
-        // Portrait image
-        item.classList.add('portrait');
-      } else {
-        // Landscape image  
-        item.classList.add('landscape');
-      }
-    });
-  }
-  
-  images.forEach(img => {
-    img.onload = checkAllLoaded;
-    
-    // Handle already loaded images
-    if (img.complete) {
-      checkAllLoaded();
+    // Alternate between columns
+    if (index % 2 === 0) {
+      column1.insertAdjacentHTML('beforeend', imageHTML);
+    } else {
+      column2.insertAdjacentHTML('beforeend', imageHTML);
     }
   });
 });
@@ -63,20 +40,28 @@ document.addEventListener('DOMContentLoaded', function() {
 // Add CSS styles
 const masonryStyles = `
 <style>
-/* Masonry Gallery Styles */
+/* True Masonry Gallery Styles */
 .masonry-gallery {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   gap: 2rem;
   max-width: 1200px;
   margin: 0;
   padding: 0 1rem;
-  align-items: start;
+}
+
+.masonry-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .masonry-item {
-  width: 100%;
   margin-bottom: 2rem;
+  width: 100%;
+}
+
+.masonry-item:last-child {
+  margin-bottom: 0;
 }
 
 .masonry-item img {
@@ -91,25 +76,19 @@ const masonryStyles = `
   border: none;
 }
 
-/* Create visual balance - portraits get more bottom margin to balance height difference */
-.masonry-item.portrait {
-  margin-bottom: 1rem;
-}
-
-.masonry-item.landscape {
-  margin-bottom: 2rem;
-}
-
-/* Mobile: Single column, natural heights */
+/* Mobile: Single column */
 @media (max-width: 768px) {
   .masonry-gallery {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    flex-direction: column;
+    gap: 0;
     padding: 0 1rem;
   }
   
-  .masonry-item.landscape,
-  .masonry-item.portrait {
+  .masonry-column {
+    width: 100%;
+  }
+  
+  .masonry-item {
     margin-bottom: 1.5rem;
   }
 }
