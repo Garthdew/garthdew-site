@@ -49,7 +49,7 @@ const masonryStyles = `
 .masonry-gallery {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 300px;
+  grid-auto-rows: auto;
   gap: 2rem;
   max-width: 1200px;
   margin: 0;
@@ -57,52 +57,35 @@ const masonryStyles = `
 }
 
 .masonry-item {
-  overflow: hidden;
-  background-color: #f5f5f5;
+  overflow: visible;
+  background-color: transparent;
 }
 
 .masonry-item img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   object-position: center;
   display: block;
   margin: 0;
   border-radius: 0;
   box-shadow: none;
   border: none;
-  transition: transform 0.3s ease;
 }
 
-.masonry-item:hover img {
-  transform: scale(1.02);
-}
-
-/* Portrait images span 2 rows */
-.masonry-item.portrait {
-  grid-row: span 2;
+/* Portrait images - maintain aspect ratio but visually balance */
+.masonry-item.portrait img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Mobile: Single column, natural heights */
 @media (max-width: 768px) {
   .masonry-gallery {
     grid-template-columns: 1fr;
-    grid-auto-rows: auto;
     gap: 1.5rem;
     padding: 0 1rem;
-  }
-  
-  .masonry-item.portrait {
-    grid-row: span 1;
-  }
-  
-  .masonry-item img {
-    height: auto;
-    object-fit: contain;
-  }
-  
-  .masonry-item:hover img {
-    transform: none;
   }
 }
 
