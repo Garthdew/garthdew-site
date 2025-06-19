@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="sidebar-section">
         <h3 class="section-toggle" onclick="toggleSection('photography')">Photography</h3>
         <ul class="sidebar-nav section-content" id="photography" style="display: none;">
-          <li><a href="/projects/prestonians">Prestonians</a></li>
-          <li><a href="/projects/everyday">Everyday</a></li>
+          <li><a href="/projects/preston">Preston</a></li>
           <li><a href="/projects/festival">Festival</a></li>
           <li><a href="/projects/kalkan">Kalkan</a></li>
         </ul>
