@@ -36,18 +36,16 @@
             <div class="content-section">
                 <p>I write a monthly newsletter about my photography work, including process, works in progress and book launches.</p>
             </div>
-
             <div class="newsletter-signup">
-                <form class="signup-form" action="https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse" method="post" target="hidden_iframe">
-                    <input type="email" name="entry.YOUR_ENTRY_ID" placeholder="Enter your email address" required>
+                <form class="signup-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdSbcELwjTgj6Ot4jy7RcKPRv8fRGgKHQMC9QBWcjmKkUSHkA/formResponse" method="post" target="hidden_iframe" onsubmit="showThankYou()">
+                    <input type="email" name="entry.1670847390" placeholder="Enter your email address" required>
                     <button type="submit">Subscribe</button>
                 </form>
-                <iframe name="hidden_iframe" style="display:none;"></iframe>
+                <iframe name="hidden_iframe" style="display:none;" onload="if(submitted) {showThankYou()}"></iframe>
                 <div class="form-message" id="formMessage" style="display:none;">
                     <p>Thank you for subscribing!</p>
                 </div>
             </div>
-
             <div class="content-section">
             <h2>Editions</h2>
             <p><a href="newsletter/newsletter1.html">1. Outraging My True Nature (August 2025)</a></p>
@@ -55,5 +53,13 @@
         </main>
     </div>
     <script src="menu.js"></script>
+    <script>
+        let submitted = false;
+        function showThankYou() {
+            submitted = true;
+            document.getElementById('formMessage').style.display = 'block';
+            document.querySelector('.signup-form').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
