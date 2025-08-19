@@ -5,9 +5,9 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background-color: #ffffff;
-    color: #333333;
+    color: #1a1a1a;
     line-height: 1.6;
 }
 
@@ -31,7 +31,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #333333;
+    color: #1a1a1a;
 }
 
 /* Desktop Navigation */
@@ -41,7 +41,7 @@ body {
 }
 
 .nav-desktop a {
-    color: #666666;
+    color: #333333;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
@@ -49,7 +49,7 @@ body {
 
 .nav-desktop a:hover,
 .nav-desktop a.active {
-    color: #333333;
+    color: #1a1a1a;
 }
 
 /* Mobile Navigation */
@@ -70,7 +70,7 @@ body {
 .hamburger span {
     width: 20px;
     height: 2px;
-    background-color: #333333;
+    background-color: #1a1a1a;
     transition: all 0.3s ease;
 }
 
@@ -115,7 +115,7 @@ body {
 }
 
 .mobile-nav-links a {
-    color: #333333;
+    color: #1a1a1a;
     text-decoration: none;
     font-size: 24px;
     font-weight: 300;
@@ -133,7 +133,7 @@ body {
     border: none;
     font-size: 30px;
     cursor: pointer;
-    color: #333333;
+    color: #1a1a1a;
 }
 
 /* Main Content */
@@ -158,11 +158,12 @@ body {
     font-weight: 300;
     margin-bottom: 20px;
     letter-spacing: 1px;
+    color: #1a1a1a;
 }
 
 .content-section p {
     font-size: 16px;
-    color: #666666;
+    color: #333333;
     margin-bottom: 15px;
 }
 
@@ -190,12 +191,12 @@ body {
 
 .signup-form input[type="email"]:focus {
     outline: none;
-    border-color: #333333;
+    border-color: #1a1a1a;
 }
 
 .signup-form button {
     padding: 12px 24px;
-    background-color: #333333;
+    background-color: #1a1a1a;
     color: #ffffff;
     border: none;
     border-radius: 0;
@@ -206,7 +207,7 @@ body {
 }
 
 .signup-form button:hover {
-    background-color: #555555;
+    background-color: #333333;
 }
 
 .form-message {
@@ -214,7 +215,7 @@ body {
     padding: 12px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
-    color: #333333;
+    color: #1a1a1a;
     font-size: 14px;
 }
 
@@ -228,14 +229,14 @@ body {
 }
 
 .newsletter-list a {
-    color: #666666;
+    color: #333333;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
 .newsletter-list a:hover {
-    color: #333333;
+    color: #1a1a1a;
 }
 
 /* Responsive Design */
