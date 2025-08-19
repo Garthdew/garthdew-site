@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Garth Dew</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo">Garth Dew</a>
+            
+            <!-- Desktop Navigation - populated by menu.js -->
+            <nav class="nav-desktop">
+                <!-- Navigation links will be inserted here -->
+            </nav>
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile">
+                <button class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+            <div class="mobile-nav-links">
+                <!-- Mobile navigation links will be inserted here -->
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-section">
+                <p>I take photos of life as it happens – the people I meet, the places I go, and the moments that catch my eye. My work evolves from a deep curiosity about the world around me, capturing what I see without staging or pretence.</p>
+                
+                <p>Alongside my personal photography, I run <a href="https://gdvideo.co.uk" target="_blank">GD Video</a>, a commercial video storytelling company working with brands including Volvo, Speedo, Arla, Quorn, and Neve to create authentic visual narratives.</p>
+            </div>
+        </main>
+    </div>
+    <script src="menu.js"></script>
+</body>
+</html>
