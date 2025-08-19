@@ -1,67 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Garth Dew</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=4">
-  <style>
-    /* Hero image styles */
-    .hero-container {
-      position: absolute;
-      left: 250px; /* Start exactly at sidebar edge */
-      top: 0;
-      width: calc(100vw - 250px); /* Full viewport width minus sidebar */
-      height: 100vh; /* Full viewport height */
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Ensure body has no margins/padding */
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Prevent any scrollbars */
-    }
-    
-    /* Override any main-content styles */
-    .main-content {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: auto !important;
-    }
-    
-    /* Mobile adjustments - full screen */
-    @media (max-width: 768px) {
-      .hero-container {
-        left: 0;
-        width: 100vw; /* Full viewport width */
-        height: 100vh; /* Full viewport height */
-      }
-      
-      body {
-        overflow: visible; /* Allow scrolling on mobile for menu */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="hero-container">
-    <img src="/images/preston/preston-4.jpg" alt="Garth Dew Photography" class="hero-image">
-  </div>
-  
-  <!-- Include the shared menu system -->
-  <script src="/menu.js"></script>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo">Garth Dew</a>
+            
+            <!-- Desktop Navigation - populated by menu.js -->
+            <nav class="nav-desktop">
+                <!-- Navigation links will be inserted here -->
+            </nav>
+
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile">
+                <button class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+            <div class="mobile-nav-links">
+                <!-- Mobile navigation links will be inserted here -->
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Single hero image for photographs page -->
+            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop&crop=center" alt="Street Photography" class="hero-image">
+        </main>
+    </div>
+
+    <script src="menu.js"></script>
 </body>
 </html>
