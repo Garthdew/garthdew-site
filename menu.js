@@ -1,8 +1,8 @@
 // Menu configuration - add new menu items here
 const menuItems = [
     { name: 'Photographs', href: 'index.html' },
-    { name: 'Books', href: 'books.html' },
     { name: 'Newsletter', href: 'newsletter.html' },
+    { name: 'Books', href: 'books.html' },
     { name: 'About', href: 'about.html' }
 ];
 
