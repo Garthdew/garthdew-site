@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books - Garth Dew</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <a href="index.html" class="logo">Garth Dew</a>
+            
+            <!-- Desktop Navigation - populated by menu.js -->
+            <nav class="nav-desktop">
+                <!-- Navigation links will be inserted here -->
+            </nav>
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile">
+                <button class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </header>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
+            <div class="mobile-nav-links">
+                <!-- Mobile navigation links will be inserted here -->
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-section">
+                <h2>Coming Soon</h2>
+                <p>A series of books is on the way.</p>
+            </div>
+            
+            <img src="images/homepage/homepage-6.jpg" alt="Photography Book Preview" class="hero-image">
+        </main>
+    </div>
+    <script src="menu.js"></script>
+</body>
+</html>
