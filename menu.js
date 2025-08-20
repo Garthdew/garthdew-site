@@ -1,9 +1,9 @@
 // Menu configuration - add new menu items here
 const menuItems = [
-    { name: 'Photographs', href: 'index.html' },
-    { name: 'Newsletter', href: 'newsletter.html' },
-    { name: 'Books', href: 'books.html' },
-    { name: 'About', href: 'about.html' }
+    { name: 'Photographs', href: '/index.html' },
+    { name: 'Books', href: '/books.html' },
+    { name: 'Newsletter', href: '/newsletter.html' },
+    { name: 'About', href: '/about.html' }
 ];
 
 // Generate navigation HTML
@@ -12,7 +12,8 @@ function generateNavigation() {
     
     // Desktop navigation
     const desktopNav = menuItems.map(item => {
-        const activeClass = item.href === currentPage ? ' active' : '';
+        const fileName = item.href.split('/').pop();
+        const activeClass = fileName === currentPage ? ' active' : '';
         return `<a href="${item.href}" class="nav-link${activeClass}">${item.name}</a>`;
     }).join('');
     
