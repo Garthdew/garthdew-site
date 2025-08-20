@@ -5,9 +5,9 @@
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
     background-color: #ffffff;
-    color: #1a1a1a;
+    color: #333333;
     line-height: 1.6;
 }
 
@@ -31,7 +31,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    color: #1a1a1a;
+    color: #333333;
 }
 
 /* Desktop Navigation */
@@ -41,7 +41,7 @@ body {
 }
 
 .nav-desktop a {
-    color: #333333;
+    color: #666666;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
@@ -49,7 +49,7 @@ body {
 
 .nav-desktop a:hover,
 .nav-desktop a.active {
-    color: #1a1a1a;
+    color: #333333;
 }
 
 /* Mobile Navigation */
@@ -70,7 +70,7 @@ body {
 .hamburger span {
     width: 20px;
     height: 2px;
-    background-color: #1a1a1a;
+    background-color: #333333;
     transition: all 0.3s ease;
 }
 
@@ -114,15 +114,17 @@ body {
     align-items: center;
 }
 
-.mobile-nav-links a {
-    color: #1a1a1a;
+.mobile-menu a {
+    color: #333333;
     text-decoration: none;
     font-size: 24px;
     font-weight: 300;
     letter-spacing: 1px;
     text-transform: uppercase;
     display: block;
+    width: 100%;
     text-align: center;
+    padding: 10px 0;
 }
 
 .close-menu {
@@ -133,7 +135,7 @@ body {
     border: none;
     font-size: 30px;
     cursor: pointer;
-    color: #1a1a1a;
+    color: #333333;
 }
 
 /* Main Content */
@@ -146,7 +148,15 @@ body {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
+}
+
+.image-caption {
+    font-size: 14px;
+    color: #999999;
+    font-style: italic;
+    margin-bottom: 50px;
+    text-align: left;
 }
 
 .content-section {
@@ -158,12 +168,11 @@ body {
     font-weight: 300;
     margin-bottom: 20px;
     letter-spacing: 1px;
-    color: #1a1a1a;
 }
 
 .content-section p {
     font-size: 16px;
-    color: #333333;
+    color: #666666;
     margin-bottom: 15px;
 }
 
@@ -191,12 +200,12 @@ body {
 
 .signup-form input[type="email"]:focus {
     outline: none;
-    border-color: #1a1a1a;
+    border-color: #333333;
 }
 
 .signup-form button {
     padding: 12px 24px;
-    background-color: #1a1a1a;
+    background-color: #333333;
     color: #ffffff;
     border: none;
     border-radius: 0;
@@ -207,7 +216,7 @@ body {
 }
 
 .signup-form button:hover {
-    background-color: #333333;
+    background-color: #555555;
 }
 
 .form-message {
@@ -215,7 +224,7 @@ body {
     padding: 12px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
-    color: #1a1a1a;
+    color: #333333;
     font-size: 14px;
 }
 
@@ -229,14 +238,14 @@ body {
 }
 
 .newsletter-list a {
-    color: #333333;
+    color: #666666;
     text-decoration: none;
     font-size: 16px;
     transition: color 0.3s ease;
 }
 
 .newsletter-list a:hover {
-    color: #1a1a1a;
+    color: #333333;
 }
 
 /* Responsive Design */
