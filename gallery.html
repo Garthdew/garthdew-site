@@ -6,161 +6,79 @@
     <title>A Trip Takes Us - Garth Dew</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Project header styles */
-        .project-header {
-            margin-bottom: 60px;
-            max-width: 600px;
+        /* Gallery carousel styles */
+        .gallery-carousel {
+            position: relative;
+            margin: 60px 0;
+            overflow: hidden;
         }
 
-        .project-title {
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .project-type {
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            overflow-x: hidden;
-        }
-
-        .gallery-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .gallery-grid {
+        .carousel-container {
             display: flex;
-            flex-direction: column;
-            gap: 40px;
-            margin-top: 40px;
-            margin-bottom: 80px;
+            transition: transform 0.5s ease;
         }
 
-        .gallery-image {
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carousel-image {
             width: 100%;
             height: auto;
             display: block;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .gallery-image.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-image:hover {
-            transform: translateY(-2px);
-            transition: transform 0.3s ease;
-        }
-
-        /* Smooth scrolling enhancement */
-        .gallery-grid {
-            scroll-snap-type: y mandatory;
-        }
-
-        .gallery-image {
-            scroll-snap-align: start;
-        }
-
-        /* Loading animation */
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: loading 1.5s infinite;
-            margin-bottom: 40px;
-        }
-
-        @keyframes loading {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Custom scrollbar for webkit browsers */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #c1c1c1;
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a1a1a1;
-        }
-
-        /* Image counter */
-        .image-counter {
-            position: fixed;
+        /* Navigation arrows */
+        .carousel-nav {
+            position: absolute;
             top: 50%;
-            right: 30px;
             transform: translateY(-50%);
-            font-size: 12px;
-            color: #aaa;
-            font-weight: 300;
-            letter-spacing: 1px;
-            z-index: 100;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 10;
         }
 
-        .image-counter.visible {
-            opacity: 1;
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.95);
         }
+
+        .carousel-prev {
+            left: 20px;
+        }
+
+        .carousel-next {
+            right: 20px;
+        }
+
+
 
         /* Mobile adjustments */
         @media (max-width: 768px) {
-            .gallery-container {
-                padding: 0 15px;
+            .gallery-carousel {
+                margin: 40px 0;
             }
 
-            .gallery-grid {
-                gap: 30px;
-                margin-top: 30px;
-                margin-bottom: 60px;
+            .carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
             }
 
-            .image-counter {
-                right: 20px;
-                font-size: 11px;
+            .carousel-prev {
+                left: 10px;
             }
 
-            .image-placeholder {
-                height: 300px;
-                margin-bottom: 30px;
+            .carousel-next {
+                right: 10px;
             }
-        }
-
-        /* Fade in animation for images */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .gallery-image.animate {
-            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
         }
     </style>
 </head>
@@ -191,173 +109,124 @@
                 <!-- Mobile navigation links will be inserted here -->
             </div>
         </div>
-    </div>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="project-header">
-            <h2 class="project-title">A Trip Takes Us</h2>
-            <p class="project-type">Gallery</p>
+        <!-- Main Content -->
+        <main class="main-content">
             <div class="content-section">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                <h2>A Trip Takes Us</h2>
+                <p>Gallery</p>
             </div>
-        </div>
-    </main>
 
-    <!-- Gallery Content (outside main container for full width) -->
-    <div class="gallery-container">
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- Images will be loaded here -->
-        </div>
-    </div>
+            <div class="gallery-carousel">
+                <div class="carousel-container" id="carouselContainer">
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-1.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-2.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-3.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-4.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-5.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-6.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-7.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="images/homepage/homepage-8.jpg" alt="Gallery image" class="carousel-image">
+                    </div>
+                </div>
+                
+                <button class="carousel-nav carousel-prev" onclick="prevSlide()">‹</button>
+                <button class="carousel-nav carousel-next" onclick="nextSlide()">›</button>
+            </div>
 
-    <!-- Image Counter -->
-    <div class="image-counter" id="imageCounter">
-        <span id="currentImage">1</span> / <span id="totalImages">0</span>
+            <div class="content-section">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </main>
     </div>
 
     <script src="menu.js"></script>
     <script>
-        // Gallery configuration - using homepage images for practice
-        const galleryImages = [
-            'images/homepage/homepage-1.jpg',
-            'images/homepage/homepage-2.jpg',
-            'images/homepage/homepage-3.jpg',
-            'images/homepage/homepage-4.jpg',
-            'images/homepage/homepage-5.jpg',
-            'images/homepage/homepage-6.jpg',
-            'images/homepage/homepage-7.jpg',
-            'images/homepage/homepage-8.jpg'
-        ];
+        let currentSlide = 0;
+        const totalSlides = 8;
 
-        let currentImageIndex = 0;
-        const imageCounter = document.getElementById('imageCounter');
-        const currentImageSpan = document.getElementById('currentImage');
-        const totalImagesSpan = document.getElementById('totalImages');
-
-        // Initialize gallery
-        function initGallery() {
-            const galleryGrid = document.getElementById('galleryGrid');
-            totalImagesSpan.textContent = galleryImages.length;
-
-            galleryImages.forEach((imageSrc, index) => {
-                const img = document.createElement('img');
-                img.src = imageSrc;
-                img.alt = `Gallery image ${index + 1}`;
-                img.className = 'gallery-image';
-                img.dataset.index = index;
-                
-                // Add loading event
-                img.onload = () => {
-                    setTimeout(() => {
-                        img.classList.add('loaded');
-                    }, index * 100); // Stagger the animations
-                };
-
-                galleryGrid.appendChild(img);
-            });
-
-            // Show counter after images are loaded
-            setTimeout(() => {
-                imageCounter.classList.add('visible');
-            }, 500);
+        // Update carousel position
+        function updateCarousel() {
+            const container = document.getElementById('carouselContainer');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
         }
 
-        // Update image counter based on scroll position
-        function updateImageCounter() {
-            const images = document.querySelectorAll('.gallery-image');
-            const scrollPosition = window.scrollY + window.innerHeight / 2;
-            
-            let newCurrentIndex = 0;
-            
-            images.forEach((img, index) => {
-                const imgTop = img.offsetTop;
-                const imgBottom = imgTop + img.offsetHeight;
-                
-                if (scrollPosition >= imgTop && scrollPosition <= imgBottom) {
-                    newCurrentIndex = index + 1;
-                }
-            });
-            
-            if (newCurrentIndex !== currentImageIndex) {
-                currentImageIndex = newCurrentIndex;
-                currentImageSpan.textContent = currentImageIndex;
-            }
+        // Navigate to specific slide
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
         }
 
-        // Smooth scroll behavior
-        function smoothScroll() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollTop / scrollHeight;
-            
-            // Add subtle parallax effect
-            const images = document.querySelectorAll('.gallery-image.loaded');
-            images.forEach((img, index) => {
-                const speed = 0.1;
-                const yPos = -(scrollTop * speed);
-                img.style.transform = `translateY(${yPos}px)`;
-            });
+        // Next slide
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        // Previous slide
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
         }
 
         // Keyboard navigation
-        function handleKeyPress(e) {
-            const images = document.querySelectorAll('.gallery-image');
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Touch/swipe support
+        let startX = 0;
+        let isDragging = false;
+
+        const carousel = document.querySelector('.gallery-carousel');
+
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        carousel.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+
+        carousel.addEventListener('touchend', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
             
-            if (e.key === 'ArrowDown' || e.key === ' ') {
-                e.preventDefault();
-                if (currentImageIndex < images.length) {
-                    images[currentImageIndex].scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                }
-            } else if (e.key === 'ArrowUp') {
-                e.preventDefault();
-                if (currentImageIndex > 1) {
-                    images[currentImageIndex - 2].scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
+            const endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
                 }
             }
-        }
-
-        // Event listeners
-        window.addEventListener('scroll', () => {
-            updateImageCounter();
-            requestAnimationFrame(smoothScroll);
         });
 
-        window.addEventListener('keydown', handleKeyPress);
-
-        // Initialize when DOM is loaded
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            initGallery();
-            
-            // Initial counter update
-            setTimeout(updateImageCounter, 1000);
+            // Carousel is ready to use
         });
-
-        // Intersection Observer for better performance
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '50px'
-        });
-
-        // Observe images when they're added
-        setTimeout(() => {
-            document.querySelectorAll('.gallery-image').forEach(img => {
-                imageObserver.observe(img);
-            });
-        }, 100);
     </script>
 </body>
 </html>
