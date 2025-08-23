@@ -12,6 +12,15 @@
             margin-bottom: 40px;
         }
 
+        .album-cover {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            margin: 0 auto 30px auto;
+        }
+
         .bandcamp-container {
             display: flex;
             justify-content: center;
@@ -23,6 +32,12 @@
         }
 
         /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .album-cover {
+                margin-bottom: 20px;
+            }
+        }
+
         @media (max-width: 480px) {
             .bandcamp-container iframe {
                 width: 100% !important;
@@ -65,8 +80,10 @@
                 <h2 class="music-title">Music</h2>
             </div>
 
+            <img src="images/homepage/homepage-1.jpg" alt="And Then, It Flowed - Album Cover" class="album-cover">
+
             <div class="bandcamp-container">
-                <iframe style="border: 0; width: 400px; height: 439px;" src="https://bandcamp.com/EmbeddedPlayer/album=2852229780/size=large/bgcol=ffffff/linkcol=333333/artwork=small/transparent=true/" seamless><a href="https://garthdew.bandcamp.com/album/and-then-it-flowed">And Then, It Flowed by Garth Dew</a></iframe>
+                <iframe style="border: 0; width: 350px; height: 439px;" src="https://bandcamp.com/EmbeddedPlayer/album=2852229780/size=large/bgcol=ffffff/linkcol=333333/artwork=none/transparent=true/" seamless><a href="https://garthdew.bandcamp.com/album/and-then-it-flowed">And Then, It Flowed by Garth Dew</a></iframe>
             </div>
 
             <div class="content-section">
