@@ -43,6 +43,14 @@ body {
   text-decoration: none;
 }
 
+.sidebar-logo {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 2rem;
+  display: block;
+}
+
 .sidebar-section {
   margin-bottom: 0.5rem;
 }
