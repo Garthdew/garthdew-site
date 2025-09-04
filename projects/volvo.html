@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Volvo – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css?v=4">
+</head>
+<body>
+  <div class="content-area">
+    <h1 class="page-title">Volvo</h1>
+  </div>
+  
+  <div class="wide-content">
+    <!-- Gallery Navigation (hidden initially) -->
+    <div class="gallery-nav">
+      <button class="nav-button" onclick="moveSlide(-1)">Previous</button>
+      <button class="nav-button" onclick="moveSlide(1)">Next</button>
+      <button class="nav-button" onclick="showThumbnails()">Thumbs</button>
+    </div>
+    <!-- Gallery Container -->
+    <div id="gallery-container" data-items='[
+      {"type": "video", "src": "https://player.vimeo.com/video/797371687", "orientation": "vertical", "thumbnail": "/images/thumbnails/volvo1.jpg", "alt": "Recharge Myself"},
+      {"type": "video", "src": "https://player.vimeo.com/video/797380942", "orientation": "vertical", "thumbnail": "/images/thumbnails/volvo2.jpg", "alt": "Distance Challenge"},
+      {"src": "/images/volvo/volvo-1.jpg", "alt": "Volvo 1"},
+      {"src": "/images/volvo/volvo-2.jpg", "alt": "Volvo 2"},
+      {"src": "/images/volvo/volvo-3.jpg", "alt": "Volvo 3"},
+      {"src": "/images/volvo/volvo-4.jpg", "alt": "Volvo 4"},
+      {"src": "/images/volvo/volvo-5.jpg", "alt": "Volvo 5"},
+      {"src": "/images/volvo/volvo-6.jpg", "alt": "Volvo 6"}
+    ]' data-alt-prefix="Volvo"></div>
+  </div>
+  <!-- Include the shared menu system -->
+  <script src="/menu.js"></script>
+  <!-- Include the video-enabled gallery system -->
+  <script src="/galleryvideo.js?v=1"></script>
+</body>
+</html>

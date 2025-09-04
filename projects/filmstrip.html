@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>With What I Have – Garth Dew</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="content-area">
+    <h1>With What I Have</h1>
+    <p>I grew up, live and work in Preston, England. This ongoing project is my photographic look at the city, with particular emphasis on the town centre, the market, and the streets near my studio.</p>
+  </div>
+  
+  <div class="wide-content">
+    <!-- Film Strip Gallery -->
+    <div id="preston-filmstrip"></div>
+  </div>
+
+  <!-- Include the shared menu system -->
+  <script src="/menu.js"></script>
+  <!-- Include the film strip system -->
+  <script src="/filmstrip.js"></script>
+  
+  <script>
+    // Convert your existing image list to film strip format
+    const prestonImages = [
+      { src: '/images/preston/preston1.jpg', aspect: 'landscape', alt: 'Preston 1' },
+      { src: '/images/preston/preston2.jpg', aspect: 'portrait', alt: 'Preston 2' },
+      { src: '/images/preston/preston3.jpg', aspect: 'landscape', alt: 'Preston 3' },
+      { src: '/images/preston/preston4.jpg', aspect: 'square', alt: 'Preston 4' },
+      { src: '/images/preston/preston5.jpg', aspect: 'landscape', alt: 'Preston 5' },
+      { src: '/images/preston/preston6.jpg', aspect: 'portrait', alt: 'Preston 6' },
+      { src: '/images/preston/preston7.jpg', aspect: 'landscape', alt: 'Preston 7' },
+      { src: '/images/preston/preston8.jpg', aspect: 'portrait', alt: 'Preston 8' },
+      { src: '/images/preston/preston9.jpg', aspect: 'landscape', alt: 'Preston 9' },
+      { src: '/images/preston/preston10.jpg', aspect: 'square', alt: 'Preston 10' },
+      { src: '/images/preston/preston11.jpg', aspect: 'landscape', alt: 'Preston 11' },
+      { src: '/images/preston/preston12.jpg', aspect: 'portrait', alt: 'Preston 12' },
+      { src: '/images/preston/preston13.jpg', aspect: 'landscape', alt: 'Preston 13' },
+      { src: '/images/preston/preston14.jpg', aspect: 'landscape', alt: 'Preston 14' },
+      { src: '/images/preston/preston15.jpg', aspect: 'portrait', alt: 'Preston 15' }
+    ];
+
+    // Create the film strip using your exact same images
+    createFilmStrip('preston-filmstrip', prestonImages, {
+      height: 500,
+      showPerforations: false,
+      clickToView: true,
+      enableKeyboard: true,
+      onImageClick: (image, index) => {
+        console.log(`Viewing: ${image.alt} (${index + 1} of ${prestonImages.length})`);
+        // Add any click behavior you want here
+      }
+    });
+  </script>
+</body>
+</html>
