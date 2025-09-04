@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">Garth Dew</div>
+      <div class="sidebar-header">GARTH DEW</div>
       
-      <div class="sidebar-section">
+      <div class="sidebar-section" id="info-section">
         <h3 class="section-toggle" onclick="toggleSection('info')">Info</h3>
         <ul class="sidebar-nav section-content" id="info" style="display: none;">
           <li><a href="/about">About / Contact</a></li>
         </ul>
       </div>
       
-      <div class="sidebar-section">
+      <div class="sidebar-section" id="photography-section">
         <h3 class="section-toggle" onclick="toggleSection('photography')">Photography</h3>
         <ul class="sidebar-nav section-content" id="photography" style="display: none;">
           <li><a href="/projects/preston">Preston</a></li>
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
       </div>
       
-      <div class="sidebar-section">
+      <div class="sidebar-section" id="film-section">
         <h3 class="section-toggle" onclick="toggleSection('film')">Film</h3>
         <ul class="sidebar-nav section-content" id="film" style="display: none;">
           <li><a href="/projects/headabovewater">Head Above Water</a></li>
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
       </div>
       
-      <div class="sidebar-section">
+      <div class="sidebar-section" id="music-section">
         <h3 class="section-toggle" onclick="toggleSection('music')">Music</h3>
         <ul class="sidebar-nav section-content" id="music" style="display: none;">
           <li><a href="/projects/flow">And Then, It Flowed</a></li>
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </ul>
       </div>
       
-    <div class="sidebar-section">
+      <div class="sidebar-section" id="brand-section">
         <h3 class="section-toggle" onclick="toggleSection('brand')">Commissions</h3>
         <ul class="sidebar-nav section-content" id="brand" style="display: none;">
           <li><a href="/projects/neve">Neve</a></li>
@@ -92,7 +92,9 @@ function openCurrentSection() {
   
   for (const sectionId of sections) {
     const sectionElement = document.getElementById(sectionId);
-    if (sectionElement) {
+    const sectionContainer = document.getElementById(sectionId + '-section');
+    
+    if (sectionElement && sectionContainer) {
       const links = sectionElement.querySelectorAll('a');
       
       // Check if current page matches any link in this section
@@ -103,6 +105,7 @@ function openCurrentSection() {
             currentPath + '.html' === linkPath ||
             (linkPath === '/index' && (currentPath === '/' || currentPath === '/index'))) {
           sectionElement.style.display = 'block';
+          sectionContainer.classList.add('active');
           return; // Found the section, stop looking
         }
       }
@@ -129,22 +132,33 @@ function closeMenu() {
 
 // Section Toggle Function
 function toggleSection(sectionId) {
-  // Close all other sections first
+  // Close all other sections first and remove active class
   const allSections = document.querySelectorAll('.section-content');
+  const allSectionContainers = document.querySelectorAll('.sidebar-section');
+  
   allSections.forEach(section => {
     if (section.id !== sectionId) {
       section.style.display = 'none';
     }
   });
   
+  allSectionContainers.forEach(container => {
+    if (container.id !== sectionId + '-section') {
+      container.classList.remove('active');
+    }
+  });
+  
   // Toggle the clicked section
   const section = document.getElementById(sectionId);
+  const sectionContainer = document.getElementById(sectionId + '-section');
   const isVisible = section.style.display !== 'none';
   
   if (isVisible) {
     section.style.display = 'none';
+    sectionContainer.classList.remove('active');
   } else {
     section.style.display = 'block';
+    sectionContainer.classList.add('active');
   }
 }
 
