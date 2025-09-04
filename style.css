@@ -220,9 +220,9 @@ a:visited {
 }
 
 .nav-button:hover {
-  color: #2d5016;
+  color: #000000;
   text-decoration: underline;
-  text-decoration-color: #2d5016;
+  text-decoration-color: #000000;
 }
 
 /* Thumbnail Grid */
