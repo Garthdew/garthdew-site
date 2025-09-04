@@ -4,46 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garth Dew</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica', Arial, sans-serif;
+            background-color: #fff;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .content {
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+        
+        .status {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .status {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="index.html" class="logo">Garth Dew</a>
-            
-            <!-- Desktop Navigation - populated by menu.js -->
-            <nav class="nav-desktop">
-                <!-- Navigation links will be inserted here -->
-            </nav>
-            <!-- Mobile Navigation -->
-            <nav class="nav-mobile">
-                <button class="hamburger" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </header>
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu" id="mobileMenu">
-            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
-            <div class="mobile-nav-links">
-                <!-- Mobile navigation links will be inserted here -->
-            </div>
-        </div>
-        <!-- Main Content -->
-        <main class="main-content">
-            <img src="images/homepage/homepage-1.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-2.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-3.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-4.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-5.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-6.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-7.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-8.jpg" alt="Photography" class="hero-image">
-            <img src="images/homepage/homepage-9.jpg" alt="Photography" class="hero-image">
-        </main>
+    <div class="content">
+        <h1>Garth Dew</h1>
+        <div class="subtitle">Filmmaker | Photographer | Composer</div>
+        <div class="status">Site being developed</div>
     </div>
-    <script src="menu.js"></script>
 </body>
 </html>
