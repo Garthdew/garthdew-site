@@ -1,48 +1,36 @@
-// Menu configuration - add new menu items here
-const menuItems = [
-    { name: 'Photographs', href: '/index.html' },
-    { name: 'Books', href: '/books.html' },
-    { name: 'Newsletter', href: '/newsletter.html' },
-    { name: 'About', href: '/about.html' }
-];
+// Menu system for Garth Dew Portfolio
+document.addEventListener('DOMContentLoaded', function() {
+    const navigation = document.getElementById('navigation');
+    
+    // Create navigation HTML
+    const navHTML = `
+        <div class="nav-desktop">
+            <a href="index.html">Original</a>
+            <a href="commercial.html">Commercial</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+        </div>
+        
+        <div class="nav-mobile">
+            <div class="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="index.html">Original</a>
+            <a href="commercial.html">Commercial</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+        </div>
+    `;
+    
+    navigation.innerHTML = navHTML;
+});
 
-// Generate navigation HTML
-function generateNavigation() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // Desktop navigation
-    const desktopNav = menuItems.map(item => {
-        const fileName = item.href.split('/').pop();
-        const activeClass = fileName === currentPage ? ' active' : '';
-        return `<a href="${item.href}" class="nav-link${activeClass}">${item.name}</a>`;
-    }).join('');
-    
-    // Mobile navigation
-    const mobileNav = menuItems.map(item => 
-        `<a href="${item.href}" onclick="toggleMobileMenu();">${item.name}</a>`
-    ).join('');
-    
-    return { desktop: desktopNav, mobile: mobileNav };
-}
-
-// Insert navigation into page
-function loadNavigation() {
-    const nav = generateNavigation();
-    
-    // Insert desktop navigation
-    const desktopNavContainer = document.querySelector('.nav-desktop');
-    if (desktopNavContainer) {
-        desktopNavContainer.innerHTML = nav.desktop;
-    }
-    
-    // Insert mobile navigation
-    const mobileNavContainer = document.querySelector('.mobile-nav-links');
-    if (mobileNavContainer) {
-        mobileNavContainer.innerHTML = nav.mobile;
-    }
-}
-
-// Mobile menu toggle functionality
+// Toggle mobile menu
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById('mobileMenu');
     const hamburger = document.querySelector('.hamburger');
@@ -51,19 +39,24 @@ function toggleMobileMenu() {
     hamburger.classList.toggle('active');
 }
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', function(event) {
-    const mobileMenu = document.getElementById('mobileMenu');
-    const hamburger = document.querySelector('.hamburger');
-    
-    if (mobileMenu.classList.contains('active') && 
-        !mobileMenu.contains(event.target) && 
-        !hamburger.contains(event.target)) {
-        toggleMobileMenu();
+// Close mobile menu when clicking on a link
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.mobile-menu a')) {
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hamburger = document.querySelector('.hamburger');
+        
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
     }
 });
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    loadNavigation();
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(e) {
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger = document.querySelector('.hamburger');
+    
+    if (!e.target.closest('.nav-mobile') && !e.target.closest('.mobile-menu')) {
+        mobileMenu.classList.remove('active');
+        hamburger.classList.remove('active');
+    }
 });
