@@ -43,16 +43,8 @@ body {
   text-decoration: none;
 }
 
-.sidebar-logo {
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  margin-bottom: 2rem;
-  display: block;
-}
-
 .sidebar-section {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .sidebar-section h3 {
@@ -64,6 +56,7 @@ body {
   cursor: pointer;
   padding: 0.25rem 0;
   transition: color 0.2s ease;
+  text-transform: uppercase;
 }
 
 .sidebar-section h3:hover {
@@ -72,14 +65,9 @@ body {
   text-decoration-color: #000000;
 }
 
-/* Add arrow indicator for open sections */
-.sidebar-section h3::after {
-  content: '';
-  float: right;
-}
-
-.sidebar-section.active h3::after {
-  content: '>';
+/* Small indent for pages under open sections */
+.sidebar-section.active .sidebar-nav {
+  padding-left: 0.5rem;
 }
 
 .sidebar-nav {
