@@ -5,45 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Garth Dew</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <a href="index.html" class="logo">Garth Dew</a>
+    <nav id="navigation"></nav>
+    
+    <main>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="/images/garthdew.jpg" alt="Garth Dew" />
+            </div>
             
-            <!-- Desktop Navigation - populated by menu.js -->
-            <nav class="nav-desktop">
-                <!-- Navigation links will be inserted here -->
-            </nav>
-            <!-- Mobile Navigation -->
-            <nav class="nav-mobile">
-                <button class="hamburger" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </header>
-        <!-- Mobile Menu Overlay -->
-        <div class="mobile-menu" id="mobileMenu">
-            <button class="close-menu" onclick="toggleMobileMenu()">&times;</button>
-            <div class="mobile-nav-links">
-                <!-- Mobile navigation links will be inserted here -->
+            <div class="about-text">
+                <p>I'm an artist based in Northern England.</p>
+                
+                <p>I photograph the people I meet, the places I go, and the moments that catch my eye. I also make films and instrumental music. My practice comes from a deep curiosity about the world.</p>
+                
+                <p>Alongside my own projects, I run GD Video, a commercial film and photography studio working with brands like Volvo, Speedo, Arla, Quorn, and Neve.</p>
+                
+                <p>Subscribe to my newsletter for process notes, works-in-progress, and the odd announcement.</p>
+                
+                <p>Contact: <a href="mailto:garth@gdvideo.co.uk">garth@gdvideo.co.uk</a></p>
             </div>
         </div>
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="content-section">
-                <p>I&rsquo;m an artist based in Northern England.</p>
-                <p>I photograph the people I meet, the places I go, and the moments that catch my eye. I also make films and <a href="https://garthdew.bandcamp.com/" target="_blank">instrumental music</a>. My practice comes from a deep curiosity about the world.</p>
-                <p>Alongside my own projects, I run <a href="https://gdvideo.co.uk" target="_blank">GD Video</a>, a commercial film and photography studio working with brands like Volvo, Speedo, Arla, Quorn, and Neve.</p>
-                <p>Subscribe to my <a href="/newsletter.html">newsletter</a> for process notes, works-in-progress, and the odd announcement.</p>
-                <p>Contact: garth@gdvideo.co.uk</p>
-            </div>
-            
-            <img src="images/garthdew.jpg" alt="Garth Dew" class="hero-image">
-        </main>
-    </div>
+    </main>
+
     <script src="menu.js"></script>
 </body>
 </html>
