@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">GARTH DEW</div>
+      <div class="sidebar-header">Garth Dew</div>
       
       <div class="sidebar-section" id="info-section">
         <h3 class="section-toggle" onclick="toggleSection('info')">Info</h3>
