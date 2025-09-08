@@ -1,67 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Garth Dew</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/style.css?v=4">
-  <style>
-    /* Hero image styles */
-    .hero-container {
-      position: absolute;
-      left: 250px; /* Start exactly at sidebar edge */
-      top: 0;
-      width: calc(100vw - 250px); /* Full viewport width minus sidebar */
-      height: 100vh; /* Full viewport height */
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .hero-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* Ensure body has no margins/padding */
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden; /* Prevent any scrollbars */
-    }
-    
-    /* Override any main-content styles */
-    .main-content {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: auto !important;
-    }
-    
-    /* Mobile adjustments - full screen */
-    @media (max-width: 768px) {
-      .hero-container {
-        left: 0;
-        width: 100vw; /* Full viewport width */
-        height: 100vh; /* Full viewport height */
-      }
-      
-      body {
-        overflow: visible; /* Allow scrolling on mobile for menu */
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: #ffffff;
+            color: #000000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        h1 {
+            font-weight: 400;
+            font-size: 16px;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-weight: 400;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-  <div class="hero-container">
-    <img src="/images/preston/preston-4.jpg" alt="Garth Dew Photography" class="hero-image">
-  </div>
-  
-  <!-- Include the shared menu system -->
-  <script src="/menu.js"></script>
+    <h1>Garth Dew</h1>
+    <p>This site is taking a break</p>
 </body>
 </html>
