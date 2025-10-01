@@ -1,44 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garth Dew</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: #ffffff;
-            color: #000000;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        
-        h1 {
-            font-weight: 400;
-            font-size: 16px;
-            margin-bottom: 1rem;
-        }
-        
-        p {
-            font-weight: 400;
-            font-size: 16px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garth Dew</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
+    }
+    img.profile {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0.5rem 0;
+    }
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .links a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+    .links a:hover {
+      color: #1db954; /* subtle green accent */
+    }
+    .links small {
+      display: block;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 0.25rem;
+    }
+    .contact {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    .contact p {
+      margin-bottom: 1rem;
+      color: #aaa;
+    }
+    .contact a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border: 1px solid #aaa;
+      border-radius: 20px;
+      margin: 0 0.25rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    .contact a:hover {
+      background-color: #1db954;
+      border-color: #1db954;
+      color: #000;
+    }
+  </style>
 </head>
 <body>
-    <h1>Garth Dew</h1>
-    <p>This site is taking a break</p>
+  <img src="profile.jpg" alt="Garth Dew" class="profile">
+  <h1>Garth Dew</h1>
+  <p class="subtitle">Filmmaker · Photographer · Composer · Artist</p>
+
+  <div class="links">
+    <div>
+      <a href="#whatimade">What I Made</a>
+      <small>A newsletter sharing personal work — from photo essays to films, music, and reflections</small>
+    </div>
+    <div>
+      <a href="#gdvideo">GD Video</a>
+      <small>Visual storytelling through original films and brand collaborations</small>
+    </div>
+    <div>
+      <a href="/">Art Store [Coming Soon]</a>
+      <small>Fine art prints and books</small>
+    </div>
+    <div>
+      <a href="https://garthdew.bandcamp.com">Music Releases</a>
+      <small>Intrumental compositions and soundscapes — listen on Bandcamp</small>
+    </div>
+  </div>
+
+  <div class="contact">
+    <p>Connect:</p>
+    <a href="mailto:garth@gdvideo.co.uk">garth@gdvideo.co.uk</a>
+    <a href="https://linkedin.com/in/garthdew" target="_blank">LinkedIn</a>
+  </div>
 </body>
 </html>
