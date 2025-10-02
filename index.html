@@ -16,9 +16,19 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      text-align: center;
       padding: 2rem;
     }
+
+    .container {
+      background-color: #111;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
     img.profile {
       width: 120px;
       height: 120px;
@@ -26,90 +36,110 @@
       object-fit: cover;
       margin-bottom: 1.5rem;
     }
+
     h1 {
       font-size: 2rem;
       margin: 0.5rem 0;
     }
+
     p.subtitle {
       font-size: 1.1rem;
       color: #aaa;
       margin-bottom: 2rem;
     }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: #ddd;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
     .links {
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 1rem;
       margin-bottom: 2rem;
     }
-    .links a {
+
+    .pill {
+      display: block;
+      padding: 1rem 1.5rem;
+      background-color: #1a1a1a;
+      border-radius: 40px;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid #222;
+    }
+
+    .pill:hover {
+      background-color: #222;
+      border-color: #1db954;
+      box-shadow: 0 0 10px rgba(29,185,84,0.5);
+    }
+
+    .pill strong {
+      display: block;
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .pill span {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .connect {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .connect a {
       color: #fff;
       text-decoration: none;
-      font-weight: 500;
-      font-size: 1.2rem;
+      margin: 0 0.5rem;
       transition: color 0.2s ease;
     }
-    .links a:hover {
-      color: #1db954; /* subtle green accent */
-    }
-    .links small {
-      display: block;
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 0.25rem;
-    }
-    .contact {
-      margin-top: 2rem;
-      font-size: 0.9rem;
-    }
-    .contact p {
-      margin-bottom: 1rem;
-      color: #aaa;
-    }
-    .contact a {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      border: 1px solid #aaa;
-      border-radius: 20px;
-      margin: 0 0.25rem;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-    .contact a:hover {
-      background-color: #1db954;
-      border-color: #1db954;
-      color: #000;
+
+    .connect a:hover {
+      color: #1db954;
     }
   </style>
 </head>
 <body>
-  <img src="profile.jpg" alt="Garth Dew" class="profile">
-  <h1>Garth Dew</h1>
-  <p class="subtitle">Filmmaker · Photographer · Composer · Artist</p>
+  <div class="container">
+    <img src="profile.jpg" alt="Garth Dew" class="profile">
+    <h1>Garth Dew</h1>
+    <p class="subtitle">Filmmaker · Photographer · Composer · Artist</p>
 
-  <div class="links">
-    <div>
-      <a href="https://garthdew.substack.com">What I Made</a>
-      <small>A quiet space on Substack for the films, photographs, music, and projects I’m working on</small>
+    <h2>Projects</h2>
+    <div class="links">
+      <a href="https://garthdew.substack.com" class="pill">
+        <strong>What I Made</strong>
+        <span>A quiet space on Substack for films, photographs, music, and reflections</span>
+      </a>
+      <a href="https://gdvideo.co.uk" class="pill">
+        <strong>GD Video</strong>
+        <span>Cinematic storytelling through original films and brand collaborations</span>
+      </a>
+      <a href="/" class="pill">
+        <strong>Art Store [Coming Soon]</strong>
+        <span>Fine art prints and books</span>
+      </a>
+      <a href="https://garthdew.bandcamp.com" class="pill">
+        <strong>Music Releases</strong>
+        <span>Non-intrusive compositions and sound scenery — listen on Bandcamp</span>
+      </a>
     </div>
-    <div>
-      <a href="https://gdvideo.co.uk">GD Video</a>
-      <small>Visual storytelling through original films and brand collaborations</small>
-    </div>
-    <div>
-      <a href="/">Art Store [Coming Soon]</a>
-      <small>Fine art prints and books</small>
-    </div>
-    <div>
-      <a href="https://garthdew.bandcamp.com">Music Releases</a>
-      <small>Non-intrusive compositions and sound scenery — listen on Bandcamp</small>
+
+    <div class="connect">
+      <a href="mailto:garth@gdvideo.co.uk">Email</a> · 
+      <a href="https://linkedin.com/in/garthdew" target="_blank">LinkedIn</a> · 
+      <a href="https://garthdew.substack.com" target="_blank">Substack</a>
     </div>
   </div>
-
-  <div class="contact">
-    <p>Connect:</p>
-    <a href="mailto:garth@gdvideo.co.uk">garth@gdvideo.co.uk</a></div>
-    <div class="contact"><a href="https://linkedin.com/in/garthdew" target="_blank">LinkedIn</a></div>
 </body>
 </html>
