@@ -117,3 +117,52 @@ h2 {
   color: #777;
   margin-top: 0.5rem;
 }
+
+/* --- General Content Page Styles (Used for /story.html, /proof.html, etc.) --- */
+
+/* Base container for all long-form content pages. Overrides the center alignment of the homepage container. */
+.content-page {
+    text-align: left; 
+}
+
+/* Style for all body paragraphs within content pages */
+.content-page p {
+    font-size: 1.1rem; 
+    color: #aaa; 
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+/* Adjust heading spacing for content pages (H2 will be used for section titles) */
+.content-page h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Style for lists (e.g., Highlights, bullet points) */
+.content-page ul {
+    list-style: none; /* Remove default list style */
+    padding-left: 0;
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Styling for list items */
+.content-page ul li {
+    font-size: 1.05rem;
+    color: #ddd;
+    line-height: 1.8;
+    margin-bottom: 0.5rem;
+}
+
+/* Specific styling for the three core pillars list (e.g., Discipline, Creativity) */
+.content-page .pillars li {
+    color: #fff; /* Make these stand out */
+    font-weight: 500;
+}
+
+/* Horizontal Rule separation */
+.content-page hr {
+    border-color: #222; 
+    margin: 3rem 0;
+}
