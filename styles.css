@@ -178,3 +178,66 @@ links {
     align-self: center; /* Centers the flex item horizontally (on the cross-axis, since the body is flex-direction: column) */
 
 }
+
+/* --- Proof of Work: Tabbed Navigation --- */
+
+.proof-tabs {
+    display: flex;
+    flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #222; /* Visual separation from content */
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 15px;
+    color: #aaa;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s, border-bottom 0.2s;
+    white-space: nowrap; /* Prevents button text from breaking */
+}
+
+.tab-button:hover {
+    color: #fff;
+}
+
+.tab-button.active {
+    color: #fff;
+    font-weight: 700; /* Makes active tab stand out */
+    border-bottom: 3px solid #fff; /* Horizontal highlight effect */
+}
+
+/* --- Content Panel Styling --- */
+.tab-panel {
+    display: none; /* Hide all content panels by default */
+    padding: 1.5rem 0;
+    text-align: left;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tab-panel h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
+}
+
+.tab-panel p {
+    font-size: 1.05rem; /* Slightly smaller than main content text */
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.tab-panel.active {
+    display: block; /* Show only the active panel */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
