@@ -252,7 +252,7 @@ h2 {
 
 /* This section wraps the entire footer block */
 .site-footer {
-    padding-top: 2rem; /* REDUCED GAP HERE: from 3rem to 2rem */
+    padding-top: 0.5rem; /* REDUCED GAP HERE: from 3rem to 2rem */
     text-align: center; 
 }
 
