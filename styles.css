@@ -1,125 +1,132 @@
+/* --- Global Base Styles --- */
 body {
-  margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  background-color: #000;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
+    margin: 0;
+    font-family: 'DM Sans', sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
 }
 
 .container {
-  background-color: #111;
-  padding: 2rem;
-  border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    background-color: #111;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
 img.profile {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1.5rem;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
 }
 
 h1 {
-  font-size: 2rem;
-  margin: 0.5rem 0;
+    font-size: 2rem;
+    margin: 0.5rem 0;
 }
 
 p.subtitle {
-  font-size: 1.1rem;
-  color: #aaa;
-  margin-bottom: 2rem;
-  line-height: 1.5;
+    font-size: 1.1rem;
+    color: #aaa;
+    margin-bottom: 2rem;
+    line-height: 1.5;
 }
 
 h2 {
-  font-size: 1.3rem;
-  margin-bottom: 1.5rem;
-  color: #ddd;
-  font-weight: 500;
-  letter-spacing: 1px;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #ddd;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
 
+/* --- Navigation & Connect Links (Pill Style) --- */
+
 .links {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    max-width: 350px; 
+    width: 100%; 
+    align-self: center;
 }
 
 .pill {
-  display: block;
-  padding: 1rem 1.5rem;
-  background-color: #1a1a1a;
-  border-radius: 40px;
-  text-align: center;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  border: 1px solid #222;
+    display: block;
+    padding: 1rem 1.5rem;
+    background-color: #1a1a1a;
+    border-radius: 40px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid #222;
 }
 
 .pill:hover {
-  background-color: #222;
-  border-color: #fff;
-  box-shadow: 0 0 10px rgba(255,255,255,0.15);
+    background-color: #222;
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
 }
 
 .pill strong {
-  display: block;
-  font-size: 1.1rem;
-  color: #fff;
-  margin-bottom: 0.25rem;
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
 }
 
 .pill span {
-  font-size: 0.9rem;
-  color: #aaa;
+    font-size: 0.9rem;
+    color: #aaa;
 }
 
 .connect {
-  font-size: 0.9rem;
-  color: #aaa;
-  text-align: center; 
+    font-size: 0.9rem;
+    color: #aaa;
+    text-align: center; 
 }
 
 .connect a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  transition: color 0.2s ease;
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.2s ease;
 }
 
 .connect a:hover {
-  color: #1db954;
+    color: #1db954;
 }
 
 .subscribe {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .subscribe iframe {
-  border: none;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #000;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #000;
 }
 
 .sub-note {
-  font-size: 0.85rem;
-  color: #777;
-  margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 0.5rem;
 }
 
-/* --- General Content Page Styles (Used for /story.html, /proof.html, etc.) --- */
+
+/* --- General Content Page Styles (Used for /story.html, /work.html, etc.) --- */
 
 /* Base container for all long-form content pages. Overrides the center alignment of the homepage container. */
 .content-page {
@@ -168,79 +175,42 @@ h2 {
     margin: 3rem 0;
 }
 
-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    
-    max-width: 350px; /* Limits the width so the centering is visible */
-    width: 100%; /* Ensures it fills up to the max-width */
-    align-self: center; /* Centers the flex item horizontally (on the cross-axis, since the body is flex-direction: column) */
 
+/* --- Case Study List (work.html Specific Styles) --- */
+
+.project-list {
+    margin-top: 2rem;
 }
 
-/* --- Proof of Work: Tabbed Navigation --- */
-
-.proof-tabs {
-    display: flex;
-    flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 2rem;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #222; /* Visual separation from content */
+.project-card {
+    padding: 2rem 0; /* Padding around each project block */
 }
 
-.tab-button {
-    background: none;
-    border: none;
-    padding: 10px 15px;
-    color: #aaa;
-    font-family: inherit;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: color 0.2s, border-bottom 0.2s;
-    white-space: nowrap; /* Prevents button text from breaking */
-}
-
-.tab-button:hover {
-    color: #fff;
-}
-
-.tab-button.active {
-    color: #fff;
-    font-weight: 700; /* Makes active tab stand out */
-    border-bottom: 3px solid #fff; /* Horizontal highlight effect */
-}
-
-/* --- Content Panel Styling --- */
-.tab-panel {
-    display: none; /* Hide all content panels by default */
-    padding: 1.5rem 0;
-    text-align: left;
-    animation: fadeIn 0.5s ease-out;
-}
-
-.tab-panel h3 {
-    font-size: 1.5rem;
-    color: #fff;
+/* Style for the link that is the Case Study Title */
+.project-title-link {
+    display: block; /* Make the entire line clickable */
+    font-size: 1.6rem; /* A good size, distinct from H1 and H2 */
+    font-weight: 700; /* Bold to look like a heading */
+    color: #fff; /* White is clean and contrasts well */
+    text-decoration: none; /* Start clean, no underline */
     margin-bottom: 0.75rem;
+    transition: color 0.2s ease, padding-left 0.2s ease;
 }
 
-.tab-panel p {
-    font-size: 1.05rem; /* Slightly smaller than main content text */
-    color: #ccc;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
+.project-title-link:hover {
+    color: #1db954; /* Use a highlight color on hover */
+    text-decoration: underline; 
+    padding-left: 5px; /* Slight shift to the right */
 }
 
-.tab-panel.active {
-    display: block; /* Show only the active panel */
+/* Style for the horizontal rule between case studies */
+.card-separator {
+    border: none;
+    border-top: 1px solid #222; /* Light separator line */
+    margin: 0; 
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-
-
+/* Adjust the first card's padding to sit nicely below the intro text */
+.project-list .project-card:first-child {
+    padding-top: 0;
+}
