@@ -50,82 +50,6 @@ h2 {
     letter-spacing: 1px;
 }
 
-/* --- Navigation & Connect Links (Pill Style) --- */
-
-.links {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    max-width: 350px; 
-    width: 100%; 
-    align-self: center;
-}
-
-.pill {
-    display: block;
-    padding: 1rem 1.5rem;
-    background-color: #1a1a1a;
-    border-radius: 40px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.25s ease;
-    border: 1px solid #222;
-}
-
-.pill:hover {
-    background-color: #222;
-    border-color: #fff;
-    box-shadow: 0 0 10px rgba(255,255,255,0.15);
-}
-
-.pill strong {
-    display: block;
-    font-size: 1.1rem;
-    color: #fff;
-    margin-bottom: 0.25rem;
-}
-
-.pill span {
-    font-size: 0.9rem;
-    color: #aaa;
-}
-
-.connect {
-    font-size: 0.9rem;
-    color: #aaa;
-    text-align: center; 
-}
-
-.connect a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 0.5rem;
-    transition: color 0.2s ease;
-}
-
-.connect a:hover {
-    color: #1db954;
-}
-
-.subscribe {
-    margin-bottom: 2rem;
-}
-
-.subscribe iframe {
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: #000;
-}
-
-.sub-note {
-    font-size: 0.85rem;
-    color: #777;
-    margin-top: 0.5rem;
-}
-
-
 /* --- General Content Page Styles (Used for /story.html, /work.html, etc.) --- */
 
 /* Base container for all long-form content pages. Overrides the center alignment of the homepage container. */
@@ -239,30 +163,117 @@ h2 {
     padding-top: 0;
 }
 
+
+/* --- Navigation & Connect Links (Pill Style) --- */
+
+.links {
+    /* Overrides for centering the container */
+    margin-bottom: 2rem;
+    max-width: 350px; /* Limits the width of the entire link block */
+    width: 100%; 
+    align-self: center;
+    
+    /* Display properties */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pill {
+    /* *** FIX: Using flexbox to force pills to 100% width and center content *** */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Forces the pill to fill the entire max-width of the .links container */
+    
+    padding: 1rem 1.5rem;
+    background-color: #1a1a1a;
+    border-radius: 40px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    border: 1px solid #222;
+}
+
+.pill:hover {
+    background-color: #222;
+    border-color: #fff;
+    box-shadow: 0 0 10px rgba(255,255,255,0.15);
+}
+
+.pill strong {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.pill span {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.connect {
+    font-size: 0.9rem;
+    color: #aaa;
+    text-align: center; 
+}
+
+.connect a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.connect a:hover {
+    color: #1db954;
+}
+
+.subscribe {
+    margin-bottom: 2rem;
+}
+
+.subscribe iframe {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.sub-note {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+
 /* --- Footer Standardisation & Centering Fix --- */
 
 /* This section wraps the entire footer block */
 .site-footer {
-    padding-top: 1rem; /* Add separation from content above */
-    /* Ensure all text within the footer is centered */
+    padding-top: 3rem; /* Add separation from content from HR above */
     text-align: center; 
 }
 
 /* Override the default content-page H2 alignment for the footer H2 */
 .site-footer h2 {
     text-align: center;
-    margin-top: 0; /* Adjust spacing since we use padding-top on the wrapper */
+    margin-top: 0; 
 }
 
-/* Re-center the links container, which has a max-width, using margin auto */
+/* FIX: We explicitly define how the .links inside the .site-footer should behave. */
 .site-footer .links {
-    /* Overrides any left-align/flex settings from content-page */
+    /* Centering and sizing */
     margin: 1.5rem auto 2rem; 
+    max-width: 350px; 
+    width: 100%;
     
-    /* Re-apply the flex centering for mobile layouts */
+    /* Layout properties */
     display: flex;
     flex-direction: column;
-    align-items: center; /* Ensures the pills stay centered */
+    gap: 1rem;
+    align-items: center; 
 }
 
 /* Ensure the connecting social links are properly centered */
