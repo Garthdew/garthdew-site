@@ -252,7 +252,7 @@ h2 {
 
 /* This section wraps the entire footer block */
 .site-footer {
-    padding-top: 1rem; /* Add separation from content from HR above */
+    padding-top: 2rem; /* Add separation from content from HR above */
     text-align: center; 
 }
 
