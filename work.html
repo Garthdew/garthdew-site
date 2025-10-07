@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,45 +10,50 @@
 <body>
     <div class="container content-page">
 
-        <h1 style="font-size: 2.2rem; margin-bottom: 2rem; text-align: center;">Work</h1>
-
-        <div class="proof-tabs">
-            <button class="tab-button active" data-target="project-strategy">Strategy</button>
-            <button class="tab-button" data-target="project-film">Film</button>
-            <button class="tab-button" data-target="project-photo">Photo</button>
-            <button class="tab-button" data-target="project-experiments">Experiments</button>
-        </div>
-
-        <div class="proof-content">
-
-            <div id="project-strategy" class="tab-panel active">
-                <h3>Content Strategy & Business Utility</h3>
-                <p>This work moves beyond execution into solving core business problems. It includes **strategic consulting**, designing **custom content systems** (like Array Network), and leveraging entrepreneurial experience to coach fellow creatives. It is about applying a strategic, objective mindset to ensure creative output serves a tangible business goal.</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-            </div>
-            
-            <div id="project-film" class="tab-panel">
-                <h3>Commercial & Documentary Film</h3>
-                <p>This is the foundation of the studio’s execution—delivering high-quality visual narratives for major partners like **Volvo, Jaguar Land Rover, Quorn, and AMS Neve.** My decade of experience ensures every project, from small branded content to feature documentaries (featured on BBC), is handled with high-performance discipline and cinematic quality.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus et lacus non feugiat. Aenean lacinia, enim eget varius placerat, nunc turpis cursus quam, vel eleifend tortor erat at felis.</p>
-            </div>
-            
-            <div id="project-photo" class="tab-panel">
-                <h3>Visual Art & Commercial Stills</h3>
-                <p>Photography is a blend of commercial need and personal artistic exploration. Commercially, it provides high-impact visuals for brands. Personally, my passion for street photography and visual art keeps my eye sharp and informs the composition and lighting of all client work. This is where artistic curiosity meets practical execution.</p>
-                <p>Curabitur vel nisl sit amet libero auctor placerat in vel nulla. Nullam eu ante non erat varius vestibulum. Fusce interdum tellus non enim rhoncus, sed euismod nulla mollis. Donec facilisis.</p>
-            </div>
-
-            <div id="project-experiments" class="tab-panel">
-                <h3>Technical R&D and Custom Tools</h3>
-                <p>This is the studio’s sandbox—where curiosity is put into practice. It covers personal projects like ambient music compositions, meditation apps, and technical pivots (like hybrid events or AI exploration). By constantly building useful things for myself, I maintain a technical edge and a spirit of innovation that is leveraged for every client solution.</p>
-                <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
-            </div>
-        </div>
+        <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem; text-align: center;">Work & Proof</h1>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.1rem; color: #aaa;">A selection of projects where curiosity meets utility—from strategic consulting to cinematic film and custom tech builds.</p>
         
+        <div class="project-list">
+            
+            <div class="project-card">
+                <a href="/work/gd-video.html" class="project-title-link">Growing a video production company serving global brands</a>
+            </div>
+            <hr class="card-separator">
+
+            <div class="project-card">
+                <a href="/work/ams-neve.html" class="project-title-link">Transitioning an iconic audio brand to a full content and design system</a>
+            </div>
+            <hr class="card-separator">
+            
+            <div class="project-card">
+                <a href="/work/array-network.html" class="project-title-link">The rapid business pivot to hybrid event delivery during a production shutdown</a>
+            </div>
+            <hr class="card-separator">
+            
+            <div class="project-card">
+                <a href="/work/documentaries.html" class="project-title-link">Self-funded documentary series that secured BBC News features and brand partnerships</a>
+            </div>
+            <hr class="card-separator">
+
+            <div class="project-card">
+                <a href="/work/meditation-app.html" class="project-title-link">Prototyping a minimalist breathwork app using custom code and design</a>
+            </div>
+            <hr class="card-separator">
+
+            <div class="project-card">
+                <a href="/work/original-art.html" class="project-title-link">The R&D lab: A constant practice in ambient music and visual fine art</a>
+            </div>
+            <hr class="card-separator">
+            
+            <div class="project-card">
+                <a href="/work/podcast-launch.html" class="project-title-link">Launching a men's wellness podcast and growing it to 5,000+ downloads</a>
+            </div>
+
+        </div>
+
         <hr style="border-color:#222; margin: 3rem 0;">
 
-        <h2 style="text-align: center;">Where do you want to go next?</h2>
+        <h2 style="text-align: center;">Ready to build something?</h2>
         <div class="links">
             <a href="/newsletter.html" class="pill">
                 <strong>Newsletter</strong>
@@ -66,33 +70,10 @@
         </div>
         
         <div class="connect">
-            <a href="mailto:garth@gdvideo.co.uk">Email</a> · 
-            <a href="https://linkedin.com/in/garthdew" target="_blank">LinkedIn</a> · 
+            <a href="mailto:garth@gdvideo.co.uk">Email</a> · 
+            <a href="https://linkedin.com/in/garthdew" target="_blank">LinkedIn</a> · 
             <a href="https://garthdew.substack.com" target="_blank">Substack</a>
         </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabPanels = document.querySelectorAll('.tab-panel');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const targetId = button.getAttribute('data-target');
-
-                    // 1. Remove 'active' class from all buttons and panels
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabPanels.forEach(panel => panel.classList.remove('active'));
-
-                    // 2. Add 'active' class to the clicked button
-                    button.classList.add('active');
-
-                    // 3. Add 'active' class to the target panel to display it
-                    document.getElementById(targetId).classList.add('active');
-                });
-            });
-        });
-    </script>
 </body>
 </html>
