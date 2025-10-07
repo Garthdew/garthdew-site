@@ -96,7 +96,7 @@ h2 {
 /* Horizontal Rule separation */
 .content-page hr {
     border-color: #222; 
-    margin: 3rem 0;
+    margin: 2rem 0; /* REDUCED GAP HERE: from 3rem to 2rem */
 }
 
 
@@ -107,7 +107,7 @@ h2 {
 }
 
 .project-card {
-    padding: 2rem 0; /* Padding around each project block */
+    padding: 1.5rem 0; /* REDUCED GAP HERE: from 2rem to 1.5rem */
     text-align: center; /* Center the case study links */
 }
 
@@ -180,7 +180,7 @@ h2 {
 }
 
 .pill {
-    /* *** FIX: Using flexbox to force pills to 100% width and center content *** */
+    /* FIX: Using flexbox to force pills to 100% width and center content */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -252,7 +252,7 @@ h2 {
 
 /* This section wraps the entire footer block */
 .site-footer {
-    padding-top: 1rem; /* Add separation from content from HR above */
+    padding-top: 2rem; /* REDUCED GAP HERE: from 3rem to 2rem */
     text-align: center; 
 }
 
