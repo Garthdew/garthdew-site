@@ -238,3 +238,34 @@ h2 {
 .project-list .project-card:first-child {
     padding-top: 0;
 }
+
+/* --- Footer Standardisation & Centering Fix --- */
+
+/* This section wraps the entire footer block */
+.site-footer {
+    padding-top: 3rem; /* Add separation from content above */
+    /* Ensure all text within the footer is centered */
+    text-align: center; 
+}
+
+/* Override the default content-page H2 alignment for the footer H2 */
+.site-footer h2 {
+    text-align: center;
+    margin-top: 0; /* Adjust spacing since we use padding-top on the wrapper */
+}
+
+/* Re-center the links container, which has a max-width, using margin auto */
+.site-footer .links {
+    /* Overrides any left-align/flex settings from content-page */
+    margin: 1.5rem auto 2rem; 
+    
+    /* Re-apply the flex centering for mobile layouts */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Ensures the pills stay centered */
+}
+
+/* Ensure the connecting social links are properly centered */
+.site-footer .connect {
+    text-align: center;
+}
