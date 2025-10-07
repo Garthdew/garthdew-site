@@ -243,7 +243,7 @@ h2 {
 
 /* This section wraps the entire footer block */
 .site-footer {
-    padding-top: 3rem; /* Add separation from content above */
+    padding-top: 1rem; /* Add separation from content above */
     /* Ensure all text within the footer is centered */
     text-align: center; 
 }
