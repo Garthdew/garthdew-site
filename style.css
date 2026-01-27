@@ -1,4 +1,4 @@
-/* Typography & Reset */
+/* Typography */
 body {
     font-family: "Neue Haas Grotesque Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12pt;
@@ -11,7 +11,7 @@ body {
     margin-right: auto;
 }
 
-/* Vertical Stacked Menu */
+/* Nav Stack */
 nav {
     margin-bottom: 60px;
     width: 250px;
@@ -27,53 +27,44 @@ nav li {
     margin-bottom: 4px;
 }
 
-/* Global Link Styling */
+/* THE FIX: Remove all default underlines globally */
 a {
-    text-decoration: none; /* Removes the lines under text */
-    color: #000;
+    text-decoration: none !important; 
+    color: inherit;
 }
 
-/* Hover effect: Change color instead of underline */
-a:hover {
-    color: #0000EE; /* Standard Web Blue */
-}
-
-/* The Index Grid */
+/* Index Table Setup */
 .index-container {
     width: 100%;
 }
 
 .index-row {
     display: grid;
-    /* Adjusted: Year (80px), Title (Auto-growing), Type (150px) */
-    /* This brings 'Type' much closer to the center/title */
+    /* Year (80px), Title (400px), Type (Rest) */
     grid-template-columns: 80px 400px 1fr; 
     border-top: 1px solid #000;
     padding: 10px 0;
     align-items: baseline;
+    color: #000;
+    cursor: pointer;
 }
 
-.index-container :last-child {
+/* Ensure the very last row has a bottom border to close the list */
+.index-container > :last-child {
     border-bottom: 1px solid #000;
 }
 
-/* Make sure every cell in the row inherits the hover color */
-.index-row:hover div {
-    color: #0000EE;
+/* Hover: Entire row changes color, no underline */
+.index-row:hover {
+    color: #0000EE; /* Basic Web Blue */
 }
 
-/* Mobile Adjustments */
+/* Responsive */
 @media (max-width: 768px) {
-    body {
-        padding: 20px;
-    }
-    nav {
-        width: 100%;
-        margin-bottom: 40px;
-    }
+    body { padding: 20px; }
+    nav { width: 100%; margin-bottom: 40px; }
     .index-row {
-        /* On mobile, we let the title take the remaining space */
-        grid-template-columns: 60px 1fr 100px; 
+        grid-template-columns: 60px 1fr 100px;
         font-size: 11pt;
     }
 }
