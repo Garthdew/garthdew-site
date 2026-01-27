@@ -40,18 +40,14 @@ a:hover { color: #0000EE; }
     display: grid;
     grid-template-columns: 80px 1fr 200px; 
     column-gap: 40px;
-    /* 50% Opacity Black (Grey) */
+    /* Light consistent line */
     border-top: 1px solid rgba(0, 0, 0, 0.2); 
     padding: 10px 0;
     align-items: baseline;
     cursor: pointer;
 }
 
-.index-container a:first-child .index-row,
-.index-container > *:first-child .index-row {
-    border-top: none !important;
-}
-
+/* Simply add the bottom line to the last item */
 .index-container a:last-of-type .index-row {
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -60,10 +56,11 @@ a:hover { color: #0000EE; }
     text-align: right;
 }
 
+/* Hover: Only text turns blue, line stays static */
 .index-row:hover {
     color: #0000EE;
-    border-top-color: rgba(0, 0, 0, 1);
 }
+
 /* 5. PUBLICATIONS GRID */
 .grid-container {
     display: grid;
