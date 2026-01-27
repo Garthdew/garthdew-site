@@ -70,9 +70,10 @@ a:hover {
 /* 5. PUBLICATIONS GRID (CAN-DID Thumbnails) */
 .grid-container {
     display: grid;
-    /* Keeps 3 columns, but we will shrink the images inside them */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 60px 20px; /* Increased vertical gap for more breathing room */
+    /* 4 columns on desktop */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 60px 20px; 
+    margin-top: 20px;
 }
 
 .grid-item {
@@ -81,31 +82,18 @@ a:hover {
 }
 
 .grid-item img {
-    /* This is the Nieves secret: don't let them be 100% width */
+    /* Fixed scale for that 'small book' look */
     width: auto;
-    max-width: 180px; /* Limits the size so they look like small book covers */
+    max-width: 160px; 
     height: auto;
     display: block;
     margin-bottom: 12px;
-    /* Optional: adds a very subtle shadow like your first screenshot */
     box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
 }
 
 .grid-item p {
     margin: 0;
-    font-size: 11pt; /* Slightly smaller than body text for labels */
-}
-
-/* Mobile Tweak for Grid */
-@media (max-width: 768px) {
-    .grid-container {
-        /* On mobile, we can go to 2 columns so they stay small and tidy */
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .grid-item img {
-        max-width: 140px; /* Even smaller on phones */
-    }
+    font-size: 11pt;
 }
 
 /* 6. RESPONSIVE DESIGN (Mobile) */
@@ -120,13 +108,18 @@ a:hover {
     }
 
     .index-row {
-        /* Reduced gap for smaller screens */
         grid-template-columns: 60px 1fr 100px;
         column-gap: 15px;
         font-size: 11pt;
     }
 
+    /* 2 columns on mobile */
     .grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 15px;
+    }
+    
+    .grid-item img {
+        max-width: 130px; /* Scaled down for mobile viewport */
     }
 }
