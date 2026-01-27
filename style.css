@@ -40,20 +40,20 @@ a:hover { color: #0000EE; }
     display: grid;
     grid-template-columns: 80px 1fr 200px; 
     column-gap: 40px;
-    border-top: 1px solid #000; /* All rows have a top border by default */
+    /* 50% Opacity Black (Grey) */
+    border-top: 1px solid rgba(0, 0, 0, 0.2); 
     padding: 10px 0;
     align-items: baseline;
     cursor: pointer;
 }
 
-/* This targets the row inside the first link of the container */
-.index-container a:first-of-type .index-row {
+.index-container a:first-child .index-row,
+.index-container > *:first-child .index-row {
     border-top: none !important;
 }
 
-/* Ensure the very bottom of the list has a closing line */
 .index-container a:last-of-type .index-row {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .index-row div:last-child {
@@ -62,8 +62,8 @@ a:hover { color: #0000EE; }
 
 .index-row:hover {
     color: #0000EE;
+    border-top-color: rgba(0, 0, 0, 1);
 }
-
 /* 5. PUBLICATIONS GRID */
 .grid-container {
     display: grid;
