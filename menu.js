@@ -15,3 +15,22 @@ document.addEventListener("DOMContentLoaded", function() {
         navElement.innerHTML = menuHTML;
     }
 });
+
+let currentSlide = 0;
+
+function moveSlide(direction) {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-image');
+    const totalSlides = slides.length;
+
+    currentSlide += direction;
+
+    if (currentSlide >= totalSlides) {
+        currentSlide = 0;
+    } else if (currentSlide < 0) {
+        currentSlide = totalSlides - 1;
+    }
+
+    const offset = -currentSlide * 100;
+    track.style.transform = `translateX(${offset}%)`;
+}
