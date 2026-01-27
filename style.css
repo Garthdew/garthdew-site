@@ -32,7 +32,10 @@ a { text-decoration: none !important; color: inherit; transition: color 0.1s eas
 a:hover { color: #0000EE; }
 
 /* 4. WORK INDEX */
-.index-container { width: 100%; }
+.index-container {
+    width: 100%;
+}
+
 .index-row {
     display: grid;
     grid-template-columns: 80px 1fr 200px; 
@@ -42,9 +45,14 @@ a:hover { color: #0000EE; }
     align-items: baseline;
     cursor: pointer;
 }
-.index-container > a:last-child { border-bottom: 1px solid #000; }
-.index-row div:last-child { text-align: right; }
-.index-row:hover { color: #0000EE; }
+
+.index-container > a:first-child .index-row {
+    border-top: none;
+}
+
+.index-container > a:last-child {
+    border-bottom: 1px solid #000;
+}
 
 /* 5. PUBLICATIONS GRID */
 .grid-container {
