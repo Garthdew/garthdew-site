@@ -261,3 +261,41 @@ a:hover { color: #0000EE; }
         order: 2;
     }
 }
+
+/* 10. SHARED FOOTER */
+#main-footer {
+    margin-top: 100px; /* Generous breathing room after project content */
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.2); /* Matches index line opacity */
+    padding-top: 20px;
+    padding-bottom: 60px; /* Extra space at the bottom of the page */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px; /* Horizontal spacing between links */
+    font-size: 11pt;
+}
+
+.footer-links li {
+    display: inline;
+}
+
+/* Ensure footer links turn blue on hover like everything else */
+.footer-links a:hover {
+    color: #0000EE;
+}
+
+/* Mobile: Stack footer links if the screen is narrow */
+@media (max-width: 1080px) {
+    #main-footer {
+        margin-top: 60px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 12px;
+    }
+}
