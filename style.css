@@ -1,13 +1,11 @@
 /* 1. GLOBAL STYLES & TYPOGRAPHY */
 body {
-    /* Using Neue Haas Grotesque with clean fallbacks */
     font-family: "Neue Haas Grotesque Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12pt;
     line-height: 1.2;
     margin: 0;
     padding: 40px;
     color: #000;
-    /* Ceiling for desktop width to keep lines from stretching too far */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
@@ -17,7 +15,7 @@ body {
 /* 2. SHARED NAVIGATION (Stacked) */
 nav {
     margin-bottom: 60px;
-    width: 250px; /* Keeps the menu in a narrow vertical stack */
+    width: 250px;
 }
 
 nav ul {
@@ -32,14 +30,13 @@ nav li {
 
 /* 3. LINK & HOVER BEHAVIOR */
 a {
-    text-decoration: none !important; /* Forces removal of all underlines */
+    text-decoration: none !important;
     color: inherit;
     transition: color 0.1s ease-in-out;
 }
 
-/* Basic web blue for hover as requested */
 a:hover {
-    color: #0000EE;
+    color: #0000EE; /* Basic web blue */
 }
 
 /* 4. WORK INDEX (The "Ledger" View) */
@@ -49,25 +46,23 @@ a:hover {
 
 .index-row {
     display: grid;
-    /* Year: 60px | Title: Flexible (1fr) | Type: 200px (Right Aligned) */
-    grid-template-columns: 60px 1fr 200px; 
+    /* Year: 80px (Increased) | Title: Flexible | Type: 200px (Right Aligned) */
+    grid-template-columns: 80px 1fr 200px; 
+    column-gap: 40px; /* Added gap to pull the Title away from Year */
     border-top: 1px solid #000;
     padding: 10px 0;
     align-items: baseline;
     cursor: pointer;
 }
 
-/* The very last item gets a bottom border to close the list */
 .index-container > a:last-child {
     border-bottom: 1px solid #000;
 }
 
-/* Right-align the 'Type' column */
 .index-row div:last-child {
     text-align: right;
 }
 
-/* Ensure the entire row reacts to hover */
 .index-row:hover {
     color: #0000EE;
 }
@@ -75,7 +70,7 @@ a:hover {
 /* 5. PUBLICATIONS GRID (CAN-DID Thumbnails) */
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px 20px;
 }
 
@@ -106,13 +101,13 @@ a:hover {
     }
 
     .index-row {
-        /* Smaller columns and tighter fit for mobile screens */
-        grid-template-columns: 50px 1fr 100px;
+        /* Reduced gap for smaller screens */
+        grid-template-columns: 60px 1fr 100px;
+        column-gap: 15px;
         font-size: 11pt;
     }
 
     .grid-container {
-        /* Single column of large images on mobile */
         grid-template-columns: 1fr;
     }
 }
