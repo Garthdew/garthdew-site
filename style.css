@@ -1,20 +1,23 @@
-/* Typography */
+/* 1. GLOBAL STYLES & TYPOGRAPHY */
 body {
+    /* Using Neue Haas Grotesque with clean fallbacks */
     font-family: "Neue Haas Grotesque Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12pt;
     line-height: 1.2;
     margin: 0;
     padding: 40px;
     color: #000;
+    /* Ceiling for desktop width to keep lines from stretching too far */
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Nav Stack */
+/* 2. SHARED NAVIGATION (Stacked) */
 nav {
     margin-bottom: 60px;
-    width: 250px;
+    width: 250px; /* Keeps the menu in a narrow vertical stack */
 }
 
 nav ul {
@@ -27,44 +30,89 @@ nav li {
     margin-bottom: 4px;
 }
 
-/* THE FIX: Remove all default underlines globally */
+/* 3. LINK & HOVER BEHAVIOR */
 a {
-    text-decoration: none !important; 
+    text-decoration: none !important; /* Forces removal of all underlines */
     color: inherit;
+    transition: color 0.1s ease-in-out;
 }
 
-/* Index Table Setup */
+/* Basic web blue for hover as requested */
+a:hover {
+    color: #0000EE;
+}
+
+/* 4. WORK INDEX (The "Ledger" View) */
 .index-container {
     width: 100%;
 }
 
 .index-row {
     display: grid;
-    /* Year (80px), Title (400px), Type (Rest) */
-    grid-template-columns: 80px 400px 1fr; 
+    /* Year: 60px | Title: Flexible (1fr) | Type: 200px (Right Aligned) */
+    grid-template-columns: 60px 1fr 200px; 
     border-top: 1px solid #000;
     padding: 10px 0;
     align-items: baseline;
-    color: #000;
     cursor: pointer;
 }
 
-/* Ensure the very last row has a bottom border to close the list */
-.index-container > :last-child {
+/* The very last item gets a bottom border to close the list */
+.index-container > a:last-child {
     border-bottom: 1px solid #000;
 }
 
-/* Hover: Entire row changes color, no underline */
-.index-row:hover {
-    color: #0000EE; /* Basic Web Blue */
+/* Right-align the 'Type' column */
+.index-row div:last-child {
+    text-align: right;
 }
 
-/* Responsive */
+/* Ensure the entire row reacts to hover */
+.index-row:hover {
+    color: #0000EE;
+}
+
+/* 5. PUBLICATIONS GRID (CAN-DID Thumbnails) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+    gap: 40px 20px;
+}
+
+.grid-item {
+    display: block;
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.grid-item p {
+    margin: 0;
+}
+
+/* 6. RESPONSIVE DESIGN (Mobile) */
 @media (max-width: 768px) {
-    body { padding: 20px; }
-    nav { width: 100%; margin-bottom: 40px; }
+    body {
+        padding: 20px;
+    }
+
+    nav {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
     .index-row {
-        grid-template-columns: 60px 1fr 100px;
+        /* Smaller columns and tighter fit for mobile screens */
+        grid-template-columns: 50px 1fr 100px;
         font-size: 11pt;
+    }
+
+    .grid-container {
+        /* Single column of large images on mobile */
+        grid-template-columns: 1fr;
     }
 }
