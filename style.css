@@ -70,7 +70,7 @@ a:hover { color: #0000EE; }
     overflow: hidden;
 }
 
-/* Carousel Fix: Overflow hidden is key */
+/* CAROUSEL */
 .carousel-container {
     position: relative;
     width: 100%;
@@ -85,14 +85,13 @@ a:hover { color: #0000EE; }
 }
 
 .carousel-image {
-    flex: 0 0 100%; /* Prevents images from squashing into one frame */
+    flex: 0 0 100%;
     width: 100%;
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Removed carousel buttons as requested - cursor handles navigation */
 .carousel-button { display: none; }
 
 #carousel-cursor {
@@ -104,7 +103,7 @@ a:hover { color: #0000EE; }
     display: none;
 }
 
-/* Video Container */
+/* VIDEO */
 .video-container {
     position: relative;
     padding-bottom: 56.25%;
@@ -117,16 +116,20 @@ a:hover { color: #0000EE; }
     top: 0; left: 0; width: 100%; height: 100%;
 }
 
-/* Project Details: Adjusted for 1000px max-width */
+/* PROJECT DETAILS - RIGHT JUSTIFIED 600PX */
 .project-details {
     display: grid;
-    grid-template-columns: 180px 1fr 580px;
+    /* Sidebar | Gap | Fixed 600px Content */
+    grid-template-columns: 200px 1fr 600px;
     column-gap: 40px;
     align-items: start;
+    width: 100%;
 }
 
 .details-content {
-    width: 100%;
+    grid-column: 3;
+    width: 600px; /* Locked width */
+    text-align: left; /* Reading alignment */
 }
 
 .details-content img {
@@ -136,7 +139,7 @@ a:hover { color: #0000EE; }
     margin-top: 40px;
 }
 
-/* Buy Button Styling */
+/* BUY BUTTON */
 .buy-button {
     display: inline-block;
     border: 1px solid #000;
@@ -149,8 +152,16 @@ a:hover { color: #0000EE; }
     color: #fff !important;
 }
 
-@media (max-width: 1024px) {
-    .project-details { grid-template-columns: 1fr; }
+/* 8. MOBILE - EARLY BREAK */
+@media (max-width: 1080px) { /* Break slightly earlier so it doesn't squash */
+    body { padding: 20px; }
+    .project-details { 
+        grid-template-columns: 1fr; 
+    }
+    .details-content {
+        width: 100%;
+        max-width: 100%;
+    }
     .carousel-container { cursor: auto; }
     #carousel-cursor { display: none !important; }
 }
