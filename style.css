@@ -6,44 +6,27 @@ body {
     margin: 0;
     padding: 40px;
     color: #000;
-    max-width: 1000px; /* Narrower Nieves-style width */
+    max-width: 1000px; 
     margin-left: auto;
     margin-right: auto;
     -webkit-font-smoothing: antialiased;
 }
 
-/* 2. SHARED NAVIGATION (Stacked) */
+/* 2. SHARED NAVIGATION */
 nav {
     margin-bottom: 60px;
     width: 250px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
+nav ul { list-style: none; padding: 0; margin: 0; }
+nav li { margin-bottom: 4px; }
 
-nav li {
-    margin-bottom: 4px;
-}
-
-/* 3. LINK & HOVER BEHAVIOR */
-a {
-    text-decoration: none !important;
-    color: inherit;
-    transition: color 0.1s ease-in-out;
-}
-
-a:hover {
-    color: #0000EE;
-}
+/* 3. LINK & HOVER */
+a { text-decoration: none !important; color: inherit; transition: color 0.1s ease-in-out; }
+a:hover { color: #0000EE; }
 
 /* 4. WORK INDEX */
-.index-container {
-    width: 100%;
-}
-
+.index-container { width: 100%; }
 .index-row {
     display: grid;
     grid-template-columns: 80px 1fr 200px; 
@@ -53,26 +36,16 @@ a:hover {
     align-items: baseline;
     cursor: pointer;
 }
+.index-container > a:last-child { border-bottom: 1px solid #000; }
+.index-row div:last-child { text-align: right; }
+.index-row:hover { color: #0000EE; }
 
-.index-container > a:last-child {
-    border-bottom: 1px solid #000;
-}
-
-.index-row div:last-child {
-    text-align: right;
-}
-
-.index-row:hover {
-    color: #0000EE;
-}
-
-/* 5. PUBLICATIONS GRID (4 Columns) */
+/* 5. PUBLICATIONS GRID */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 60px 20px;
 }
-
 .grid-item img {
     width: auto;
     max-width: 160px;
@@ -97,33 +70,38 @@ a:hover {
     overflow: hidden;
 }
 
-/* Carousel Container */
+/* Carousel Fix: Overflow hidden is key */
 .carousel-container {
     position: relative;
     width: 100%;
-    cursor: none; /* Hide default cursor to use custom arrows */
+    cursor: none; 
+    overflow: hidden; 
 }
 
 .carousel-track {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
 }
 
 .carousel-image {
-    min-width: 100%;
+    flex: 0 0 100%; /* Prevents images from squashing into one frame */
     width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Custom Cursor Arrows */
+/* Removed carousel buttons as requested - cursor handles navigation */
+.carousel-button { display: none; }
+
 #carousel-cursor {
     position: fixed;
     pointer-events: none;
     z-index: 999;
     font-size: 24px;
     transform: translate(-50%, -50%);
-    display: none; /* Only shows over carousel */
+    display: none;
 }
 
 /* Video Container */
@@ -134,18 +112,21 @@ a:hover {
     overflow: hidden;
     width: 100%;
 }
-
 .video-container iframe {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
 }
 
-/* Project Details Grid */
+/* Project Details: Adjusted for 1000px max-width */
 .project-details {
     display: grid;
-    grid-template-columns: 200px 1fr 600px;
+    grid-template-columns: 180px 1fr 580px;
     column-gap: 40px;
     align-items: start;
+}
+
+.details-content {
+    width: 100%;
 }
 
 .details-content img {
@@ -155,8 +136,21 @@ a:hover {
     margin-top: 40px;
 }
 
+/* Buy Button Styling */
+.buy-button {
+    display: inline-block;
+    border: 1px solid #000;
+    padding: 10px 15px;
+    font-size: 11pt;
+    margin-top: 20px;
+}
+.buy-button:hover {
+    background: #000;
+    color: #fff !important;
+}
+
 @media (max-width: 1024px) {
     .project-details { grid-template-columns: 1fr; }
-    .carousel-container { cursor: auto; } /* Normal cursor on mobile */
+    .carousel-container { cursor: auto; }
     #carousel-cursor { display: none !important; }
 }
