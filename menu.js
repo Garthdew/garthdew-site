@@ -6,7 +6,7 @@ const menuHTML = `
         <li><a href="index.html">Index</a></li>
         <li><a href="publications.html">Publications (CAN-DID)</a></li>
         <li><a href="studio.html">Studio</a></li>
-        <li><a href="info.html">Information</a></li>
+        <li><a href="information.html">Information</a></li>
     </ul>
 `;
 
