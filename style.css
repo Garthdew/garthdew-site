@@ -40,18 +40,28 @@ a:hover { color: #0000EE; }
     display: grid;
     grid-template-columns: 80px 1fr 200px; 
     column-gap: 40px;
-    border-top: 1px solid #000;
+    border-top: 1px solid #000; /* All rows have a top border by default */
     padding: 10px 0;
     align-items: baseline;
     cursor: pointer;
 }
 
-.index-container > a:first-child .index-row {
-    border-top: none;
+/* This targets the row inside the first link of the container */
+.index-container a:first-of-type .index-row {
+    border-top: none !important;
 }
 
-.index-container > a:last-child {
+/* Ensure the very bottom of the list has a closing line */
+.index-container a:last-of-type .index-row {
     border-bottom: 1px solid #000;
+}
+
+.index-row div:last-child {
+    text-align: right;
+}
+
+.index-row:hover {
+    color: #0000EE;
 }
 
 /* 5. PUBLICATIONS GRID */
