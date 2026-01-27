@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew | Project Video</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="main-nav"></nav>
+
+    <main>
+        <section class="project-header">
+            <div style="padding:56.25% 0 0 0;position:relative;">
+                <iframe 
+                    src="https://player.vimeo.com/video/1156506470?h=8dd1dac176&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                    title="1073DPX-D Promotional Video">
+                </iframe>
+            </div>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+        </section>
+
+        <section class="project-details">
+            <aside class="details-sidebar">
+                <p><strong>1073DPX-D Promotional Video</strong></p>
+                <p>2026<br>
+                Commercial Work<br>
+                Director of Photography</p>
+            </aside>
+
+            <article class="details-content">
+                <p>This is the description text for your video project. By keeping the content in this right-hand column, we maintain the visual balance of the site's index. The text remains left-aligned within this 600px wide container for optimal readability.</p>
+                
+                </article>
+        </section>
+    </main>
+
+    <script src="menu.js"></script>
+</body>
+</html>
