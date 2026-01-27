@@ -1,7 +1,7 @@
 // 1. Shared Menu & Footer Content
 const menuHTML = `
     <ul>
-        <li><a href="index.html"><strong>Garth Dew</strong></a></li>
+        <li><a href="index.html">Garth Dew</a></li>
         <br>
         <li><a href="index.html">Index</a></li>
         <li><a href="publications.html">Publications (CAN-DID)</a></li>
