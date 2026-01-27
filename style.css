@@ -12,14 +12,20 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* 2. SHARED NAVIGATION */
+/* 2. SHARED NAVIGATION (Stacked) */
 nav {
     margin-bottom: 60px;
-    width: 250px;
+    width: 100%; /* Spans the full 1000px width */
+    border-bottom: 1px solid #000; /* The new horizontal line */
+    padding-bottom: 20px;
 }
 
-nav ul { list-style: none; padding: 0; margin: 0; }
-nav li { margin-bottom: 4px; }
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 250px; /* Keeps links tucked left */
+}
 
 /* 3. LINK & HOVER */
 a { text-decoration: none !important; color: inherit; transition: color 0.1s ease-in-out; }
