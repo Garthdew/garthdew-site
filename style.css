@@ -199,3 +199,44 @@ a:hover { color: #0000EE; }
         display: none !important; 
     }
 }
+
+/* 9. INFORMATION PAGE (50/50 Split) */
+.info-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* True 50/50 split */
+    column-gap: 60px;
+    align-items: start;
+}
+
+.info-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between Bio and Contact info */
+}
+
+.info-text p {
+    margin: 0 0 1em 0;
+    max-width: 450px; /* Keeps line length comfortable for reading */
+}
+
+/* Mobile stacking */
+@media (max-width: 1080px) {
+    .info-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .info-image {
+        order: 1; /* Portrait on top for mobile */
+    }
+    
+    .info-text {
+        order: 2;
+    }
+}
