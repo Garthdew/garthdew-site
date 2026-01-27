@@ -206,3 +206,56 @@ a:hover {
         order: 2;
     }
 }
+
+/* Carousel & Video Styles */
+.project-header {
+    width: 100%;
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-header video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s ease-in-out;
+}
+
+.carousel-image {
+    min-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Minimalist Nav Buttons */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 20px;
+    color: #000;
+    user-select: none;
+}
+
+.carousel-button:hover {
+    color: #0000EE;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
