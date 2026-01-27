@@ -2,19 +2,19 @@
 body {
     font-family: "Neue Haas Grotesque Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12pt;
-    line-height: 1.2; /* Tight line height for that Swiss look */
+    line-height: 1.2;
     margin: 0;
-    padding: 40px; /* Generous white space around the edges */
+    padding: 40px;
     color: #000;
-    max-width: 1200px; /* Keeps the site from getting too wide */
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /* Vertical Stacked Menu */
 nav {
-    margin-bottom: 60px; /* Space between menu and content */
-    width: 200px; /* Fixed width for the menu items */
+    margin-bottom: 60px;
+    width: 250px;
 }
 
 nav ul {
@@ -24,16 +24,18 @@ nav ul {
 }
 
 nav li {
-    margin-bottom: 4px; /* Tight vertical stacking */
+    margin-bottom: 4px;
 }
 
-nav a {
-    text-decoration: none;
+/* Global Link Styling */
+a {
+    text-decoration: none; /* Removes the lines under text */
     color: #000;
 }
 
-nav a:hover {
-    text-decoration: underline;
+/* Hover effect: Change color instead of underline */
+a:hover {
+    color: #0000EE; /* Standard Web Blue */
 }
 
 /* The Index Grid */
@@ -43,23 +45,21 @@ nav a:hover {
 
 .index-row {
     display: grid;
-    /* 10% for Year, 70% for Title, 20% for Type */
-    grid-template-columns: 0.5fr 3fr 1fr; 
-    border-top: 1px solid #000; /* Line above each entry */
+    /* Adjusted: Year (80px), Title (Auto-growing), Type (150px) */
+    /* This brings 'Type' much closer to the center/title */
+    grid-template-columns: 80px 400px 1fr; 
+    border-top: 1px solid #000;
     padding: 10px 0;
-    text-decoration: none;
-    color: #000;
     align-items: baseline;
 }
 
-/* Hide the last border or add one at the very bottom */
 .index-container :last-child {
     border-bottom: 1px solid #000;
 }
 
-.header-row {
-    font-weight: normal;
-    text-transform: capitalize;
+/* Make sure every cell in the row inherits the hover color */
+.index-row:hover div {
+    color: #0000EE;
 }
 
 /* Mobile Adjustments */
@@ -72,7 +72,8 @@ nav a:hover {
         margin-bottom: 40px;
     }
     .index-row {
-        grid-template-columns: 50px 1fr 80px; /* Tighter columns for mobile */
+        /* On mobile, we let the title take the remaining space */
+        grid-template-columns: 60px 1fr 100px; 
         font-size: 11pt;
     }
 }
