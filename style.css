@@ -33,8 +33,8 @@ nav ul {
     position: absolute;
     top: 0;
     right: 0; /* Pins it to the top right of the 1000px container */
-    width: 30px; /* Adjust size as needed */
-    height: 30px;
+    width: 90px; /* Adjust size as needed */
+    height: 90px;
     transition: opacity 0.2s ease;
 }
 
