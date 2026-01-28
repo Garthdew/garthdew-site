@@ -8,6 +8,10 @@ const menuHTML = `
         <li><a href="studio.html">Studio</a></li>
         <li><a href="information.html">Information</a></li>
     </ul>
+    
+    <a href="index.html" class="nav-icon">
+        <img src="images/icon.png" alt="Home">
+    </a>
 `;
 
 const footerHTML = `
@@ -18,6 +22,8 @@ const footerHTML = `
         <li>&copy; 2026 Garth Dew</li>
     </ul>
 `;
+
+// ... keep the rest of your DOMContentLoaded logic exactly as it is ...
 
 document.addEventListener("DOMContentLoaded", function() {
     // Inject Menu
