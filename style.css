@@ -32,8 +32,8 @@ nav ul {
     position: absolute;
     top: -10px; /* Nudges it up slightly to align with your name "Garth Dew" */
     right: 0;
-    width: 150px;  /* Significant increase for that "Publisher" feel */
-    height: 150px;
+    width: 135px;  /* Significant increase for that "Publisher" feel */
+    height: 135px;
     transition: transform 0.2s ease-in-out;
 }
 
