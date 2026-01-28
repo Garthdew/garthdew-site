@@ -28,18 +28,18 @@ nav ul {
     width: 250px; /* Keeps links tucked left */
 }
 
-/* THE ICON POSITIONING */
 .nav-icon {
     position: absolute;
-    top: 0;
-    right: 0; /* Pins it to the top right of the 1000px container */
-    width: 90px; /* Adjust size as needed */
-    height: 90px;
-    transition: opacity 0.2s ease;
+    top: 0; /* Keeps it at the top of the nav container */
+    right: 0;
+    width: 70px;  /* Scale up to match the Nieves "weight" */
+    height: 70px;
+    transition: transform 0.2s ease-in-out;
 }
 
 .nav-icon:hover {
-    opacity: 0.6; /* Subtle visual feedback on hover */
+    transform: scale(1.05); /* Gives it a slight "pop" when hovered */
+    opacity: 1; /* Keep it bold like Nieves */
 }
 
 .nav-icon img {
@@ -49,14 +49,23 @@ nav ul {
     object-fit: contain;
 }
 
-/* Adjust mobile icon size in Section 6 */
+/* MOBILE FIX: Scale it back down for smaller screens */
 @media (max-width: 768px) {
-    body { padding: 20px; }
-    nav { width: 100%; margin-bottom: 40px; }
-    .nav-icon { width: 22px; height: 22px; } /* Slightly smaller for mobile */
-    .index-row { grid-template-columns: 60px 1fr 100px; column-gap: 15px; }
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .nav-icon {
+        width: 45px;
+        height: 45px;
+        top: 0;
+    }
 }
+
+/* MOBILE FIX: Scale it back down for smaller screens */
+@media (max-width: 768px) {
+    .nav-icon {
+        width: 45px;
+        height: 45px;
+        top: 0;
+    }
+
 
 /* 3. LINK & HOVER */
 a { text-decoration: none !important; color: inherit; transition: color 0.1s ease-in-out; }
