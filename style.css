@@ -124,6 +124,33 @@ a:hover { color: #0000EE; }
     display: none;
 }
 
+.project-details {
+    display: grid;
+    /* Sidebar 200px | Gap | Fixed 600px Content */
+    grid-template-columns: 200px 1fr 600px;
+    column-gap: 40px;
+    align-items: start;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.details-sidebar {
+    grid-column: 1;
+}
+
+.details-content {
+    grid-column: 3;
+    width: 600px; 
+    text-align: left;
+}
+
+.details-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 40px;
+}
+
 /* VIDEO */
 .video-container {
     position: relative;
