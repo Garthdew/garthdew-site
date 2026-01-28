@@ -30,10 +30,10 @@ nav ul {
 
 .nav-icon {
     position: absolute;
-    top: 0; 
+    top: -10px; /* Nudges it up slightly to align with your name "Garth Dew" */
     right: 0;
-    width: 70px;  
-    height: 70px;
+    width: 90px;  /* Significant increase for that "Publisher" feel */
+    height: 90px;
     transition: transform 0.2s ease-in-out;
 }
 
