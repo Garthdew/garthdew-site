@@ -16,7 +16,7 @@ body {
 nav {
     margin-bottom: 60px;
     width: 100%; 
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #2CFF05;
     padding-bottom: 20px;
     position: relative; /* Anchor for absolute icon */
 }
@@ -202,7 +202,7 @@ a:hover { color: #0000EE; }
 #main-footer {
     margin-top: 100px;
     width: 100%;
-    border-top: 1px solid #000;
+    border-top: 1px solid #2CFF05;
     padding-top: 20px;
     padding-bottom: 30px;
 }
