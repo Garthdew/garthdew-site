@@ -218,3 +218,16 @@ a:hover { color: #0000EE; }
     #main-footer { margin-top: 60px; }
     .footer-links { flex-direction: column; gap: 12px; }
 }
+
+12. /* Style for the handwriting name logo */
+.name-logo img {
+    height: 20px; /* Adjust this until it looks right next to your menu text */
+    width: auto;
+    display: block;
+    margin-bottom: 5px; /* Adds a tiny bit of space before the <br> */
+    transition: opacity 0.2s ease;
+}
+
+.name-logo:hover img {
+    opacity: 0.6;
+}
