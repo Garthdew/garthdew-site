@@ -223,7 +223,7 @@ a:hover { color: #0000EE; }
 .name-logo img {
     height: auto;        /* Let height be proportional */
     width: 100px;        /* Control the size by WIDTH instead */
-    max-width: 140%;     /* Safety for small screens */
+    max-width: 170%;     /* Safety for small screens */
     display: block;
     margin-bottom: 1px; 
     transition: opacity 0.2s ease;
