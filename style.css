@@ -232,3 +232,26 @@ a:hover { color: #0000EE; }
 .name-logo:hover img {
     opacity: 0.6;
 }
+
+/* 14. VERTICAL IMAGE STREAM */
+.image-stream {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Space between photos */
+    margin-top: 40px;
+}
+
+.image-stream img {
+    width: 100%;      /* Forces image to fill the 1000px container */
+    height: auto;     /* Keeps the proportions correct so they don't look squashed */
+    display: block;   /* Removes the tiny gap at the bottom of images */
+    max-width: 100%;  /* The safety net—stops it from going off-screen */
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .image-stream {
+        gap: 20px; /* Tighter gaps on phones */
+    }
+}
