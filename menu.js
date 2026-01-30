@@ -2,9 +2,7 @@
 const menuHTML = `
     <ul>
         <li>
-            <a href="index.html" class="name-logo">
-                <img src="images/signature.jpg" alt="Garth Dew">
-            </a>
+        <li><a href="index.html">Garth Dew</a></li>
         </li>
         <br>
         <li><a href="index.html">Index</a></li>
