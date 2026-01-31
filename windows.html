@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Garth Dew OS</title>
+    <style>
+        /* Win95 Core Theme */
+        :root {
+            --bg-teal: #008080;
+            --silver: #c0c0c0;
+            --border-light: #ffffff;
+            --border-dark: #808080;
+            --win-blue: #000080;
+        }
+
+        body {
+            background-color: var(--bg-teal);
+            font-family: 'Tahoma', 'Geneva', sans-serif; /* Closest to MS Sans Serif */
+            margin: 0;
+            height: 100vh;
+            overflow: hidden; /* Desktop shouldn't scroll, windows should */
+            cursor: default;
+        }
+
+        /* Desktop Grid */
+        .desktop {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 80px);
+            grid-auto-rows: 100px;
+            gap: 20px;
+            height: calc(100vh - 40px);
+        }
+
+        /* Desktop Icons */
+        .icon {
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .icon img {
+            width: 32px;
+            height: 32px;
+            display: block;
+            margin: 0 auto 5px;
+            image-rendering: pixelated; /* Keeps old icons sharp */
+        }
+
+        .icon span {
+            padding: 2px;
+            display: inline-block;
+        }
+
+        .icon:focus span {
+            background-color: var(--win-blue);
+            outline: 1px dotted #fff;
+        }
+
+        /* The Taskbar */
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: var(--silver);
+            border-top: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            z-index: 100;
+        }
+
+        .start-button {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding: 2px 6px;
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            background: var(--silver);
+            height: 22px;
+        }
+
+        /* Signature Logo Placement */
+        .signature-logo {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            opacity: 0.5;
+            filter: grayscale(1);
+            pointer-events: none;
+        }
+
+        /* Image Stream Window (How it would look opened) */
+        .window {
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            width: 600px;
+            max-height: 80vh;
+            background: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .title-bar {
+            background: var(--win-blue);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .window-content {
+            background: white;
+            margin: 2px;
+            overflow-y: scroll;
+            padding: 10px;
+            border: 2px solid inset;
+        }
+
+        .window-content img {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="desktop">
+        <a href="#" class="icon">
+            <img src="https://win98icons.alexmeub.com/icons/png/camera-0.png" alt="">
+            <span>Hall of Fame</span>
+        </a>
+
+        <a href="#" class="icon">
+            <img src="https://win98icons.alexmeub.com/icons/png/directory_database-0.png" alt="">
+            <span>Indexer</span>
+        </a>
+
+        <a href="#" class="icon">
+            <img src="https://win98icons.alexmeub.com/icons/png/ms-2.png" alt="">
+            <span>The Shop</span>
+        </a>
+
+        <a href="#" class="icon">
+            <img src="https://win98icons.alexmeub.com/icons/png/address_book_card_users-0.png" alt="">
+            <span>Me Me Me</span>
+        </a>
+
+        <a href="#" class="icon">
+            <img src="https://win98icons.alexmeub.com/icons/png/world-0.png" alt="">
+            <span>Random</span>
+        </a>
+    </div>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>C:\PROJECTS\ARLES_DIARY.EXE</span>
+            <span>[X]</span>
+        </div>
+        <div class="window-content">
+            <p>Single stream of images (Record 001)</p>
+            <img src="your-image-1.jpg" alt="Placeholder">
+            <img src="your-image-2.jpg" alt="Placeholder">
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <div class="start-button">
+            <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" style="width:16px; margin-right:5px;">
+            Start
+        </div>
+    </div>
+
+</body>
+</html>
