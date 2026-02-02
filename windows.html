@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garth Dew - Surprise</title>
     <style>
-        /* Windows 95 System Colors */
         :root {
             --bg-teal: #008080;
             --silver: #c0c0c0;
@@ -16,22 +15,17 @@
         }
 
         body {
-            /* The Grainy Pattern Feel */
             background-color: var(--bg-teal);
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
             background-repeat: repeat;
-
             font-family: "MS Sans Serif", Tahoma, sans-serif;
             margin: 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            color: black;
         }
 
-        /* The Main Window */
         .window {
             width: 90%;
             max-width: 600px;
@@ -50,20 +44,8 @@
             font-size: 13px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
         }
 
-        .title-buttons span {
-            border: 1px solid var(--border-light);
-            background: var(--silver);
-            color: black;
-            padding: 0 3px;
-            font-size: 10px;
-            box-shadow: 1px 1px 0px var(--border-black);
-            margin-left: 2px;
-        }
-
-        /* The Content Area */
         .window-content {
             padding: 20px;
             text-align: center;
@@ -72,28 +54,23 @@
             align-items: center;
         }
 
-        /* The "Surprise Me" 90s Button */
         .win-button {
             padding: 10px 20px;
             font-family: inherit;
-            font-size: 14px;
             background-color: var(--silver);
             border: 2px solid;
             border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            outline: none;
             cursor: pointer;
             margin-bottom: 20px;
         }
 
         .win-button:active {
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
-            padding: 11px 19px 9px 21px; /* Subtle sink effect */
         }
 
-        /* FIXED SIZE IMAGE BOX */
         #image-display {
             width: 100%;
-            height: 400px; /* Fixed height */
+            height: 400px; 
             background-color: #000; 
             border: 2px solid;
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
@@ -107,43 +84,23 @@
         #target-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Proportional fit */
+            object-fit: contain;
             display: none; 
         }
 
-        /* Footer Links */
-        .footer-info {
-            margin-top: 5px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .links {
-            margin-top: 10px;
-        }
-
-        .links a {
-            color: black;
-            margin: 0 5px;
-            text-decoration: underline;
-        }
-
-        .links a:hover {
-            background-color: var(--win-blue);
-            color: white;
-            text-decoration: none;
-        }
+        .footer-info { font-size: 13px; }
+        .links a { color: black; margin: 0 5px; text-decoration: underline; }
+        .links a:hover { background-color: var(--win-blue); color: white; }
     </style>
 </head>
 <body>
 
+    <audio id="win-sound" src="startup.mp3"></audio>
+
     <div class="window">
         <div class="title-bar">
             <span>IMAGE_GENERATOR.EXE</span>
-            <div class="title-buttons">
-                <span>?</span>
-                <span>X</span>
-            </div>
+            <span style="font-size: 10px;">[?] [X]</span>
         </div>
 
         <div class="window-content">
@@ -169,15 +126,29 @@
         function showSurprise() {
             const imgElement = document.getElementById('target-image');
             const placeholder = document.getElementById('placeholder-text');
+            const sound = document.getElementById('win-sound');
             
-            const randomNum = Math.floor(Math.random() * 20) + 1;
-            
+            // 1. Play the sound
+            sound.currentTime = 0; // Rewind to start if clicked rapidly
+            sound.play().catch(e => console.log("Sound blocked until user interacts."));
+
+            // 2. Load the image
+            const totalPhotos = 20; 
+            const randomNum = Math.floor(Math.random() * totalPhotos) + 1;
             imgElement.src = `images/${randomNum}.jpg`;
             
-            placeholder.style.display = 'none';
-            imgElement.style.display = 'block';
+            // 3. Handle display
+            imgElement.onload = function() {
+                placeholder.style.display = 'none';
+                imgElement.style.display = 'block';
+            };
+
+            // 4. Handle errors (Retry once if image fails)
+            imgElement.onerror = function() {
+                const retryNum = Math.floor(Math.random() * totalPhotos) + 1;
+                imgElement.src = `images/${retryNum}.jpg`;
+            };
         }
     </script>
-
 </body>
 </html>
