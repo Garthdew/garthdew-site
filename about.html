@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew - About</title>
+    <style>
+        :root {
+            /* Classic Win95 "Olive" or "Sky" - let's go with a neutral grey-blue */
+            --bg-blue-grey: #4b6467; 
+            --silver: #c0c0c0;
+            --border-light: #ffffff;
+            --border-dark: #808080;
+            --border-black: #000000;
+            --win-blue: #000080;
+        }
+
+        body {
+            background-color: var(--bg-blue-grey);
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
+            background-repeat: repeat;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: black;
+        }
+
+        .window {
+            width: 90%;
+            max-width: 450px;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            padding: 2px;
+        }
+
+        .title-bar {
+            background-color: var(--win-blue);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .window-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* SQUARE PROFILE BOX */
+        .profile-container {
+            width: 200px;
+            height: 200px;
+            background-color: #000;
+            border: 2px solid;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bio-text {
+            background: white;
+            padding: 15px;
+            border: 2px solid;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            font-size: 13px;
+            line-height: 1.5;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .button-row {
+            margin-top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .win-btn {
+            padding: 4px 20px;
+            font-family: inherit;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            font-size: 13px;
+        }
+
+        .win-btn:active {
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>ABOUT_ARTIST.EXE</span>
+            <span style="font-size: 10px;">[X]</span>
+        </div>
+
+        <div class="window-content">
+            <div class="profile-container">
+                <img src="profile.jpg" alt="Garth Dew">
+            </div>
+
+            <div class="bio-text">
+                <strong>Garth Dew</strong> is a photographer based in Preston, England. 
+                <br><br>
+                His work focuses on candid street photography, capturing the "decisive moments" of everyday life through a lens of mystery, vibrant color, and urban geometry. From the rainy streets of Lancashire to the bustling markets of Europe, his images seek to find the extraordinary within the mundane.
+            </div>
+
+            <div class="button-row">
+                <a href="index.html" class="win-btn">Close</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
