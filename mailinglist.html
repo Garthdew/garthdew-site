@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew - Newsletter Setup</title>
+    <style>
+        :root {
+            --bg-plum: #400040; 
+            --silver: #c0c0c0;
+            --border-light: #ffffff;
+            --border-dark: #808080;
+            --border-black: #000000;
+            --win-blue: #000080;
+            --win-blue-light: #1084d0;
+        }
+
+        body {
+            background-color: var(--bg-plum);
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
+            background-repeat: repeat;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .window {
+            width: 95%;
+            max-width: 500px;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            padding: 2px;
+        }
+
+        .title-bar {
+            background-color: var(--win-blue);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Tiny Envelope Icon in Title */
+        .title-icon {
+            margin-right: 5px;
+            width: 14px;
+            height: 10px;
+            background: white;
+            border: 1px solid black;
+            position: relative;
+        }
+        .title-icon::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, transparent 48%, black 49%, black 51%, transparent 52%),
+                        linear-gradient(-45deg, transparent 48%, black 49%, black 51%, transparent 52%);
+        }
+
+        .window-content {
+            display: flex; /* Sidebar layout */
+            padding: 0;
+            background-color: var(--silver);
+        }
+
+        /* The Classic Setup Sidebar */
+        .setup-sidebar {
+            width: 120px;
+            background: linear-gradient(to bottom, var(--win-blue), var(--win-blue-light));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding-bottom: 20px;
+            color: rgba(255,255,255,0.3);
+            font-weight: bold;
+            font-size: 24px;
+            border-right: 1px solid var(--border-dark);
+        }
+
+        .setup-main {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+        }
+
+        h2 { font-size: 16px; margin: 0 0 15px 0; font-weight: bold; }
+        p { font-size: 12px; line-height: 1.4; margin-bottom: 20px; }
+
+        .embeddable-buttondown-form { display: flex; flex-direction: column; }
+        label { font-size: 12px; margin-bottom: 5px; }
+
+        input[type="email"] {
+            padding: 4px;
+            font-family: inherit;
+            font-size: 13px;
+            border: 2px solid;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            background-color: white;
+            outline: none;
+            margin-bottom: 20px;
+        }
+
+        .button-row {
+            border-top: 1px solid var(--border-dark);
+            padding-top: 15px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        input[type="submit"], .back-btn {
+            padding: 4px 20px;
+            font-family: inherit;
+            font-size: 13px;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            text-align: center;
+        }
+
+        input[type="submit"]:active, .back-btn:active {
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            box-shadow: none;
+        }
+
+        .footer-note {
+            margin-top: 10px;
+            font-size: 10px;
+            text-align: center;
+        }
+        .footer-note a { color: black; }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <div class="title-icon"></div>
+            <span style="flex-grow: 1;">Newsletter Setup</span>
+            <span style="font-size: 10px;">[X]</span>
+        </div>
+
+        <div class="window-content">
+            <div class="setup-sidebar">
+                <div style="transform: rotate(-90deg); margin-bottom: 50px; white-space: nowrap;">
+                    GARTH DEW
+                </div>
+            </div>
+
+            <div class="setup-main">
+                <h2>Welcome to the Mailing List Wizard</h2>
+                <p>This wizard will help you subscribe to Garth Dew's newsletter. You will receive updates on new photography projects and shop additions.</p>
+                
+                <form
+                    action="https://buttondown.com/api/emails/embed-subscribe/garthdew"
+                    method="post"
+                    class="embeddable-buttondown-form"
+                    referrerpolicy="unsafe-url"
+                >
+                    <label for="bd-email">Enter your email address to continue:</label>
+                    <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
+                    
+                    <div class="button-row">
+                        <a href="index.html" class="back-btn">Cancel</a>
+                        <input type="submit" value="Subscribe >" />
+                    </div>
+                </form>
+
+                <div class="footer-note">
+                    <a href="https://buttondown.com/refer/garthdew" target="_blank">Powered by Buttondown.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
