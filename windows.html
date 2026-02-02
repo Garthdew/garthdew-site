@@ -123,32 +123,36 @@
     </div>
 
     <script>
-        function showSurprise() {
-            const imgElement = document.getElementById('target-image');
-            const placeholder = document.getElementById('placeholder-text');
-            const sound = document.getElementById('win-sound');
-            
-            // 1. Play the sound
-            sound.currentTime = 0; // Rewind to start if clicked rapidly
-            sound.play().catch(e => console.log("Sound blocked until user interacts."));
+    function showSurprise() {
+        const imgElement = document.getElementById('target-image');
+        const placeholder = document.getElementById('placeholder-text');
+        const sound = document.getElementById('win-sound');
+        
+        // --- THE SOUND FIX ---
+        // 1. Force the sound to stop if it's already playing
+        sound.pause();
+        // 2. Reset the track to the very beginning (0.0 seconds)
+        sound.currentTime = 0; 
+        // 3. Play it again immediately
+        sound.play().catch(e => console.log("Audio play prevented: ", e));
+        // ---------------------
 
-            // 2. Load the image
-            const totalPhotos = 20; 
-            const randomNum = Math.floor(Math.random() * totalPhotos) + 1;
-            imgElement.src = `images/${randomNum}.jpg`;
-            
-            // 3. Handle display
-            imgElement.onload = function() {
-                placeholder.style.display = 'none';
-                imgElement.style.display = 'block';
-            };
+        // Load the image
+        const totalPhotos = 20; 
+        const randomNum = Math.floor(Math.random() * totalPhotos) + 1;
+        imgElement.src = `images/${randomNum}.jpg`;
+        
+        imgElement.onload = function() {
+            placeholder.style.display = 'none';
+            imgElement.style.display = 'block';
+        };
 
-            // 4. Handle errors (Retry once if image fails)
-            imgElement.onerror = function() {
-                const retryNum = Math.floor(Math.random() * totalPhotos) + 1;
-                imgElement.src = `images/${retryNum}.jpg`;
-            };
-        }
-    </script>
+        // If the specific random image fails, try once more
+        imgElement.onerror = function() {
+            const retryNum = Math.floor(Math.random() * totalPhotos) + 1;
+            imgElement.src = `images/${retryNum}.jpg`;
+        };
+    }
+</script>
 </body>
 </html>
