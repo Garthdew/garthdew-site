@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garth Dew - Shop</title>
+    <style>
+        :root {
+            --bg-blue: #3a6ea5; /* Another classic Win95 Desktop color */
+            --silver: #c0c0c0;
+            --border-light: #ffffff;
+            --border-dark: #808080;
+            --border-black: #000000;
+            --win-blue: #000080;
+        }
+
+        body {
+            background-color: var(--bg-blue);
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
+            background-repeat: repeat;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .window {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            padding: 2px;
+            margin-bottom: 20px;
+        }
+
+        .title-bar {
+            background-color: var(--win-blue);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Menu Bar (File, Edit, View...) */
+        .menu-bar {
+            display: flex;
+            padding: 2px 5px;
+            border-bottom: 1px solid var(--border-dark);
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background: white; /* Sunken white area for products */
+            margin: 10px;
+            border: 2px solid;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+        }
+
+        .product-card {
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            background: #eee;
+            margin: 0 auto 10px;
+            border: 1px solid var(--border-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+
+        .price-tag {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .buy-btn {
+            padding: 4px 12px;
+            font-family: inherit;
+            background-color: var(--silver);
+            border: 2px solid;
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            box-shadow: 1px 1px 0px var(--border-black);
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        .buy-btn:active {
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            box-shadow: none;
+        }
+
+        .back-link {
+            color: white;
+            font-size: 13px;
+            text-decoration: underline;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="window">
+        <div class="title-bar">
+            <span>C:\ART_SHOP\PRINTS_AND_BOOKS.EXE</span>
+            <span>[?] [X]</span>
+        </div>
+        
+        <div class="menu-bar">
+            <span>File</span>
+            <span>Edit</span>
+            <span>View</span>
+            <span>Help</span>
+        </div>
+
+        <div class="shop-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="shop/print1.jpg" alt="Print 1">
+                </div>
+                <div><strong>Preston Docks Print</strong></div>
+                <div class="price-tag">£25.00</div>
+                <a href="YOUR_STRIPE_OR_PAYPAL_LINK" class="buy-btn">Purchase</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="shop/book1.jpg" alt="Book 1">
+                </div>
+                <div><strong>Photo Book Vol. 1</strong></div>
+                <div class="price-tag">£40.00</div>
+                <a href="YOUR_STRIPE_OR_PAYPAL_LINK" class="buy-btn">Purchase</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="shop/print2.jpg" alt="Print 2">
+                </div>
+                <div><strong>Limited Edition A3</strong></div>
+                <div class="price-tag">£35.00</div>
+                <a href="YOUR_STRIPE_OR_PAYPAL_LINK" class="buy-btn">Purchase</a>
+            </div>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-link">Return to Desktop</a>
+
+</body>
+</html>
