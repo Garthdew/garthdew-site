@@ -16,7 +16,6 @@
 
         body {
             background-color: var(--bg-teal);
-            /* The Grainy Pattern Feel */
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
             background-repeat: repeat;
             font-family: "MS Sans Serif", Tahoma, sans-serif;
@@ -71,10 +70,10 @@
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
         }
 
-        /* FIXED SIZE IMAGE BOX */
+        /* FIXED 3:2 ASPECT RATIO IMAGE BOX */
         #image-display {
             width: 100%;
-            height: 400px; 
+            aspect-ratio: 3 / 2; /* Forces 3:2 Ratio */
             background-color: #000; 
             border: 2px solid;
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
@@ -128,6 +127,22 @@
 
     <script>
         let hasPlayedSound = false;
+        let imageDeck = [];
+        const totalPhotos = 70;
+
+        // Function to create a shuffled array of numbers 1 to 70
+        function shuffleDeck() {
+            let deck = [];
+            for (let i = 1; i <= totalPhotos; i++) {
+                deck.push(i);
+            }
+            // Fisher-Yates shuffle algorithm
+            for (let i = deck.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [deck[i], deck[j]] = [deck[j], deck[i]];
+            }
+            return deck;
+        }
 
         function showSurprise() {
             const imgElement = document.getElementById('target-image');
@@ -135,17 +150,21 @@
             const sound = document.getElementById('win-sound');
             const btn = document.getElementById('main-button');
             
-            // 1. First-click sound logic
+            // 1. Audio Logic
             if (!hasPlayedSound) {
                 sound.play().catch(e => console.log("Sound muted: ", e));
                 hasPlayedSound = true;
-                btn.innerText = "Next Image"; // Change button text after first click
+                btn.innerText = "Next Image";
             }
 
-            // 2. Image loading
-            const totalPhotos = 20; 
-            const randomNum = Math.floor(Math.random() * totalPhotos) + 1;
-            imgElement.src = `images/${randomNum}.jpg`;
+            // 2. Deck Logic (No repeats until all shown)
+            if (imageDeck.length === 0) {
+                imageDeck = shuffleDeck();
+            }
+            
+            // Pull the last number from our shuffled deck
+            const currentNum = imageDeck.pop();
+            imgElement.src = `images/${currentNum}.jpg`;
             
             imgElement.onload = function() {
                 placeholder.style.display = 'none';
@@ -153,9 +172,8 @@
             };
 
             imgElement.onerror = function() {
-                // If specific image fails, try once more with a different number
-                const retryNum = Math.floor(Math.random() * totalPhotos) + 1;
-                imgElement.src = `images/${retryNum}.jpg`;
+                // If a specific image is missing, just skip to the next available one in the deck
+                showSurprise();
             };
         }
     </script>
