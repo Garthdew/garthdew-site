@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garth Dew - Windows 95 Pattern</title>
-    <link href="https://fonts.cdnfonts.com/css/w95fa" rel="stylesheet">
-    
+    <title>Garth Dew - Surprise</title>
     <style>
+        /* Windows 95 System Colors */
         :root {
-            --win95-bg: #008080; 
+            --bg-teal: #008080;
             --silver: #c0c0c0;
             --border-light: #ffffff;
             --border-dark: #808080;
@@ -17,21 +16,22 @@
         }
 
         body {
-            /* The "Pattern" Magic: A repeating 8x8 pixel grid */
-            background-color: var(--win95-bg);
+            /* The Grainy Pattern Feel */
+            background-color: var(--bg-teal);
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
             background-repeat: repeat;
-            
-            font-family: 'W95FA', 'MS Sans Serif', Tahoma, sans-serif;
+
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
             margin: 0;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            -webkit-font-smoothing: none;
+            color: black;
         }
 
-        /* Main Window */
+        /* The Main Window */
         .window {
             width: 90%;
             max-width: 600px;
@@ -53,30 +53,33 @@
             align-items: center;
         }
 
-        /* Title Bar Buttons [_][X] */
         .title-buttons span {
             border: 1px solid var(--border-light);
             background: var(--silver);
             color: black;
-            padding: 0 2px;
+            padding: 0 3px;
             font-size: 10px;
             box-shadow: 1px 1px 0px var(--border-black);
-            cursor: default;
+            margin-left: 2px;
         }
 
+        /* The Content Area */
         .window-content {
             padding: 20px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Proper 95 Button Depth */
+        /* The "Surprise Me" 90s Button */
         .win-button {
-            padding: 5px 15px;
+            padding: 10px 20px;
             font-family: inherit;
+            font-size: 14px;
             background-color: var(--silver);
             border: 2px solid;
             border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            box-shadow: 1px 1px 0px var(--border-black);
             outline: none;
             cursor: pointer;
             margin-bottom: 20px;
@@ -84,14 +87,13 @@
 
         .win-button:active {
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
-            box-shadow: none;
-            padding: 6px 14px 4px 16px; /* Mimics the text "moving" when pressed */
+            padding: 11px 19px 9px 21px; /* Subtle sink effect */
         }
 
-        /* Fixed Image Box */
+        /* FIXED SIZE IMAGE BOX */
         #image-display {
             width: 100%;
-            height: 400px; 
+            height: 400px; /* Fixed height */
             background-color: #000; 
             border: 2px solid;
             border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
@@ -105,24 +107,31 @@
         #target-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: contain; /* Proportional fit */
             display: none; 
         }
 
+        /* Footer Links */
         .footer-info {
-            font-size: 12px;
-            border-top: 1px solid var(--border-dark);
-            padding-top: 10px;
+            margin-top: 5px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .links {
+            margin-top: 10px;
         }
 
         .links a {
             color: black;
-            padding: 2px;
+            margin: 0 5px;
+            text-decoration: underline;
         }
 
         .links a:hover {
-            background: var(--win-blue);
+            background-color: var(--win-blue);
             color: white;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -130,9 +139,8 @@
 
     <div class="window">
         <div class="title-bar">
-            <span>IMAGE_VIEWER.EXE</span>
+            <span>IMAGE_GENERATOR.EXE</span>
             <div class="title-buttons">
-                <span>_</span>
                 <span>?</span>
                 <span>X</span>
             </div>
@@ -142,17 +150,16 @@
             <button class="win-button" onclick="showSurprise()">Surprise me</button>
 
             <div id="image-display">
-                <p id="placeholder-text" style="color: #00FF00; font-family: monospace; font-size: 12px;">
-                    C:\> run surprise.exe<br>
-                    READY_
-                </p>
-                <img id="target-image" src="" alt="Photography">
+                <p id="placeholder-text" style="color: #666; font-style: italic;">Press button to initialize...</p>
+                <img id="target-image" src="" alt="Garth Dew Photography">
             </div>
 
             <div class="footer-info">
-                <strong>Garth Dew Photography</strong>
+                Garth Dew is a photographer from Preston.
                 <div class="links">
-                    <a href="#">Gallery</a> | <a href="#">Bio</a> | <a href="#">Contact</a>
+                    <a href="mailto:your@email.com">E-mail</a> | 
+                    <a href="#">Mailing List</a> | 
+                    <a href="#">Shop</a>
                 </div>
             </div>
         </div>
@@ -160,14 +167,17 @@
 
     <script>
         function showSurprise() {
-            const img = document.getElementById('target-image');
+            const imgElement = document.getElementById('target-image');
             const placeholder = document.getElementById('placeholder-text');
+            
             const randomNum = Math.floor(Math.random() * 20) + 1;
             
-            img.src = `images/${randomNum}.jpg`;
+            imgElement.src = `images/${randomNum}.jpg`;
+            
             placeholder.style.display = 'none';
-            img.style.display = 'block';
+            imgElement.style.display = 'block';
         }
     </script>
+
 </body>
 </html>
