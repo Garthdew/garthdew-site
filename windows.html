@@ -1,141 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garth Dew - Surprise</title>
-    <style>
-        :root {
-            --bg-teal: #008080;
-            --silver: #c0c0c0;
-            --border-light: #ffffff;
-            --border-dark: #808080;
-            --border-black: #000000;
-            --win-blue: #000080;
-        }
+<script>
+    // This variable keeps track of whether the sound has played yet
+    let hasPlayedSound = false;
 
-        body {
-            background-color: var(--bg-teal);
-            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIElEQVQIW2NkYGD4D8SogAsD8Z97enpAmAkkA6KAgQEAb6YKBGo6o9YAAAAASUVORK5CYII=");
-            background-repeat: repeat;
-            font-family: "MS Sans Serif", Tahoma, sans-serif;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        .window {
-            width: 90%;
-            max-width: 600px;
-            background-color: var(--silver);
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            box-shadow: 1px 1px 0px var(--border-black);
-            padding: 2px;
-        }
-
-        .title-bar {
-            background-color: var(--win-blue);
-            color: white;
-            padding: 3px 5px;
-            font-weight: bold;
-            font-size: 13px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .window-content {
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .win-button {
-            padding: 10px 20px;
-            font-family: inherit;
-            background-color: var(--silver);
-            border: 2px solid;
-            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .win-button:active {
-            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
-        }
-
-        #image-display {
-            width: 100%;
-            height: 400px; 
-            background-color: #000; 
-            border: 2px solid;
-            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            overflow: hidden;
-        }
-
-        #target-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: none; 
-        }
-
-        .footer-info { font-size: 13px; }
-        .links a { color: black; margin: 0 5px; text-decoration: underline; }
-        .links a:hover { background-color: var(--win-blue); color: white; }
-    </style>
-</head>
-<body>
-
-    <audio id="win-sound" src="startup.mp3"></audio>
-
-    <div class="window">
-        <div class="title-bar">
-            <span>IMAGE_GENERATOR.EXE</span>
-            <span style="font-size: 10px;">[?] [X]</span>
-        </div>
-
-        <div class="window-content">
-            <button class="win-button" onclick="showSurprise()">Surprise me</button>
-
-            <div id="image-display">
-                <p id="placeholder-text" style="color: #666; font-style: italic;">Press button to initialize...</p>
-                <img id="target-image" src="" alt="Garth Dew Photography">
-            </div>
-
-            <div class="footer-info">
-                Garth Dew is a photographer from Preston.
-                <div class="links">
-                    <a href="mailto:your@email.com">E-mail</a> | 
-                    <a href="#">Mailing List</a> | 
-                    <a href="#">Shop</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
     function showSurprise() {
         const imgElement = document.getElementById('target-image');
         const placeholder = document.getElementById('placeholder-text');
         const sound = document.getElementById('win-sound');
         
-        // --- THE SOUND FIX ---
-        // 1. Force the sound to stop if it's already playing
-        sound.pause();
-        // 2. Reset the track to the very beginning (0.0 seconds)
-        sound.currentTime = 0; 
-        // 3. Play it again immediately
-        sound.play().catch(e => console.log("Audio play prevented: ", e));
-        // ---------------------
+        // --- THE FIRST-CLICK SOUND LOGIC ---
+        if (!hasPlayedSound) {
+            sound.play().catch(e => console.log("Audio play prevented: ", e));
+            hasPlayedSound = true; // Set to true so it never plays again until refresh
+        }
 
         // Load the image
         const totalPhotos = 20; 
@@ -147,12 +23,10 @@
             imgElement.style.display = 'block';
         };
 
-        // If the specific random image fails, try once more
+        // Fallback for missing images
         imgElement.onerror = function() {
             const retryNum = Math.floor(Math.random() * totalPhotos) + 1;
             imgElement.src = `images/${retryNum}.jpg`;
         };
     }
 </script>
-</body>
-</html>
