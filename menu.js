@@ -19,7 +19,6 @@ const menuHTML = `
 
 const footerHTML = `
     <div class="footer-newsletter">
-        <p>Join the mailing list</p>
         <form 
             action="https://buttondown.com/api/emails/embed-subscribe/garthdew" 
             method="post" 
@@ -31,7 +30,7 @@ const footerHTML = `
                 id="bd-email" 
                 placeholder="Your email" 
                 required>
-            <input type="submit" value="Go with the flow →">
+            <input type="submit" value="Join mailing list">
         </form>
     </div>
     <div class="footer-right">
