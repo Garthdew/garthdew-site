@@ -291,14 +291,13 @@ a:hover {
     margin: 0 auto;
     padding: 60px 40px 30px;
     border-top: 1px solid rgba(30, 37, 37, 0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 80px;
+    align-items: start;
 }
 
 .footer-newsletter {
-    flex: 1;
     max-width: 500px;
 }
 
@@ -310,8 +309,8 @@ a:hover {
 
 .footer-newsletter .embeddable-buttondown-form {
     display: flex;
-    gap: 15px;
-    align-items: center;
+    gap: 20px;
+    align-items: flex-end;
 }
 
 .footer-newsletter input[type="email"] {
@@ -330,8 +329,12 @@ a:hover {
     border-bottom-color: rgb(30, 37, 37);
 }
 
+.footer-newsletter input[type="email"]::placeholder {
+    color: rgba(30, 37, 37, 0.4);
+}
+
 .footer-newsletter input[type="submit"] {
-    padding: 8px 0;
+    padding: 0;
     font-family: 'Cardo', serif;
     font-size: 16px;
     background: none;
@@ -340,38 +343,33 @@ a:hover {
     cursor: pointer;
     transition: opacity 0.2s;
     white-space: nowrap;
-    text-decoration: underline;
-    text-decoration-color: rgba(30, 37, 37, 0.3);
-    text-underline-offset: 3px;
 }
 
 .footer-newsletter input[type="submit"]:hover {
     opacity: 0.6;
-    text-decoration-color: rgb(30, 37, 37);
 }
 
 .footer-right {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    text-align: right;
+    gap: 12px;
+    align-items: flex-end;
     font-size: 16px;
     opacity: 0.7;
+    white-space: nowrap;
 }
 
 .footer-right a {
-    text-decoration: underline;
-    text-decoration-color: rgba(30, 37, 37, 0.3);
-    text-underline-offset: 3px;
+    transition: opacity 0.2s;
 }
 
 .footer-right a:hover {
-    text-decoration-color: rgb(30, 37, 37);
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
     #main-footer {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         padding: 40px 20px 30px;
         gap: 40px;
     }
@@ -388,10 +386,11 @@ a:hover {
     
     .footer-newsletter input[type="submit"] {
         width: 100%;
+        text-align: left;
     }
     
     .footer-right {
-        text-align: left;
+        align-items: flex-start;
     }
 }
 
