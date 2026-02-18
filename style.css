@@ -264,3 +264,88 @@ a:hover {
 .mb-large {
     margin-bottom: 60px;
 }
+
+/* Feature Page */
+.feature-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px 100px;
+}
+
+.feature-header {
+    margin-bottom: 60px;
+}
+
+.feature-meta {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+.feature-header h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.feature-intro {
+    font-size: 22px;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+.feature-image {
+    margin: 60px 0;
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.feature-text {
+    max-width: 700px;
+    margin: 0 auto 40px;
+}
+
+.feature-text p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin-bottom: 1.5em;
+}
+
+.feature-footer {
+    max-width: 700px;
+    margin: 80px auto 0;
+    padding-top: 40px;
+    border-top: 1px solid rgba(30, 37, 37, 0.15);
+    font-size: 16px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .feature-container {
+        padding: 40px 20px 80px;
+    }
+    
+    .feature-header h1 {
+        font-size: 36px;
+    }
+    
+    .feature-intro {
+        font-size: 20px;
+    }
+    
+    .feature-image {
+        margin: 40px 0;
+    }
+    
+    .feature-text p {
+        font-size: 18px;
+    }
+}
