@@ -9,9 +9,9 @@ const menuHTML = `
         <span></span>
     </button>
     <ul class="nav-menu">
-        <li><a href="index.html">Features</a></li>
+        <li><a href="index.html">Stories</a></li>
         <li><a href="magazine.html">Magazine</a></li>
-        <li><a href="pledge.html">Pledge</a></li>
+        <li><a href="pledge.html">Objects</a></li>
         <li><a href="studio.html">Studio</a></li>
         <li><a href="about.html">About</a></li>
     </ul>
