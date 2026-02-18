@@ -298,23 +298,17 @@ a:hover {
 }
 
 .footer-newsletter {
-    max-width: 500px;
-}
-
-.footer-newsletter p {
-    font-size: 16px;
-    margin-bottom: 15px;
-    opacity: 0.7;
+    max-width: 400px;
 }
 
 .footer-newsletter .embeddable-buttondown-form {
     display: flex;
-    gap: 20px;
-    align-items: flex-end;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .footer-newsletter input[type="email"] {
-    flex: 1;
+    width: 100%;
     padding: 8px 0;
     font-family: 'Cardo', serif;
     font-size: 16px;
@@ -334,19 +328,20 @@ a:hover {
 }
 
 .footer-newsletter input[type="submit"] {
-    padding: 0;
-    font-family: 'Cardo', serif;
-    font-size: 16px;
-    background: none;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: transparent;
     color: rgb(30, 37, 37);
-    border: none;
+    border: 2px solid rgb(30, 37, 37);
     cursor: pointer;
-    transition: opacity 0.2s;
-    white-space: nowrap;
+    transition: all 0.2s;
+    align-self: flex-start;
 }
 
 .footer-newsletter input[type="submit"]:hover {
-    opacity: 0.6;
+    background-color: rgb(30, 37, 37);
+    color: rgb(246, 223, 209);
 }
 
 .footer-right {
@@ -378,15 +373,8 @@ a:hover {
         max-width: 100%;
     }
     
-    .footer-newsletter .embeddable-buttondown-form {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
-    
     .footer-newsletter input[type="submit"] {
         width: 100%;
-        text-align: left;
     }
     
     .footer-right {
