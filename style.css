@@ -1,257 +1,266 @@
-/* 1. GLOBAL STYLES & TYPOGRAPHY */
-body {
-    font-family: "Neue Haas Grotesque Display Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 12pt;
-    line-height: 1.2;
+/* Reset */
+* {
     margin: 0;
-    padding: 40px;
-    color: #000;
-    max-width: 1000px; 
-    margin-left: auto;
-    margin-right: auto;
-    -webkit-font-smoothing: antialiased;
-}
-
-/* 2. SHARED NAVIGATION & ICON */
-nav {
-    margin-bottom: 60px;
-    width: 100%; 
-    border-bottom: 1px solid #000;
-    padding-bottom: 20px;
-    position: relative; /* Anchor for absolute icon */
-}
-
-nav ul {
-    list-style: none;
     padding: 0;
-    margin: 0;
-    width: 250px; 
+    box-sizing: border-box;
 }
 
-.nav-icon {
-    position: absolute;
-    top: -10px; /* Nudges it up slightly to align with your name "Garth Dew" */
-    right: 0;
-    width: 135px;  /* Significant increase for that "Publisher" feel */
-    height: 135px;
-    transition: transform 0.2s ease-in-out;
+/* Typography & Base */
+body {
+    font-family: 'Cardo', serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgb(30, 37, 37);
+    background-color: rgb(246, 223, 209);
 }
 
-.nav-icon:hover {
-    transform: scale(1.05);
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 1em;
 }
 
-.nav-icon img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
+h1 {
+    font-size: 36px;
 }
 
-/* 3. LINK & HOVER */
-a { text-decoration: none !important; color: inherit; transition: color 0.1s ease-in-out; }
-a:hover { color: #0000EE; }
+h2 {
+    font-size: 28px;
+}
 
-/* 4. WORK INDEX */
+h3 {
+    font-size: 22px;
+}
+
+p {
+    margin-bottom: 1.2em;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+/* Navigation */
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo a {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+}
+
+#main-nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+#main-nav ul li a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    transition: opacity 0.2s;
+}
+
+/* Mobile nav */
+@media (max-width: 768px) {
+    #main-nav {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    #main-nav ul {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Homepage Header */
+.homepage-header {
+    max-width: 800px;
+    margin: 60px auto 60px;
+    padding: 0 40px;
+}
+
+.homepage-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+    .homepage-header {
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+    
+    .homepage-header h1 {
+        font-size: 28px;
+    }
+}
+
+/* Index Container */
 .index-container {
-    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 80px;
 }
 
 .index-row {
     display: grid;
-    grid-template-columns: 80px 1fr 200px; 
-    column-gap: 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.2); 
-    padding: 10px 0;
+    grid-template-columns: 60px 1fr 240px 120px;
+    gap: 30px;
     align-items: baseline;
-    cursor: pointer;
-}
-
-.index-container a:last-of-type .index-row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.index-row div:last-child {
-    text-align: right;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(30, 37, 37, 0.15);
+    transition: opacity 0.2s;
 }
 
 .index-row:hover {
-    color: #0000EE;
+    opacity: 0.7;
 }
 
-/* 5. PUBLICATIONS GRID */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 60px 20px;
-}
-.grid-item img {
-    width: auto;
-    max-width: 160px;
-    height: auto;
-    display: block;
-    margin-bottom: 12px;
+.index-row div:first-child {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    opacity: 0.6;
 }
 
-/* 6. GLOBAL RESPONSIVE (Up to 768px) */
+.index-row div:nth-child(2) {
+    font-size: 20px;
+}
+
+.index-row div:nth-child(3),
+.index-row div:nth-child(4) {
+    font-size: 16px;
+    opacity: 0.7;
+}
+
 @media (max-width: 768px) {
-    body { padding: 20px; }
-    nav { width: 100%; margin-bottom: 40px; }
-    .nav-icon { width: 130px; height: 130px; }
-    .index-row { grid-template-columns: 60px 1fr 100px; column-gap: 15px; }
-    .grid-container { grid-template-columns: repeat(2, 1fr); }
+    .index-container {
+        padding: 0 20px 60px;
+    }
+    
+    .index-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 24px 0;
+    }
+    
+    .index-row div:nth-child(3),
+    .index-row div:nth-child(4) {
+        font-size: 14px;
+    }
 }
 
-/* 7. PROJECT PAGE & CAROUSEL */
-.project-header {
-    width: 100%;
-    margin-bottom: 40px;
-    position: relative;
-    overflow: hidden;
+/* Content Pages */
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
 }
 
+.content-container h1 {
+    margin-bottom: 0.5em;
+}
+
+.content-container h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+@media (max-width: 768px) {
+    .content-container {
+        padding: 30px 20px 60px;
+    }
+}
+
+/* Carousel (keep your existing carousel styles) */
 .carousel-container {
     position: relative;
     width: 100%;
-    cursor: none; 
-    overflow: hidden; 
+    overflow: hidden;
+    cursor: none;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    width: 100%;
+    transition: transform 0.3s ease;
 }
 
 .carousel-image {
-    flex: 0 0 100%;
-    width: 100%;
-    max-width: 100%;
+    min-width: 100%;
     height: auto;
     display: block;
 }
 
 #carousel-cursor {
     position: fixed;
-    pointer-events: none;
-    z-index: 999;
-    font-size: 24px;
-    transform: translate(-50%, -50%);
     display: none;
+    pointer-events: none;
+    font-size: 32px;
+    color: rgb(30, 37, 37);
+    z-index: 1000;
+    transform: translate(-50%, -50%);
 }
 
-.project-details {
-    display: grid;
-    grid-template-columns: 200px 1fr 600px;
-    column-gap: 40px;
-    align-items: start;
-    width: 100%;
-    margin-top: 40px;
+/* Footer */
+#main-footer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 40px 30px;
+    border-top: 1px solid rgba(30, 37, 37, 0.15);
 }
 
-.details-sidebar { grid-column: 1; }
-.details-content { grid-column: 3; width: 600px; text-align: left; }
-
-.details-content img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 40px;
+.footer-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    font-size: 16px;
 }
 
-/* 8. VIDEO CONTAINER */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-    width: 100%;
+.footer-links li {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    #main-footer {
+        padding: 30px 20px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-large {
     margin-top: 60px;
 }
-.video-container iframe {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-}
 
-/* 9. UNIFIED RESPONSIVE (Desktop/Tablet Shift) */
-@media (max-width: 1080px) {
-    .project-details { grid-template-columns: 1fr; gap: 30px; }
-    .details-sidebar, .details-content { grid-column: 1; width: 100%; max-width: 100%; }
-    .carousel-container { cursor: auto; }
-    #carousel-cursor { display: none !important; }
-}
-
-/* 10. INFORMATION PAGE */
-.info-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 60px;
-    align-items: start;
-}
-.info-image img { width: 100%; height: auto; display: block; }
-.info-text { display: flex; flex-direction: column; gap: 40px; }
-.info-text p { margin: 0 0 1em 0; max-width: 450px; }
-
-@media (max-width: 1080px) {
-    .info-container { grid-template-columns: 1fr; gap: 40px; }
-    .info-image { order: 1; }
-    .info-text { order: 2; }
-}
-
-/* 11. SHARED FOOTER */
-#main-footer {
-    margin-top: 100px;
-    width: 100%;
-    border-top: 1px solid #000;
-    padding-top: 20px;
-    padding-bottom: 30px;
-}
-.footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px; 
-    font-size: 11pt;
-}
-@media (max-width: 1080px) {
-    #main-footer { margin-top: 60px; }
-    .footer-links { flex-direction: column; gap: 12px; }
-}
-
-/* 12. Style for the handwriting name logo */
-.name-logo img {
-    height: auto;        /* Let height be proportional */
-    width: 100px;        /* Control the size by WIDTH instead */
-    max-width: 170%;     /* Safety for small screens */
-    display: block;
-    margin-bottom: 1px; 
-    transition: opacity 0.2s ease;
-}
-
-.name-logo:hover img {
-    opacity: 0.6;
-}
-
-/* 14. VERTICAL IMAGE STREAM */
-.image-stream {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* Space between photos */
-    margin-top: 40px;
-}
-
-.image-stream img {
-    width: 100%;      /* Forces image to fill the 1000px container */
-    height: auto;     /* Keeps the proportions correct so they don't look squashed */
-    display: block;   /* Removes the tiny gap at the bottom of images */
-    max-width: 100%;  /* The safety net—stops it from going off-screen */
-}
-
-/* Mobile Adjustment */
-@media (max-width: 768px) {
-    .image-stream {
-        gap: 20px; /* Tighter gaps on phones */
-    }
+.mb-large {
+    margin-bottom: 60px;
 }
