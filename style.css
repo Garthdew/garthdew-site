@@ -225,8 +225,58 @@ a:hover {
 #main-footer {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 40px 30px;
+    padding: 60px 40px 30px;
     border-top: 1px solid rgba(30, 37, 37, 0.15);
+}
+
+.footer-newsletter {
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.footer-newsletter p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    opacity: 0.7;
+}
+
+.footer-newsletter .embeddable-buttondown-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-newsletter input[type="email"] {
+    flex: 1;
+    padding: 8px 0;
+    font-family: 'Cardo', serif;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid rgba(30, 37, 37, 0.3);
+    background-color: transparent;
+    color: rgb(30, 37, 37);
+}
+
+.footer-newsletter input[type="email"]:focus {
+    outline: none;
+    border-bottom-color: rgb(30, 37, 37);
+}
+
+.footer-newsletter input[type="submit"] {
+    padding: 8px 0;
+    font-family: 'Cardo', serif;
+    font-size: 16px;
+    background: none;
+    color: rgb(30, 37, 37);
+    border: none;
+    border-bottom: 1px solid rgb(30, 37, 37);
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.footer-newsletter input[type="submit"]:hover {
+    opacity: 0.6;
 }
 
 .footer-links {
@@ -242,16 +292,24 @@ a:hover {
 
 @media (max-width: 768px) {
     #main-footer {
-        padding: 30px 20px;
+        padding: 40px 20px 30px;
+    }
+    
+    .footer-newsletter .embeddable-buttondown-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .footer-newsletter input[type="submit"] {
+        width: 100%;
     }
     
     .footer-links {
         flex-direction: column;
         gap: 15px;
-        text-align: center;
     }
 }
-
 /* Utility Classes */
 .text-center {
     text-align: center;
