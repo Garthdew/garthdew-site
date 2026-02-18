@@ -498,13 +498,6 @@ a:hover {
     border: none;
 }
 
-/* Studio page - client list */
-.content-container h2 + p {
-    font-size: 16px;
-    opacity: 0.7;
-    line-height: 1.8;
-}
-
 /* Video embed */
 .video-embed {
     position: relative;
