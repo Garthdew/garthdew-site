@@ -13,9 +13,24 @@ const menuHTML = `
 `;
 
 const footerHTML = `
+    <div class="footer-newsletter">
+        <p>Join the mailing list</p>
+        <form 
+            action="https://buttondown.com/api/emails/embed-subscribe/garthdew" 
+            method="post" 
+            class="embeddable-buttondown-form" 
+            referrerpolicy="unsafe-url">
+            <input 
+                type="email" 
+                name="email" 
+                id="bd-email" 
+                placeholder="Your email" 
+                required>
+            <input type="submit" value="Go with the flow →">
+        </form>
+    </div>
     <ul class="footer-links">
         <li><a href="mailto:hello@nowinflow.com">Email</a></li>
-        <li><a href="#">Mailing List</a></li>
         <li>&copy; 2026 Now In Flow</li>
     </ul>
 `;
