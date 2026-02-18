@@ -3,7 +3,12 @@ const menuHTML = `
     <div class="logo">
         <a href="index.html">NOW IN FLOW</a>
     </div>
-    <ul>
+    <button class="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    <ul class="nav-menu">
         <li><a href="index.html">Features</a></li>
         <li><a href="magazine.html">Magazine</a></li>
         <li><a href="pledge.html">Pledge</a></li>
@@ -29,10 +34,10 @@ const footerHTML = `
             <input type="submit" value="Go with the flow →">
         </form>
     </div>
-    <ul class="footer-links">
-        <li><a href="mailto:hello@nowinflow.com">Email</a></li>
-        <li>&copy; 2026 Now In Flow</li>
-    </ul>
+    <div class="footer-right">
+        <a href="mailto:hello@nowinflow.com">Email</a>
+        <span>&copy; 2026 Now In Flow</span>
+    </div>
 `;
 
 // Keep all your existing DOMContentLoaded logic
@@ -42,6 +47,25 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const footerElement = document.getElementById('main-footer');
     if (footerElement) footerElement.innerHTML = footerHTML;
+    
+    // Hamburger menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
     
     // Keep all your carousel logic exactly as is...
     const track = document.querySelector('.carousel-track');
