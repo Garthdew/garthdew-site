@@ -1,81 +1,49 @@
-/* About page enhancements */
-.content-container a {
-    text-decoration: underline;
-    text-decoration-color: rgba(30, 37, 37, 0.3);
-    text-underline-offset: 3px;
-    transition: text-decoration-color 0.2s;
-}
-
-.content-container a:hover {
-    text-decoration-color: rgb(30, 37, 37);
-    opacity: 1;
-}
-
-/* Newsletter signup */
-.newsletter-signup {
-    margin-top: 60px;
-    padding: 40px;
-    background-color: rgba(30, 37, 37, 0.03);
-    border-radius: 2px;
-}
-
-.newsletter-signup h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.newsletter-signup p {
-    margin-bottom: 20px;
-    opacity: 0.8;
-}
-
-.newsletter-signup form {
-    display: flex;
-    gap: 10px;
-}
-
-.newsletter-signup input[type="email"] {
-    flex: 1;
-    padding: 12px 16px;
-    font-family: 'Cardo', serif;
-    font-size: 16px;
-    border: 1px solid rgba(30, 37, 37, 0.2);
-    background-color: rgb(246, 223, 209);
-    color: rgb(30, 37, 37);
-    border-radius: 2px;
-}
-
-.newsletter-signup input[type="email"]:focus {
-    outline: none;
-    border-color: rgb(30, 37, 37);
-}
-
-.newsletter-signup button {
-    padding: 12px 24px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    background-color: rgb(30, 37, 37);
-    color: rgb(246, 223, 209);
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.newsletter-signup button:hover {
-    opacity: 0.8;
-}
-
-@media (max-width: 768px) {
-    .newsletter-signup {
-        padding: 30px 20px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Now In Flow</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav id="main-nav"></nav>
     
-    .newsletter-signup form {
-        flex-direction: column;
-    }
+    <main class="content-container">
+        <h1>About Now In Flow</h1>
+        
+        <p>Now In Flow is my container for exploring a single question: what happens when you stop forcing life and flow with it?</p>
+        
+        <p>For most of my life, I did what we're told to do. Plan, strategise, strive. I'd set a goal, work hard to reach it, then arrive only to realise the destination was empty. Meanwhile, other things kept wanting to come through. Art. Music. Photography. Projects that felt alive but seemed self-indulgent. I'd dismiss them because they weren't going to pay the bills. What was the point?</p>
+        
+        <p>That changed during a year of integrative development coaching. I came to understand my true nature and started actually listening to it. From there, art happened. Magic happened. As I went with the flow, I realised everything was already unfolding of its own accord. So I started operating from a place of joy, focusing on things that gave me a sense of ease and expansion, even if they existed for their own sake.</p>
+        
+        <p>This is the place where all of that lives. Art and stories from myself and others about this shift in ways of being. Toward spontaneity, trust, joy, peace. Toward listening to your truth and living in integrity with your inner wisdom.</p>
+        
+        <p>Things are published when ready. Not on a schedule. A limited-run print magazine collects the best of them.</p>
+        
+        <h2>Studio</h2>
+        
+        <p>Through Now In Flow Studio, I work with a small number of aligned brands and people, creating films, photography, and long-form content that matter. This is where my client work lives in integrity with everything else. If you're building something real and want it told honestly, <a href="mailto:hello@nowinflow.com">get in touch</a>.</p>
+        
+        <h2>Support</h2>
+        
+        <p>The work on this site is free to enjoy, but it's not cheap to make. You can support it through the <a href="pledge.html">Pledge</a> page by buying an object, or <a href="#newsletter">join the mailing list</a> to follow along.</p>
+        
+        <div class="newsletter-signup" id="newsletter">
+            <h3>Join the mailing list</h3>
+            <p>Get updates when new features are published.</p>
+            <form action="#" method="post">
+                <input type="email" placeholder="Your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </main>
     
-    .newsletter-signup button {
-        width: 100%;
-    }
-}
+    <footer id="main-footer"></footer>
+    <script src="menu.js"></script>
+</body>
+</html>
