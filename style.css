@@ -515,3 +515,65 @@ a:hover {
     height: 100%;
     border: none;
 }
+
+/* Objects page */
+.objects-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    margin-top: 60px;
+}
+
+.object-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.object-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.object-item h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.object-item p {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.object-item .price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.object-item .buy-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: transparent;
+    color: rgb(30, 37, 37);
+    border: 2px solid rgb(30, 37, 37);
+    text-decoration: none;
+    transition: all 0.2s;
+    align-self: flex-start;
+}
+
+.object-item .buy-link:hover {
+    background-color: rgb(30, 37, 37);
+    color: rgb(246, 223, 209);
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .objects-container {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
