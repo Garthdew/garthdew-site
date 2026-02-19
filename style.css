@@ -175,9 +175,9 @@ a:hover {
     padding: 0 40px 80px;
 }
 
-index-row {
+.index-row {
     display: grid;
-    grid-template-columns: 60px 1fr auto;
+    grid-template-columns: 60px 1fr 150px;
     gap: 30px;
     align-items: baseline;
     padding: 20px 0;
@@ -199,10 +199,10 @@ index-row {
     font-size: 20px;
 }
 
-.index-row div:nth-child(3),
-.index-row div:nth-child(4) {
+.index-row div:nth-child(3) {
     font-size: 16px;
     opacity: 0.7;
+    text-align: right;
 }
 
 @media (max-width: 768px) {
@@ -216,9 +216,9 @@ index-row {
         padding: 24px 0;
     }
     
-    .index-row div:nth-child(3),
-    .index-row div:nth-child(4) {
+    .index-row div:nth-child(3) {
         font-size: 14px;
+        text-align: left;
     }
 }
 
