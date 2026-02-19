@@ -175,9 +175,9 @@ a:hover {
     padding: 0 40px 80px;
 }
 
-.index-row {
+index-row {
     display: grid;
-    grid-template-columns: 60px 1fr 240px;
+    grid-template-columns: 60px 1fr auto;
     gap: 30px;
     align-items: baseline;
     padding: 20px 0;
