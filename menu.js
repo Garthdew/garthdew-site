@@ -10,7 +10,6 @@ const menuHTML = `
     </button>
     <ul class="nav-menu">
         <li><a href="index.html">Stories</a></li>
-        <li><a href="magazine.html">Magazine</a></li>
         <li><a href="objects.html">Objects</a></li>
         <li><a href="studio.html">Studio</a></li>
         <li><a href="about.html">About</a></li>
