@@ -397,7 +397,7 @@ a:hover {
 
 /* Feature Page */
 .feature-container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 60px 40px 100px;
 }
@@ -439,7 +439,7 @@ a:hover {
 }
 
 .feature-text {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto 40px;
 }
 
@@ -450,7 +450,7 @@ a:hover {
 }
 
 .feature-footer {
-    max-width: 700px;
+    max-width: 800px;
     margin: 80px auto 0;
     padding-top: 40px;
     border-top: 1px solid rgba(30, 37, 37, 0.15);
