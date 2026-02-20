@@ -168,6 +168,7 @@ a:hover {
     }
 }
 
+
 /* Index Container */
 .index-container {
     max-width: 800px;
@@ -187,6 +188,10 @@ a:hover {
 
 .index-row:hover {
     opacity: 0.7;
+}
+
+.index-row:last-child {
+    border-bottom: none;
 }
 
 .index-row div:first-child {
@@ -221,7 +226,7 @@ a:hover {
         text-align: left;
     }
 }
-
+```
 /* Content Pages */
 .content-container {
     max-width: 800px;
